@@ -18,7 +18,7 @@ class LoginController extends Controller
     {
         $credentials = $request->validate([
             'username' => ['required', 'min:4', 'max:255'],
-            'password' => 'required',
+            'password' => 'required|min:8|max:255',
         ]);
 
         $remember = $request->has('remember') ? true : false;
@@ -28,7 +28,7 @@ class LoginController extends Controller
             return redirect()->intended('/dashboard');
         }
 
-        $notif = notify()->error('Login failed', 'Username or password is incorrect');
+        $notif = notify()->error( 'Username or password is incorrect', 'Login failed');
 
         return back()->with('notif', $notif);
     }
