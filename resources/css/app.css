@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-white font-roboto
+    }
+
+    .layout {
+        @apply px-4 xs:px-4 sm:px-8 lg:px-16 2xl:px-20;
+    }
+
+    .btn-header {
+        @apply text-login flex h-16 w-40 items-center justify-center bg-button-yellow;
+    }
+
+    .text-login {
+        color: #FFF;
+        font-size: 24px;
+        font-weight: 800;
+        -webkit-text-stroke: 1px #3696DB;
+	    -webkit-text-fill-color: white;
+    }
+    
+    .field-input {
+        @apply mx-auto block h-16 w-9/12 rounded-lg border border-gray-300 bg-gray-700 p-2.5 font-lexend text-lg font-normal leading-5 text-white placeholder:text-white focus:border-gray-700 focus:ring-gray-700;
+    }
+
+    .invalid-feedback {
+        @apply mx-auto w-9/12 text-sm font-medium tracking-wide text-red-500 font-lexend;
+    }
+
+    .btn-auth {
+        @apply mx-auto h-16 w-9/12 rounded-lg bg-green-400 font-lexend text-lg font-medium text-white hover:bg-green-500;
+    }
+}
