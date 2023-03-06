@@ -28,7 +28,24 @@ module.exports = {
             "2xl": { min: "1536px" },
             // => @media (min-width: 1536px) { ... }
         },
-        extend: {},
+        fontFamily: {
+            roboto: ["Roboto", "sans-serif"],
+            josefin: ["Josefin Sans", "sans-serif"],
+            crimson: ["Crimson Text", "sans-serif"],
+            lexend: ["Lexend Deca", "sans-serif"],
+        },
+        extend: {
+            colors: {
+                header: "#2F2CE4",
+                hero: "#35A7FF",
+                "button-yellow": "#EDF200",
+            },
+            backgroundImage: {
+                "hero-pattern": "url('/public/images/pngwing.svg')",
+                "login-pattern":
+                    "url('/public/images/pattern/login-pattern.svg')",
+            },
+        },
     },
-    plugins: [],
+    plugins: [require("@tailwindcss/forms")],
 };
