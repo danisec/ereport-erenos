@@ -11,12 +11,12 @@
                 <p class="text-center font-lexend text-2xl font-normal leading-7">Daftar akun Anda</p>
             </div>
 
-            <form action="{{ route('register.store') }}" class="mt-14" method="post">
+            <form class="mt-14" action="{{ route('register.store') }}" method="post">
                 @csrf
                 <div class="flex flex-col justify-center gap-12">
                     <div>
-                        <input autofocus class="@error('name') border-red-500 bg-red-500 @enderror field-input"
-                            name="name" placeholder="Name" required type="text" value="{{ old('name') }}">
+                        <input class="@error('name') border-red-500 bg-red-500 @enderror field-input" name="name"
+                            type="text" value="{{ old('name') }}" autofocus placeholder="Name" required>
 
                         @error('name')
                             <p class="invalid-feedback">
@@ -27,8 +27,8 @@
 
                     <div>
                         <input class="@error('username') border-red-500 bg-red-500 @enderror field-input"
-                            name="username" placeholder="Username" required type="text"
-                            value="{{ old('username') }}">
+                            name="username" type="text" value="{{ old('username') }}" placeholder="Username"
+                            required>
 
                         @error('username')
                             <p class="invalid-feedback">
@@ -39,7 +39,7 @@
 
                     <div>
                         <input class="@error('email') border-red-500 bg-red-500 @enderror field-input" name="email"
-                            placeholder="Email" required type="email" value="{{ old('email') }}">
+                            type="email" value="{{ old('email') }}" placeholder="Email" required>
 
                         @error('email')
                             <p class="invalid-feedback">
@@ -50,7 +50,7 @@
 
                     <div>
                         <input class="@error('password') border-red-500 bg-red-500 @enderror field-input"
-                            name="password" placeholder="Password" required type="password">
+                            name="password" type="password" placeholder="Password" required>
 
                         @error('password')
                             <p class="mx-auto w-9/12 text-sm font-medium tracking-wide text-red-500">

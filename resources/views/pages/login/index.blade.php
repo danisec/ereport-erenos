@@ -11,13 +11,13 @@
                 <p class="text-center font-lexend text-2xl font-normal leading-7">Masuk dengan akun Anda</p>
             </div>
 
-            <form action="{{ route('login') }}" class="mt-14" method="post">
+            <form class="mt-14" action="{{ route('login') }}" method="post">
                 @csrf
                 <div class="flex flex-col justify-center gap-12">
                     <div>
-                        <input autofocus class="@error('username') border-red-500 bg-red-500 @enderror field-input"
-                            name="username" placeholder="Username" required type="text"
-                            value="{{ old('username') }}">
+                        <input class="@error('username') border-red-500 bg-red-500 @enderror field-input"
+                            name="username" type="text" value="{{ old('username') }}" autofocus
+                            placeholder="Username" required>
 
                         @error('username')
                             <p class="invalid-feedback">
@@ -27,7 +27,7 @@
                     </div>
 
                     <div>
-                        <input class="field-input" name="password" placeholder="Password" required type="password">
+                        <input class="field-input" name="password" type="password" placeholder="Password" required>
                     </div>
 
                     <div class="mx-auto flex w-9/12 flex-row items-center justify-between">

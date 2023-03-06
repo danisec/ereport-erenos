@@ -9,17 +9,17 @@
 
             <div class="bg-hero-pattern bg-cover bg-center bg-no-repeat">
                 <div class="mx-auto flex h-auto w-8/12 items-center">
-                    <img alt="photo" src="{{ URL('images/photo-1.png') }}">
+                    <img src="{{ URL('images/photo-1.png') }}" alt="photo">
                 </div>
 
                 <div class="relative">
-                    <img alt="erenos" class="absolute bottom-0 left-0 right-0 m-auto w-6/12 lg:top-20 2xl:top-24"
-                        src="{{ URL('images/erenos.png') }}">
+                    <img class="absolute bottom-0 left-0 right-0 m-auto w-6/12 lg:top-20 2xl:top-24"
+                        src="{{ URL('images/erenos.png') }}" alt="erenos">
                 </div>
 
                 <div class="mx-auto flex h-auto w-6/12 justify-center">
-                    <img alt="photo" class="" src="{{ URL('images/photo-2.png') }}">
-                    <img alt="photo" class="" src="{{ URL('images/photo-3.png') }}">
+                    <img class="" src="{{ URL('images/photo-2.png') }}" alt="photo">
+                    <img class="" src="{{ URL('images/photo-3.png') }}" alt="photo">
                 </div>
             </div>
         </div>
@@ -28,12 +28,12 @@
     <footer class="flex-col gap-3 bg-hero pb-4">
         <div class="flex flex-row items-center justify-center gap-56">
             <a class="flex flex-row items-center" href="https://instagram.com/erenos.sch" target="_blank">
-                <img alt="instagram" src="{{ URL('assets/icons/instagram.svg') }}">
+                <img src="{{ URL('assets/icons/instagram.svg') }}" alt="instagram">
                 <p class="-ml-2 text-3xl font-semibold text-white">@erenos.sch</p>
             </a>
 
             <a class="flex flex-row items-center" href="https://www.facebook.com/erenos.sch" target="_blank">
-                <img alt="facebook" src="{{ URL('assets/icons/facebook.svg') }}">
+                <img src="{{ URL('assets/icons/facebook.svg') }}" alt="facebook">
                 <p class="text-3xl font-semibold text-white">Sekolah Erenos</p>
             </a>
         </div>
