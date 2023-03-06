@@ -27,7 +27,7 @@ class RegisterController extends Controller
         
         User::create($validatedData);
 
-        $notif = notify()->success('Register success', 'You can login now');
+        $notif = notify()->success('Register success, you can login now');
 
         return redirect('/login')->with('notif', $notif);
     }
