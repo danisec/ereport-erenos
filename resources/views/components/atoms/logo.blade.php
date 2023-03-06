@@ -1,3 +1,3 @@
 @props(['classLogo'])
 
-<img alt="erenos" class="{{ $classLogo }}" src="{{ URL('images/logo/logo.svg') }}" srcset="">
+<img class="{{ $classLogo }}" src="{{ URL('images/logo/logo.svg') }}" srcset="" alt="erenos">
