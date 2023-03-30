@@ -14,7 +14,7 @@ class ChangePasswordController extends Controller
         ]);
     }
 
-    public function changepassword(Request $request)
+    public function update(Request $request)
     {
         $credentials = $request->validate([
             'old_password' => 'required|min:8|max:255',
