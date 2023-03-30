@@ -11,7 +11,7 @@
                 <p class="text-center font-lexend text-2xl font-normal leading-7">Ganti Password Akun</p>
             </div>
 
-            <form class="mt-14" action="{{ route('changePassword') }}" method="post">
+            <form class="mt-14" action="{{ route('changePassword.update') }}" method="post">
                 @csrf
                 <div class="flex flex-col justify-center gap-12">
                     <div>
