@@ -11,10 +11,10 @@
     </div>
 
     @auth
-        <form action="{{ route('login.logout') }}" method="post">
-            @csrf
-            <button class="btn-header">Logout</button>
-        </form>
+        <div class="flex flex-row gap-6">
+            <x-molecules.notification />
+            <x-molecules.avatar />
+        </div>
     @else
         <a href="/login">
             <button class="btn-header">Login</button>
