@@ -33,10 +33,12 @@ module.exports = {
             josefin: ["Josefin Sans", "sans-serif"],
             crimson: ["Crimson Text", "sans-serif"],
             lexend: ["Lexend Deca", "sans-serif"],
+            rubik: ["Rubik", "sans-serif"],
         },
         extend: {
             colors: {
                 header: "#2F2CE4",
+                "nav-active": "#7B7A79",
                 hero: "#35A7FF",
                 "button-yellow": "#EDF200",
             },
