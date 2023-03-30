@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('kelas', function (Blueprint $table) {
+            $table->foreign('nis', 'fk_kelas_siswa')
+                ->references('nis')
+                ->on('siswa')
+                ->restrictOnUpdate()
+                ->restrictOnDelete();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('kelas', function (Blueprint $table) {
+            $table->dropForeign('fk_kelas_siswa');
+        });
+    }
+};
