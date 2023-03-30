@@ -1,11 +1,19 @@
 {
+  "public/images/pattern/login-pattern.svg": {
+    "file": "assets/login-pattern-d92fa547.svg",
+    "src": "public/images/pattern/login-pattern.svg"
+  },
+  "public/images/pngwing.svg": {
+    "file": "assets/pngwing-39f8ca33.svg",
+    "src": "public/images/pngwing.svg"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-e743b373.css",
+    "file": "assets/app-895c8eba.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/app.js": {
-    "file": "assets/app-c3828592.js",
+    "file": "assets/app-41bbe8f0.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }
