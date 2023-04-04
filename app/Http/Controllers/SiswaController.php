@@ -46,6 +46,17 @@ class SiswaController extends Controller
             'nama_panggilan' => 'required|max:50',
             'tinggi_badan' => 'required',
             'berat_badan' => 'required',
+        ], [
+            'nis.required' => 'NIS harus diisi',
+            'nis.numeric' => 'NIS harus berupa angka',
+            'nis.digits' => 'NIS harus berjumlah 8 digit',
+            'nis.unique' => 'NIS sudah terdaftar',
+            'nama_siswa.required' => 'Nama siswa harus diisi',
+            'nama_siswa.max' => 'Nama siswa maksimal 100 karakter',
+            'nama_panggilan.required' => 'Nama panggilan harus diisi',
+            'nama_panggilan.max' => 'Nama panggilan maksimal 50 karakter',
+            'tinggi_badan.required' => 'Tinggi badan harus diisi',
+            'berat_badan.required' => 'Berat badan harus diisi',
         ]);
 
         Siswa::create($validatedData);
@@ -97,6 +108,15 @@ class SiswaController extends Controller
             'nama_panggilan' => 'required|max:50',
             'tinggi_badan' => 'required',
             'berat_badan' => 'required',
+        ], [
+            'nis.numeric' => 'NIS harus berupa angka',
+            'nis.digits' => 'NIS harus berjumlah 8 digit',
+            'nama_siswa.required' => 'Nama Siswa harus diisi',
+            'nama_siswa.max' => 'Nama Siswa maksimal 100 karakter',
+            'nama_panggilan.required' => 'Nama Panggilan harus diisi',
+            'nama_panggilan.max' => 'Nama Panggilan maksimal 50 karakter',
+            'tinggi_badan.required' => 'Tinggi Badan harus diisi',
+            'berat_badan.required' => 'Berat Badan harus diisi',
         ]);
 
         Siswa::where('nis', $id)->update($validatedData);
