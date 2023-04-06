@@ -12,10 +12,10 @@
                         <h4 class="text-2xl font-bold text-white">Data Siswa</h4>
 
                         <div class="flex flex-row gap-4">
-                            <x-molecules.search />
+                            <x-molecules.search :placeholder="'Cari Siswa'" />
 
                             <a href="{{ URL('dashboard/tambah-siswa') }}">
-                                <img class="h-auto w-10" src="{{ URL('assets/icons/plus.svg') }}" alt="tambah-siswa">
+                                <x-atoms.plus :alt="'tambah-siswa'" />
                             </a>
 
                         </div>
@@ -129,26 +129,24 @@
                                     {{ $item->berat_badan }}
                                 </td>
                                 <td class="mr-3 flex flex-row items-center gap-5 py-4 2xl:m-0">
-                                    <a href="">
-                                        <img class="h-auto w-9" src="{{ URL('assets/icons/eye.svg') }}"
-                                            alt="detail-siswa">
+                                    <a href="{{ route('siswa.show', $item->nis) }}">
+                                        <x-atoms.eye :alt="'detail-siswa'" />
                                     </a>
 
                                     <a href="{{ route('siswa.edit', $item->nis) }}">
-                                        <img class="h-auto w-7" src="{{ URL('assets/icons/edit.svg') }}"
-                                            alt="edit-siswa">
+                                        <x-atoms.pencil :alt="'edit-siswa'" />
                                     </a>
 
-                                    <form action="{{ route('siswa.destroy', $item->nis) }}" method="post">
-                                        @method('delete')
-                                        @csrf
-
-                                        <button class="focus:outline-none"
-                                            onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
-                                            <img class="mt-1.5 h-auto w-7" src="{{ URL('assets/icons/trash.svg') }}"
-                                                alt="delete">
+                                    <div x-data="{ show: false }">
+                                        <button class="focus:outline-none" type="button" @click="show = !show">
+                                            <x-atoms.trash :alt="'delete-siswa'" />
                                         </button>
-                                    </form>
+
+                                        <x-molecules.modaldelete :title="'Apakah Anda akan menghapus nama siswa : ' .
+                                            $item->nama_siswa .
+                                            ' ?'" :action="route('siswa.destroy', $item->nis)" />
+                                    </div>
+
                                 </td>
                             </tr>
                         </tbody>
