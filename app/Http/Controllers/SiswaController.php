@@ -16,7 +16,7 @@ class SiswaController extends Controller
     {
         return view('pages.dashboard.siswa.index', [
             'title' => 'Siswa',
-            'siswa' => Siswa::sortable()->orderBy('nama_siswa', 'asc')->filter(request(['search', 'nama_panggilan']))->paginate(10)->withQueryString(),
+            'siswa' => Siswa::sortable(['nama_siswa' => 'asc'])->filter(request(['search', 'nama_panggilan']))->paginate(10)->withQueryString(),
         ]);
     }
 
@@ -72,9 +72,14 @@ class SiswaController extends Controller
      * @param  \App\Models\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function show(Siswa $siswa)
+    public function show($id)
     {
-        //
+        $siswa = Siswa::where('nis', $id)->first();
+
+        return view('pages.dashboard.siswa.show', [
+            'title' => 'View Siswa',
+            'siswa' => $siswa,
+        ]);
     }
 
     /**
