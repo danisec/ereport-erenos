@@ -11,6 +11,8 @@
         @apply px-4 xs:px-4 sm:px-8 lg:px-16 2xl:px-20;
     }
 
+    [x-cloak] { display: none !important; }
+
     .btn-header {
         @apply text-login flex h-16 w-40 items-center justify-center bg-button-yellow;
     }
@@ -27,7 +29,7 @@
         @apply mx-auto block h-16 w-9/12 rounded-lg border border-gray-300 bg-gray-700 p-2.5 font-lexend text-lg font-normal leading-5 text-white placeholder:text-white focus:border-gray-700 focus:ring-gray-700;
     }
 
-    .field-input-siswa {
+    .field-input-blue {
         @apply rounded-md border-blue-200 bg-blue-200 p-3 text-lg text-white placeholder:text-white focus:outline-none;
     }
 
