@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GuruController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,10 +48,23 @@ Route::controller(DashboardController::class)->name('dashboard.')->middleware('a
 Route::controller(SiswaController::class)->name('siswa.')->middleware('auth')->group(function () {
     Route::get('/dashboard/siswa', 'index')->name('index');
     Route::get('/dashboard/tambah-siswa', 'create')->name('create');
+    Route::get('/dashboard/view-siswa/{id}', 'show')->name('show');
 
     Route::post('/dashboard/tambah-siswa', 'store')->name('store');
     Route::delete('/dashboard/siswa/{id}', 'destroy')->name('destroy');
 
     Route::get('/dashboard/ubah-siswa/{id}/edit', 'edit')->name('edit');
     Route::put('/dashboard/siswa/{id}', 'update')->name('update');
+});
+
+Route::controller(GuruController::class)->name('guru.')->middleware('auth')->group(function () {
+    Route::get('/dashboard/guru', 'index')->name('index');
+    Route::get('/dashboard/tambah-guru', 'create')->name('create');
+    Route::get('/dashboard/view-guru/{id}', 'show')->name('show');
+
+    Route::post('/dashboard/tambah-guru', 'store')->name('store');
+    Route::delete('/dashboard/guru/{id}', 'destroy')->name('destroy');
+
+    Route::get('/dashboard/ubah-guru/{id}/edit', 'edit')->name('edit');
+    Route::put('/dashboard/guru/{id}', 'update')->name('update');
 });
