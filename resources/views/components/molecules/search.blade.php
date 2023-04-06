@@ -1,3 +1,5 @@
+@props(['placeholder'])
+
 <form class="my-4" action="" method="GET">
     @if (request('nama_siswa'))
         <input name="nama_siswa" type="hidden" value="{{ request('nama_siswa') }}">
@@ -8,7 +10,7 @@
     <div class="relative">
         <input
             class="block w-full rounded-md border border-gray-300 bg-white py-2.5 px-10 pl-3 text-sm font-medium text-gray-900 focus:outline-none"
-            name="search" value="{{ request('search') ?? '' }}" placeholder="Cari Siswa">
+            name="search" value="{{ request('search') ?? '' }}" placeholder="{{ $placeholder }}">
 
         <button class="absolute right-2.5 bottom-2.5 focus:outline-none" type="submit">
             <svg class="h-6 w-6 text-gray-500" aria-hidden="true" fill="none" stroke="currentColor"
