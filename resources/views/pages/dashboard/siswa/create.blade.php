@@ -15,7 +15,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center">
                         <label class="mb-2 w-64 text-xl font-medium leading-9">Nomor Induk Siswa</label>
-                        <input class="field-input-siswa w-52" name="nis" type="number" value="{{ old('nis') }}"
+                        <input class="field-input-blue w-52" name="nis" type="number" value="{{ old('nis') }}"
                             maxlength="8" placeholder="Nomor" required>
                     </div>
 
@@ -29,7 +29,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Nama Siswa</label>
-                        <input class="field-input-siswa w-8/12" name="nama_siswa" type="text"
+                        <input class="field-input-blue w-8/12" name="nama_siswa" type="text"
                             value="{{ old('nama_siswa') }}" placeholder="Nama" required>
                     </div>
 
@@ -43,7 +43,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Nama Panggilan</label>
-                        <input class="field-input-siswa w-96" name="nama_panggilan" type="text"
+                        <input class="field-input-blue w-96" name="nama_panggilan" type="text"
                             value="{{ old('nama_panggilan') }}" placeholder="Nama Panggilan" required>
                     </div>
 
@@ -57,7 +57,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Berat Badan</label>
-                        <input class="field-input-siswa w-32" name="berat_badan" type="text"
+                        <input class="field-input-blue w-32" name="berat_badan" type="text"
                             value="{{ old('berat_badan') }}" placeholder="Berat Badan" required>
                     </div>
 
@@ -71,7 +71,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Tinggi Badan</label>
-                        <input class="field-input-siswa w-32" name="tinggi_badan" type="text"
+                        <input class="field-input-blue w-32" name="tinggi_badan" type="text"
                             value="{{ old('tinggi_badan') }}" placeholder="Tinggi Badan" required>
                     </div>
 
