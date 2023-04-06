@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('id_pelajaran');
             $table->string('nama_pelajaran', 100);
             $table->string('nama_singkatan', 50);
+            $table->tinyInteger('kkm', 4);
         });
     }
 
