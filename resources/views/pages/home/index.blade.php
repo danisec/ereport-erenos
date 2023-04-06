@@ -7,7 +7,7 @@
                 <p class="font-crimson text-5xl font-normal text-white">Teks untuk pengumuman</p>
             </div>
 
-            <div class="bg-hero-pattern bg-cover bg-center bg-no-repeat">
+            <div class="bg-hero-pattern bg-cover bg-center bg-no-repeat p-10">
                 <div class="mx-auto flex h-auto w-8/12 items-center">
                     <img src="{{ URL('images/photo-1.png') }}" alt="photo">
                 </div>
