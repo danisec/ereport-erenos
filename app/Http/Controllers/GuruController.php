@@ -16,7 +16,7 @@ class GuruController extends Controller
     {
         return view('pages.dashboard.guru.index', [
             'title' => 'Guru',
-            'guru' => Guru::sortable(['nama_guru' => 'asc'])->filter(request(['search']))->paginate(10)->withQueryString(),
+            'guru' => Guru::sortable(['namaGuru' => 'asc'])->filter(request(['search']))->paginate(10)->withQueryString(),
         ]);
     }
 
@@ -41,15 +41,15 @@ class GuruController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nig' => 'required|numeric|digits:8|unique:gurus,nig',
-            'nama_guru' => 'required|max:100',
+            'NIP' => 'required|numeric|digits:10|unique:guru,NIP',
+            'namaGuru' => 'required|max:100',
         ], [
-            'nig.required' => 'Nomor guru harus diisi',
-            'nig.numeric' => 'Nomor guru harus berupa angka',
-            'nig.digits' => 'Nomor guru harus berjumlah 8 digit',
-            'nig.unique' => 'Nomor guru sudah terdaftar',
-            'nama_guru.required' => 'Nama guru harus diisi',
-            'nama_guru.max' => 'Nama guru maksimal 100 karakter',
+            'NIP.required' => 'Nomor guru harus diisi',
+            'NIP.numeric' => 'Nomor guru harus berupa angka',
+            'NIP.digits' => 'Nomor guru harus berjumlah 10 digit',
+            'NIP.unique' => 'Nomor guru sudah terdaftar',
+            'namaGuru.required' => 'Nama guru harus diisi',
+            'namaGuru.max' => 'Nama guru maksimal 100 karakter',
         ]);
 
         Guru::create($validatedData);
@@ -67,7 +67,7 @@ class GuruController extends Controller
      */
     public function show($id)
     {
-        $guru = Guru::where('nig', $id)->first();
+        $guru = Guru::where('NIP', $id)->first();
 
         return view('pages.dashboard.guru.show', [
             'title' => 'View Guru',
@@ -83,7 +83,7 @@ class GuruController extends Controller
      */
     public function edit($id)
     {
-        $guru = Guru::where('nig', $id)->first();
+        $guru = Guru::where('NIP', $id)->first();
 
         return view('pages.dashboard.guru.edit', [
             'title' => 'Ubah Guru',
@@ -101,16 +101,16 @@ class GuruController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'nig' => 'numeric|digits:8',
-            'nama_guru' => 'required|max:100',
+            'NIP' => 'numeric|digits:10',
+            'namaGuru' => 'required|max:100',
         ], [
-            'nig.numeric' => 'Nomor guru harus berupa angka',
-            'nig.digits' => 'Nomor guru harus berjumlah 8 digit',
-            'nama_guru.required' => 'Nama guru harus diisi',
-            'nama_guru.max' => 'Nama guru maksimal 100 karakter',
+            'NIP.numeric' => 'Nomor guru harus berupa angka',
+            'NIP.digits' => 'Nomor guru harus berjumlah 10 digit',
+            'namaGuru.required' => 'Nama guru harus diisi',
+            'namaGuru.max' => 'Nama guru maksimal 100 karakter',
         ]);
 
-        Guru::where('nig', $id)->update($validatedData);
+        Guru::where('NIP', $id)->update($validatedData);
 
         $notif = notify()->success('Data Guru Berhasil Diubah');
 
@@ -125,10 +125,11 @@ class GuruController extends Controller
      */
     public function destroy($id)
     {
-        Guru::where('nig', $id)->delete();
+        Guru::where('NIP', $id)->delete();
         
         $notif = notify()->success('Data Guru Berhasil Dihapus');
+        session()->flash('notif', $notif);
         
-        return redirect('/dashboard/guru')->with('notif', $notif);
+        return back();
     }
 }
