@@ -27,9 +27,10 @@ class headerDashboard extends Component
          'Dashboard' => '',
          'Siswa' => 'siswa',
          'Guru' => 'guru',
-         'Level' => 'level',
-         'Mata Pelajaran' => 'mata-pelajaran',
          'kelas' => 'kelas',
+         'Tahun Ajaran' => 'tahunajaran',
+         'Mata Pelajaran' => 'pelajaran',
+         'Mapping Kelas' => 'mappingkelas',
          'Jadwal' => 'jadwal',
         ];
 
