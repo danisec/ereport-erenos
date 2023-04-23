@@ -15,7 +15,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center">
                         <label class="mb-2 w-64 text-xl font-medium leading-9">Nomor Induk Siswa</label>
-                        <input class="field-input-blue w-52" value="{{ $siswa->nis }}" @disabled(true)
+                        <input class="field-input-blue w-52" value="{{ $siswa->NIS }}" @disabled(true)
                             @readonly(true)>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Nama Siswa</label>
-                        <input class="field-input-blue w-8/12" value="{{ $siswa->nama_siswa }}"
+                        <input class="field-input-blue w-8/12" value="{{ $siswa->nmSiswa }}"
                             @disabled(true) @readonly(true)>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Nama Panggilan</label>
-                        <input class="field-input-blue w-96" value="{{ $siswa->nama_panggilan }}"
+                        <input class="field-input-blue w-96" value="{{ $siswa->nmPanggil }}"
                             @disabled(true) @readonly(true)>
                     </div>
                 </div>
@@ -39,16 +39,16 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Berat Badan</label>
-                        <input class="field-input-blue w-32" value="{{ $siswa->berat_badan }}"
-                            @disabled(true) @readonly(true)>
+                        <input class="field-input-blue w-32" value="{{ $siswa->berat }}" @disabled(true)
+                            @readonly(true)>
                     </div>
                 </div>
 
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Tinggi Badan</label>
-                        <input class="field-input-blue w-32" value="{{ $siswa->tinggi_badan }}"
-                            @disabled(true) @readonly(true)>
+                        <input class="field-input-blue w-32" value="{{ $siswa->tinggi }}" @disabled(true)
+                            @readonly(true)>
                     </div>
                 </div>
 
