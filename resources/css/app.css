@@ -33,11 +33,23 @@
         @apply rounded-md border-blue-200 bg-blue-200 p-3 text-lg text-white placeholder:text-white focus:outline-none;
     }
 
+    .field-input-indigo {
+        @apply rounded-md border-indigo-200 bg-indigo-700 p-3 text-lg text-white placeholder:text-white focus:outline-none;
+    }
+
     .invalid-feedback {
         @apply mx-auto w-9/12 text-sm font-medium tracking-wide text-red-500 font-lexend;
     }
 
     .btn-auth {
         @apply mx-auto h-16 w-9/12 rounded-lg bg-green-400 font-lexend text-lg font-medium text-white hover:bg-green-500;
+    }
+
+    #table-mapping th:first-child {
+        border-radius: 24px 0 0 24px;
+    }
+
+    #table-mapping th:last-child {
+        border-radius: 0 24px 24px 0;
     }
 }
