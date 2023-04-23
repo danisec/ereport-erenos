@@ -17,7 +17,7 @@
         </div>
     @else
         <a href="/login">
-            <button class="btn-header">Login</button>
+            <button class="btn-header focus:outline-none">Login</button>
         </a>
     @endauth
 
