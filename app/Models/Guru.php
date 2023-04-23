@@ -10,22 +10,22 @@ class Guru extends Model
 {
     use HasFactory, Sortable;
 
+    protected $table = 'guru';
+
     protected $fillable = [
-        'nig',
-        'nama_guru',
+        'NIP',
+        'namaGuru',
     ];
 
     public $sortable = [
-        'nig',
-        'nama_guru', 
-        'created_at', 
-        'updated_at'
+        'NIP',
+        'namaGuru',
     ];
 
     public function scopeFilter($query, array $filters)
     {  
         $query->when($filters['search'] ?? false, fn($query, $search) =>
-            $query->where('nama_guru', 'like', '%'. $search . '%')
+            $query->where('namaGuru', 'like', '%'. $search . '%')
         );
     }
 }
