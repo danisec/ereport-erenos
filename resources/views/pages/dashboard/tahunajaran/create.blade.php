@@ -1,0 +1,63 @@
+<x-layouts.app-layout title="{{ $title }}">
+
+    <x-organisms.header-dashboard />
+
+    <section class="layout min-h-screen bg-hero py-14 font-rubik">
+        <div class="w-full rounded-2xl bg-white py-5 shadow-sm">
+
+            <div class="w-6/12 rounded-r-2xl bg-hero py-2">
+                <h4 class="text-gray-9000 px-11 text-2xl font-bold text-white">Menambah Tahun Ajaran</h4>
+            </div>
+
+            <form class="flex flex-col gap-6 px-11 pt-9" action="{{ route('tahunajaran.store') }}" method="post">
+                @csrf
+
+                <div class="flex flex-col gap-1">
+                    <div class="flex flex-row items-center">
+                        <label class="mb-2 w-64 text-xl font-medium leading-9">Tahun Ajaran</label>
+                        <input class="field-input-blue w-52" name="thnAjaran" type="text"
+                            value="{{ old('thnAjaran') }}" placeholder="Tahun Ajaran" required>
+                    </div>
+
+                    @error('thnAjaran')
+                        <p class="invalid-feedback ml-64">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <div class="flex flex-row items-center gap-16">
+                        <label class="mb-2 w-48 text-xl font-medium leading-9">Semester</label>
+                        <select class="field-input-blue w-8/12" name="semester" required>
+                            <option selected disabled hidden>Semester</option>
+                            <option value="Gasal">Gasal</option>
+                            <option value="Genap">Genap</option>
+                            <option value="Pertengahan Tengah Semester 1">Pertengahan Tengah Semester 1</option>
+                            <option value="Pertengahan Akhir Semester 1">Pertengahan Akhir Semester 1</option>
+                            <option value="Pertengahan Tengah Semester 2">Pertengahan Tengah Semester 2</option>
+                            <option value="Pertengahan Akhir Semester 2">Pertengahan Akhir Semester 2</option>
+                        </select>
+                    </div>
+
+                    @error('semester')
+                        <p class="invalid-feedback ml-64">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <div class="mt-32 flex flex-row items-center gap-14">
+                    <button
+                        class="ml-64 rounded-sm bg-cyan-300 px-10 py-3 text-center text-sm font-normal shadow-xl shadow-gray-300">Submit</button>
+
+                    <a class="rounded-sm bg-cyan-300 px-10 py-3 text-center text-sm font-normal shadow-xl shadow-gray-300"
+                        href="{{ URL('dashboard/tahunajaran') }}">Cancel</a>
+                </div>
+            </form>
+
+        </div>
+
+    </section>
+
+</x-layouts.app-layout>
