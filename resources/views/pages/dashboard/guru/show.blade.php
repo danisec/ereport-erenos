@@ -15,7 +15,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center">
                         <label class="mb-2 w-64 text-xl font-medium leading-9">Nomor Guru</label>
-                        <input class="field-input-blue w-52" value="{{ $guru->nig }}" @disabled(true)
+                        <input class="field-input-blue w-52" value="{{ $guru->NIP }}" @disabled(true)
                             @readonly(true)>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Nama Guru</label>
-                        <input class="field-input-blue w-8/12" value="{{ $guru->nama_guru }}"
+                        <input class="field-input-blue w-8/12" value="{{ $guru->namaGuru }}"
                             @disabled(true) @readonly(true)>
                     </div>
                 </div>
