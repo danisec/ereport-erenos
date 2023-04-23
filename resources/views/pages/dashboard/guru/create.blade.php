@@ -15,11 +15,11 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center">
                         <label class="mb-2 w-64 text-xl font-medium leading-9">Nomor Guru</label>
-                        <input class="field-input-blue w-52" name="nig" type="number" value="{{ old('nig') }}"
+                        <input class="field-input-blue w-52" name="NIP" type="number" value="{{ old('NIP') }}"
                             maxlength="8" placeholder="Nomor" required>
                     </div>
 
-                    @error('nig')
+                    @error('NIP')
                         <p class="invalid-feedback ml-64">
                             {{ $message }}
                         </p>
@@ -29,11 +29,11 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Nama Guru</label>
-                        <input class="field-input-blue w-8/12" name="nama_guru" type="text"
-                            value="{{ old('nama_guru') }}" placeholder="Nama" required>
+                        <input class="field-input-blue w-8/12" name="namaGuru" type="text"
+                            value="{{ old('namaGuru') }}" placeholder="Nama" required>
                     </div>
 
-                    @error('nama_guru')
+                    @error('namaGuru')
                         <p class="invalid-feedback ml-64">
                             {{ $message }}
                         </p>
