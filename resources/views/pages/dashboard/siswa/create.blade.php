@@ -15,11 +15,11 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center">
                         <label class="mb-2 w-64 text-xl font-medium leading-9">Nomor Induk Siswa</label>
-                        <input class="field-input-blue w-52" name="nis" type="number" value="{{ old('nis') }}"
+                        <input class="field-input-blue w-52" name="NIS" type="number" value="{{ old('NIS') }}"
                             maxlength="8" placeholder="Nomor" required>
                     </div>
 
-                    @error('nis')
+                    @error('NIS')
                         <p class="invalid-feedback ml-64">
                             {{ $message }}
                         </p>
@@ -29,11 +29,11 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Nama Siswa</label>
-                        <input class="field-input-blue w-8/12" name="nama_siswa" type="text"
-                            value="{{ old('nama_siswa') }}" placeholder="Nama" required>
+                        <input class="field-input-blue w-8/12" name="nmSiswa" type="text"
+                            value="{{ old('nmSiswa') }}" placeholder="Nama" required>
                     </div>
 
-                    @error('nama_siswa')
+                    @error('nmSiswa')
                         <p class="invalid-feedback ml-64">
                             {{ $message }}
                         </p>
@@ -43,11 +43,11 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Nama Panggilan</label>
-                        <input class="field-input-blue w-96" name="nama_panggilan" type="text"
-                            value="{{ old('nama_panggilan') }}" placeholder="Nama Panggilan" required>
+                        <input class="field-input-blue w-96" name="nmPanggil" type="text"
+                            value="{{ old('nmPanggil') }}" placeholder="Nama Panggilan" required>
                     </div>
 
-                    @error('nama_panggilan')
+                    @error('nmPanggil')
                         <p class="invalid-feedback ml-64">
                             {{ $message }}
                         </p>
@@ -57,11 +57,11 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Berat Badan</label>
-                        <input class="field-input-blue w-32" name="berat_badan" type="text"
-                            value="{{ old('berat_badan') }}" placeholder="Berat Badan" required>
+                        <input class="field-input-blue w-32" name="tinggi" type="text" value="{{ old('tinggi') }}"
+                            placeholder="Berat Badan" required>
                     </div>
 
-                    @error('berat_badan')
+                    @error('tinggi')
                         <p class="invalid-feedback ml-64">
                             {{ $message }}
                         </p>
@@ -71,11 +71,11 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Tinggi Badan</label>
-                        <input class="field-input-blue w-32" name="tinggi_badan" type="text"
-                            value="{{ old('tinggi_badan') }}" placeholder="Tinggi Badan" required>
+                        <input class="field-input-blue w-32" name="berat" type="text" value="{{ old('berat') }}"
+                            placeholder="Tinggi Badan" required>
                     </div>
 
-                    @error('tinggi_badan')
+                    @error('berat')
                         <p class="invalid-feedback ml-64">
                             {{ $message }}
                         </p>
