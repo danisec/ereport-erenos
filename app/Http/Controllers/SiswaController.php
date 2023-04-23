@@ -16,7 +16,7 @@ class SiswaController extends Controller
     {
         return view('pages.dashboard.siswa.index', [
             'title' => 'Siswa',
-            'siswa' => Siswa::sortable(['nama_siswa' => 'asc'])->filter(request(['search', 'nama_panggilan']))->paginate(10)->withQueryString(),
+            'siswa' => Siswa::sortable(['nmSiswa' => 'asc'])->filter(request(['search']))->paginate(10)->withQueryString(),
         ]);
     }
 
@@ -41,22 +41,22 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nis' => 'required|numeric|digits:8|unique:siswas,nis',
-            'nama_siswa' => 'required|max:100',
-            'nama_panggilan' => 'required|max:50',
-            'tinggi_badan' => 'required',
-            'berat_badan' => 'required',
+            'NIS' => 'required|numeric|digits:8|unique:siswa,NIS',
+            'nmSiswa' => 'required|max:100',
+            'nmPanggil' => 'required|max:50',
+            'tinggi' => 'required',
+            'berat' => 'required',
         ], [
-            'nis.required' => 'NIS harus diisi',
-            'nis.numeric' => 'NIS harus berupa angka',
-            'nis.digits' => 'NIS harus berjumlah 8 digit',
-            'nis.unique' => 'NIS sudah terdaftar',
-            'nama_siswa.required' => 'Nama siswa harus diisi',
-            'nama_siswa.max' => 'Nama siswa maksimal 100 karakter',
-            'nama_panggilan.required' => 'Nama panggilan harus diisi',
-            'nama_panggilan.max' => 'Nama panggilan maksimal 50 karakter',
-            'tinggi_badan.required' => 'Tinggi badan harus diisi',
-            'berat_badan.required' => 'Berat badan harus diisi',
+            'NIS.required' => 'NIS harus diisi',
+            'NIS.numeric' => 'NIS harus berupa angka',
+            'NIS.digits' => 'NIS harus berjumlah 8 digit',
+            'NIS.unique' => 'NIS sudah terdaftar',
+            'nmSiswa.required' => 'Nama siswa harus diisi',
+            'nmSiswa.max' => 'Nama siswa maksimal 100 karakter',
+            'nmPanggil.required' => 'Nama panggilan harus diisi',
+            'nmPanggil.max' => 'Nama panggilan maksimal 50 karakter',
+            'tinggi.required' => 'Tinggi badan harus diisi',
+            'berat.required' => 'Berat badan harus diisi',
         ]);
 
         Siswa::create($validatedData);
@@ -74,7 +74,7 @@ class SiswaController extends Controller
      */
     public function show($id)
     {
-        $siswa = Siswa::where('nis', $id)->first();
+        $siswa = Siswa::where('NIS', $id)->first();
 
         return view('pages.dashboard.siswa.show', [
             'title' => 'View Siswa',
@@ -90,7 +90,7 @@ class SiswaController extends Controller
      */
     public function edit($id)
     {
-        $siswa = Siswa::where('nis', $id)->first();
+        $siswa = Siswa::where('NIS', $id)->first();
 
         return view('pages.dashboard.siswa.edit', [
             'title' => 'Ubah Siswa',
@@ -108,23 +108,23 @@ class SiswaController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'nis' => 'numeric|digits:8',
-            'nama_siswa' => 'required|max:100',
-            'nama_panggilan' => 'required|max:50',
-            'tinggi_badan' => 'required',
-            'berat_badan' => 'required',
+            'NIS' => 'numeric|digits:8',
+            'nmSiswa' => 'required|max:100',
+            'nmPanggil' => 'required|max:50',
+            'tinggi' => 'required',
+            'berat' => 'required',
         ], [
-            'nis.numeric' => 'NIS harus berupa angka',
-            'nis.digits' => 'NIS harus berjumlah 8 digit',
-            'nama_siswa.required' => 'Nama Siswa harus diisi',
-            'nama_siswa.max' => 'Nama Siswa maksimal 100 karakter',
-            'nama_panggilan.required' => 'Nama Panggilan harus diisi',
-            'nama_panggilan.max' => 'Nama Panggilan maksimal 50 karakter',
-            'tinggi_badan.required' => 'Tinggi Badan harus diisi',
-            'berat_badan.required' => 'Berat Badan harus diisi',
+            'NIS.numeric' => 'NIS harus berupa angka',
+            'NIS.digits' => 'NIS harus berjumlah 8 digit',
+            'nmSiswa.required' => 'Nama Siswa harus diisi',
+            'nmSiswa.max' => 'Nama Siswa maksimal 100 karakter',
+            'nmPanggil.required' => 'Nama Panggilan harus diisi',
+            'nmPanggil.max' => 'Nama Panggilan maksimal 50 karakter',
+            'tinggi.required' => 'Tinggi Badan harus diisi',
+            'berat.required' => 'Berat Badan harus diisi',
         ]);
 
-        Siswa::where('nis', $id)->update($validatedData);
+        Siswa::where('NIS', $id)->update($validatedData);
 
         $notif = notify()->success('Data Siswa Berhasil Diubah');
 
@@ -139,10 +139,11 @@ class SiswaController extends Controller
      */
     public function destroy($id)
     {
-        Siswa::where('nis', $id)->delete();
+        Siswa::where('NIS', $id)->delete();
         
         $notif = notify()->success('Data Siswa Berhasil Dihapus');
+        session()->flash('notif', $notif);
         
-        return redirect('/dashboard/siswa')->with('notif', $notif);
+        return back();
     }
 }
