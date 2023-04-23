@@ -9,19 +9,19 @@
                 <h4 class="text-gray-9000 px-11 text-2xl font-bold text-white">Mengubah Data Guru</h4>
             </div>
 
-            <form class="flex flex-col gap-6 px-11 pt-9" action="/dashboard/guru/{{ $guru->nig }}" method="post">
+            <form class="flex flex-col gap-6 px-11 pt-9" action="/dashboard/guru/{{ $guru->NIP }}" method="post">
                 @method('put')
                 @csrf
 
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center">
                         <label class="mb-2 w-64 text-xl font-medium leading-9">Nomor Guru</label>
-                        <input class="@error('nig') border-red-300 bg-red-300 @enderror field-input-blue w-52"
-                            name="nig" type="number" value="{{ $guru->nig }}" maxlength="8" placeholder="Nomor"
+                        <input class="@error('NIP') border-red-300 bg-red-300 @enderror field-input-blue w-52"
+                            name="NIP" type="number" value="{{ $guru->NIP }}" maxlength="8" placeholder="Nomor"
                             required>
                     </div>
 
-                    @error('nig')
+                    @error('NIP')
                         <p class="invalid-feedback ml-64">
                             {{ $message }}
                         </p>
@@ -31,11 +31,11 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Nama Guru</label>
-                        <input class="@error('nama_guru') border-red-300 bg-red-300 @enderror field-input-blue w-8/12"
-                            name="nama_guru" type="text" value="{{ $guru->nama_guru }}" placeholder="Nama" required>
+                        <input class="@error('namaGuru') border-red-300 bg-red-300 @enderror field-input-blue w-8/12"
+                            name="namaGuru" type="text" value="{{ $guru->namaGuru }}" placeholder="Nama" required>
                     </div>
 
-                    @error('nama_guru')
+                    @error('namaGuru')
                         <p class="invalid-feedback ml-64">
                             {{ $message }}
                         </p>
