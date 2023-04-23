@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('gurus', function (Blueprint $table) {
-            $table->char('nig', 8)->primary();
-            $table->string('nama_guru', 100);
+        Schema::create('guru', function (Blueprint $table) {
+            $table->char('NIP', 10)->primary();
+            $table->string('namaGuru', 100);
             $table->timestamps();
         });
     }
