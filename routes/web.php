@@ -6,7 +6,11 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\MappingKelasController;
+use App\Http\Controllers\PelajaranController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\TahunAjaranController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,24 +51,83 @@ Route::controller(DashboardController::class)->name('dashboard.')->middleware('a
 
 Route::controller(SiswaController::class)->name('siswa.')->middleware('auth')->group(function () {
     Route::get('/dashboard/siswa', 'index')->name('index');
-    Route::get('/dashboard/tambah-siswa', 'create')->name('create');
-    Route::get('/dashboard/view-siswa/{id}', 'show')->name('show');
+    Route::get('/dashboard/siswa/tambah-siswa', 'create')->name('create');
+    Route::get('/dashboard/siswa/view-siswa/{id}', 'show')->name('show');
 
-    Route::post('/dashboard/tambah-siswa', 'store')->name('store');
+    Route::post('/dashboard/siswa/tambah-siswa', 'store')->name('store');
     Route::delete('/dashboard/siswa/{id}', 'destroy')->name('destroy');
 
-    Route::get('/dashboard/ubah-siswa/{id}/edit', 'edit')->name('edit');
+    Route::get('/dashboard/siswa/ubah-siswa/{id}/edit', 'edit')->name('edit');
     Route::put('/dashboard/siswa/{id}', 'update')->name('update');
 });
 
 Route::controller(GuruController::class)->name('guru.')->middleware('auth')->group(function () {
     Route::get('/dashboard/guru', 'index')->name('index');
-    Route::get('/dashboard/tambah-guru', 'create')->name('create');
-    Route::get('/dashboard/view-guru/{id}', 'show')->name('show');
+    Route::get('/dashboard/guru/tambah-guru', 'create')->name('create');
+    Route::get('/dashboard/guru/view-guru/{id}', 'show')->name('show');
 
-    Route::post('/dashboard/tambah-guru', 'store')->name('store');
+    Route::post('/dashboard/guru/tambah-guru', 'store')->name('store');
     Route::delete('/dashboard/guru/{id}', 'destroy')->name('destroy');
 
-    Route::get('/dashboard/ubah-guru/{id}/edit', 'edit')->name('edit');
+    Route::get('/dashboard/guru/ubah-guru/{id}/edit', 'edit')->name('edit');
     Route::put('/dashboard/guru/{id}', 'update')->name('update');
+});
+
+Route::controller(KelasController::class)->name('kelas.')->middleware('auth')->group(function () {
+    Route::get('/dashboard/kelas', 'index')->name('index');
+    Route::get('/dashboard/kelas/tambah-kelas', 'create')->name('create');
+    Route::get('/dashboard/kelas/view-kelas/{id}', 'show')->name('show');
+
+    Route::post('/dashboard/kelas/tambah-kelas', 'store')->name('store');
+    Route::delete('/dashboard/kelas/{id}', 'destroy')->name('destroy');
+
+    Route::get('/dashboard/kelas/ubah-kelas/{id}/edit', 'edit')->name('edit');
+    Route::put('/dashboard/kelas/{id}', 'update')->name('update');
+});
+
+Route::controller(TahunAjaranController::class)->name('tahunajaran.')->middleware('auth')->group(function () {
+    Route::get('/dashboard/tahunajaran', 'index')->name('index');
+    Route::get('/dashboard/tahunajaran/tambah-tahunajaran', 'create')->name('create');
+    Route::get('/dashboard/tahunajaran/view-tahunajaran/{id}', 'show')->name('show');
+
+    Route::post('/dashboard/tahunajaran/tambah-tahunajaran', 'store')->name('store');
+    Route::delete('/dashboard/tahunajaran/{id}', 'destroy')->name('destroy');
+
+    Route::get('/dashboard/tahunajaran/ubah-tahunajaran/{id}/edit', 'edit')->name('edit');
+    Route::put('/dashboard/tahunajaran/{id}', 'update')->name('update');
+});
+
+Route::controller(PelajaranController::class)->name('pelajaran.')->middleware('auth')->group(function () {
+    Route::get('/dashboard/pelajaran', 'index')->name('index');
+    Route::get('/dashboard/pelajaran/tambah-pelajaran', 'create')->name('create');
+    Route::get('/dashboard/pelajaran/view-pelajaran/{id}', 'show')->name('show');
+
+    Route::post('/dashboard/pelajaran/tambah-pelajaran', 'store')->name('store');
+    Route::delete('/dashboard/pelajaran/{id}', 'destroy')->name('destroy');
+
+    Route::get('/dashboard/pelajaran/ubah-pelajaran/{id}/edit', 'edit')->name('edit');
+    Route::put('/dashboard/pelajaran/{id}', 'update')->name('update');
+});
+
+Route::controller(MappingKelasController::class)->name('mappingkelas.')->middleware('auth')->group(function () {
+    Route::get('/dashboard/mappingkelas', 'index')->name('index');
+    Route::get('/dashboard/mappingkelas/tambah-mappingkelas', 'create')->name('create');
+    Route::get('/dashboard/mappingkelas/view-mappingkelas/{id}', 'show')->name('show');
+
+    Route::post('/dashboard/mappingkelas/tambah-mappingkelas', 'store')->name('store');
+    Route::delete('/dashboard/mappingkelas/{id}', 'destroykelas')->name('destroykelas');
+
+    Route::get('/dashboard/mappingkelas/tambah-datasiswa', 'createsiswa')->name('createsiswa');
+    Route::get('/dashboard/mappingkelas/tambah-datasiswa/{nis}/getNis', 'getSiswaList')->name('getSiswaList');
+    Route::get('/dashboard/mappingkelas/tambah-datasiswa/{nmSiswa}/getNmSiswa', 'getNmSiswaList')->name('getNmSiswaList');
+
+    Route::post('/dashboard/mappingkelas/tambah-datasiswa', 'storesiswa')->name('storesiswa');
+    Route::delete('/dashboard/mappingkelas/tambah-datasiswa/{id}', 'destroysiswa')->name('destroysiswa');
+    
+    Route::get('/dashboard/mappingkelas/ubah-mappingkelas/{id}/edit', 'edit')->name('edit');
+    Route::put('/dashboard/mappingkelas/{id}', 'update')->name('update');
+    
+    Route::get('/dashboard/mappingkelas/ubah-datasiswa/{id}/edit', 'editsiswa')->name('editsiswa');
+    Route::put('/dashboard/mappingkelas/ubah-datasiswa/{id}', 'updatesiswa')->name('updatesiswa');
+    Route::delete('/dashboard/mappingkelas/ubah-datasiswa/{id}/edit', 'destroyubahsiswa')->name('destroyubahsiswa');
 });
