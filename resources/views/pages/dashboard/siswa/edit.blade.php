@@ -9,19 +9,19 @@
                 <h4 class="text-gray-9000 px-11 text-2xl font-bold text-white">Mengubah Data Siswa</h4>
             </div>
 
-            <form class="flex flex-col gap-6 px-11 pt-9" action="/dashboard/siswa/{{ $siswa->nis }}" method="post">
+            <form class="flex flex-col gap-6 px-11 pt-9" action="/dashboard/siswa/{{ $siswa->NIS }}" method="post">
                 @method('put')
                 @csrf
 
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center">
                         <label class="mb-2 w-64 text-xl font-medium leading-9">Nomor Induk Siswa</label>
-                        <input class="@error('nis') border-red-300 bg-red-300 @enderror field-input-blue w-52"
-                            name="nis" type="number" value="{{ $siswa->nis }}" maxlength="8" placeholder="Nomor"
+                        <input class="@error('NIS') border-red-300 bg-red-300 @enderror field-input-blue w-52"
+                            name="NIS" type="number" value="{{ $siswa->NIS }}" maxlength="8" placeholder="Nomor"
                             required>
                     </div>
 
-                    @error('nis')
+                    @error('NIS')
                         <p class="invalid-feedback ml-64">
                             {{ $message }}
                         </p>
@@ -31,12 +31,11 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Nama Siswa</label>
-                        <input class="@error('nama_siswa') border-red-300 bg-red-300 @enderror field-input-blue w-8/12"
-                            name="nama_siswa" type="text" value="{{ $siswa->nama_siswa }}" placeholder="Nama"
-                            required>
+                        <input class="@error('nmSiswa') border-red-300 bg-red-300 @enderror field-input-blue w-8/12"
+                            name="nmSiswa" type="text" value="{{ $siswa->nmSiswa }}" placeholder="Nama" required>
                     </div>
 
-                    @error('nama_siswa')
+                    @error('nmSiswa')
                         <p class="invalid-feedback ml-64">
                             {{ $message }}
                         </p>
@@ -46,13 +45,12 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Nama Panggilan</label>
-                        <input
-                            class="@error('nama_panggilan') border-red-300 bg-red-300 @enderror field-input-blue w-96"
-                            name="nama_panggilan" type="text" value="{{ $siswa->nama_panggilan }}"
-                            placeholder="Nama Panggilan" required>
+                        <input class="@error('nmPanggil') border-red-300 bg-red-300 @enderror field-input-blue w-96"
+                            name="nmPanggil" type="text" value="{{ $siswa->nmPanggil }}" placeholder="Nama Panggilan"
+                            required>
                     </div>
 
-                    @error('nama_panggilan')
+                    @error('nmPanggil')
                         <p class="invalid-feedback ml-64">
                             {{ $message }}
                         </p>
@@ -62,12 +60,12 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Berat Badan</label>
-                        <input class="@error('berat_badan') border-red-300 bg-red-300 @enderror field-input-blue w-32"
-                            name="berat_badan" type="text" value="{{ $siswa->berat_badan }}"
-                            placeholder="Berat Badan" required>
+                        <input class="@error('berat') border-red-300 bg-red-300 @enderror field-input-blue w-32"
+                            name="berat" type="text" value="{{ $siswa->berat }}" placeholder="Berat Badan"
+                            required>
                     </div>
 
-                    @error('berat_badan')
+                    @error('berat')
                         <p class="invalid-feedback ml-64">
                             {{ $message }}
                         </p>
@@ -77,12 +75,12 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Tinggi Badan</label>
-                        <input class="@error('tinggi_badan') border-red-300 bg-red-300 @enderror field-input-blue w-32"
-                            name="tinggi_badan" type="text" value="{{ $siswa->tinggi_badan }}"
-                            placeholder="Tinggi Badan" required>
+                        <input class="@error('tinggi') border-red-300 bg-red-300 @enderror field-input-blue w-32"
+                            name="tinggi" type="text" value="{{ $siswa->tinggi }}" placeholder="Tinggi Badan"
+                            required>
                     </div>
 
-                    @error('tinggi_badan')
+                    @error('tinggi')
                         <p class="invalid-feedback ml-64">
                             {{ $message }}
                         </p>
