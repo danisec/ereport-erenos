@@ -66,11 +66,9 @@ class TahunAjaranController extends Controller
      */
     public function show($id)
     {
-        $tahunajaran = TahunAjaran::where('idThnAjaran', $id)->first();
-
         return view('pages.dashboard.tahunajaran.show', [
             'title' => 'View Pelajaran',
-            'tahunajaran' => $tahunajaran,
+            'tahunajaran' => TahunAjaran::where('idThnAjaran', $id)->first(),
         ]);
     }
 
@@ -82,11 +80,9 @@ class TahunAjaranController extends Controller
      */
     public function edit($id)
     {
-        $tahunajaran = TahunAjaran::where('idThnAjaran', $id)->first();
-
         return view('pages.dashboard.tahunajaran.edit', [
             'title' => 'Ubah Tahun Ajaran',
-            'tahunajaran' => $tahunajaran,
+            'tahunajaran' => TahunAjaran::where('idThnAjaran', $id)->first(),
         ]);
     }
 
