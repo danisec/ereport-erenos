@@ -37,6 +37,10 @@
         @apply rounded-md border-indigo-200 bg-indigo-700 p-3 text-lg text-white placeholder:text-white focus:outline-none;
     }
 
+    .field-input-gray {
+        @apply rounded-md border-gray-200 bg-gray-400/60 p-3 text-lg text-white placeholder:text-white focus:outline-none;
+    }
+
     .invalid-feedback {
         @apply mx-auto w-9/12 text-sm font-medium tracking-wide text-red-500 font-lexend;
     }
