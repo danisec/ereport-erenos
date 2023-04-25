@@ -73,11 +73,9 @@ class PelajaranController extends Controller
      */
     public function show($id)
     {
-        $pelajaran = Pelajaran::where('kodePelajaran', $id)->first();
-
         return view('pages.dashboard.pelajaran.show', [
             'title' => 'View Pelajaran',
-            'pelajaran' => $pelajaran,
+            'pelajaran' => Pelajaran::where('kodePelajaran', $id)->first(),
         ]);
     }
 
@@ -89,11 +87,9 @@ class PelajaranController extends Controller
      */
     public function edit($id)
     {
-        $pelajaran = Pelajaran::where('kodePelajaran', $id)->first();
-
         return view('pages.dashboard.pelajaran.edit', [
             'title' => 'Ubah Pelajaran',
-            'pelajaran' => $pelajaran,
+            'pelajaran' => Pelajaran::where('kodePelajaran', $id)->first(),
         ]);
     }
 
