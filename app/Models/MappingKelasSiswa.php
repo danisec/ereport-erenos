@@ -11,9 +11,7 @@ class MappingKelasSiswa extends Model
 
     protected $table = 'mappingkelas_d';
 
-    protected $guarded= [
-        'idMappingKelas_D',
-    ];
+    protected $guarded= ['idMappingKelas_D'];
 
     public function siswa() 
     {
