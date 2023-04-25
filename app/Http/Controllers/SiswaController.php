@@ -74,11 +74,9 @@ class SiswaController extends Controller
      */
     public function show($id)
     {
-        $siswa = Siswa::where('NIS', $id)->first();
-
         return view('pages.dashboard.siswa.show', [
             'title' => 'View Siswa',
-            'siswa' => $siswa,
+            'siswa' => Siswa::where('NIS', $id)->first(),
         ]);
     }
 
@@ -90,11 +88,9 @@ class SiswaController extends Controller
      */
     public function edit($id)
     {
-        $siswa = Siswa::where('NIS', $id)->first();
-
         return view('pages.dashboard.siswa.edit', [
             'title' => 'Ubah Siswa',
-            'siswa' => $siswa,
+            'siswa' => Siswa::where('NIS', $id)->first(),
         ]);
     }
 
