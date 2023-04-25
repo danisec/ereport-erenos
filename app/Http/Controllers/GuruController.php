@@ -67,11 +67,9 @@ class GuruController extends Controller
      */
     public function show($id)
     {
-        $guru = Guru::where('NIP', $id)->first();
-
         return view('pages.dashboard.guru.show', [
             'title' => 'View Guru',
-            'guru' => $guru,
+            'guru' => Guru::where('NIP', $id)->first(),
         ]);
     }
 
@@ -83,11 +81,9 @@ class GuruController extends Controller
      */
     public function edit($id)
     {
-        $guru = Guru::where('NIP', $id)->first();
-
         return view('pages.dashboard.guru.edit', [
             'title' => 'Ubah Guru',
-            'guru' => $guru,
+            'guru' => Guru::where('NIP', $id)->first(),
         ]);
     }
 
