@@ -31,7 +31,7 @@ class headerDashboard extends Component
          'Tahun Ajaran' => 'tahunajaran',
          'Mata Pelajaran' => 'pelajaran',
          'Mapping Kelas' => 'mappingkelas',
-         'Jadwal' => 'jadwal',
+         'Mapping Jadwal' => 'mappingjadwal',
         ];
 
         return view('components.organisms.header-dashboard', compact('navbar'));
