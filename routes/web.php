@@ -7,6 +7,7 @@ use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\MappingJadwalController;
 use App\Http\Controllers\MappingKelasController;
 use App\Http\Controllers\PelajaranController;
 use App\Http\Controllers\SiswaController;
@@ -130,4 +131,16 @@ Route::controller(MappingKelasController::class)->name('mappingkelas.')->middlew
     Route::get('/dashboard/mappingkelas/ubah-datasiswa/{id}/edit', 'editsiswa')->name('editsiswa');
     Route::put('/dashboard/mappingkelas/ubah-datasiswa/{id}', 'updatesiswa')->name('updatesiswa');
     Route::delete('/dashboard/mappingkelas/ubah-datasiswa/{id}/edit', 'destroyubahsiswa')->name('destroyubahsiswa');
+});
+
+Route::controller(MappingJadwalController::class)->name('mappingjadwal.')->middleware('auth')->group(function () {
+    Route::get('/dashboard/mappingjadwal', 'index')->name('index');
+    Route::get('/dashboard/mappingjadwal/tambah-mappingjadwal', 'create')->name('create');
+    Route::get('/dashboard/mappingjadwal/view-mappingjadwal/{id}', 'show')->name('show');
+
+    Route::post('/dashboard/mappingjadwal/tambah-mappingjadwal', 'store')->name('store');
+    Route::delete('/dashboard/mappingjadwal/{id}', 'destroy')->name('destroy');
+
+    Route::get('/dashboard/mappingjadwal/ubah-mappingjadwal/{id}/edit', 'edit')->name('edit');
+    Route::put('/dashboard/mappingjadwal/{id}', 'update')->name('update');
 });
