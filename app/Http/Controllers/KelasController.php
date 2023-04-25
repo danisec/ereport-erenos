@@ -63,11 +63,9 @@ class KelasController extends Controller
      */
     public function show($id)
     {
-        $kelas = Kelas::where('idKelas', $id)->first();
-
         return view('pages.dashboard.kelas.show', [
             'title' => 'View Pelajaran',
-            'kelas' => $kelas,
+            'kelas' => Kelas::where('idKelas', $id)->first(),
         ]);
     }
 
@@ -79,11 +77,9 @@ class KelasController extends Controller
      */
     public function edit($id)
     {
-        $kelas = Kelas::where('idKelas', $id)->first();
-
         return view('pages.dashboard.kelas.edit', [
             'title' => 'Ubah Kelas',
-            'kelas' => $kelas,
+            'kelas' => Kelas::where('idKelas', $id)->first(),
         ]);
     }
 
