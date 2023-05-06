@@ -2,7 +2,7 @@
 
     <x-organisms.header-dashboard />
 
-    <section class="layout min-h-screen bg-hero py-14 font-rubik">
+    <section class="layout min-h-screen bg-hero py-6 font-rubik">
 
         <div class="relative overflow-x-auto rounded-2xl shadow-sm">
             <table class="w-full text-left">
@@ -73,22 +73,22 @@
                     @foreach ($siswa as $item)
                         <tbody>
                             <tr class="bg-white text-base font-medium leading-5 hover:bg-gray-50">
-                                <th class="py-4 px-9" scope="row">
+                                <th class="px-9" scope="row">
                                     {{ ($siswa->currentPage() - 1) * $siswa->perPage() + $loop->iteration }}
                                 </th>
-                                <td class="py-4 pl-6">
+                                <td class="pl-6">
                                     {{ $item->NIS }}
                                 </td>
-                                <td class="py-4 pl-6">
+                                <td class="pl-6">
                                     {{ $item->nmSiswa }}
                                 </td>
-                                <td class="py-4 pl-32">
+                                <td class="pl-32">
                                     {{ $item->tinggi }}
                                 </td>
-                                <td class="py-4 pl-32">
+                                <td class="pl-32">
                                     {{ $item->berat }}
                                 </td>
-                                <td class="mr-3 flex flex-row items-center gap-5 py-4 2xl:m-0">
+                                <td class="mr-3 flex flex-row items-center gap-5 2xl:m-0">
                                     <a href="{{ route('siswa.show', $item->NIS) }}">
                                         <x-atoms.eye :alt="'detail-siswa'" />
                                     </a>
