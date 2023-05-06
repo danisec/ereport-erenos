@@ -10,6 +10,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MappingJadwalController;
 use App\Http\Controllers\MappingKelasController;
 use App\Http\Controllers\PelajaranController;
+use App\Http\Controllers\PresensiController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\TahunAjaranController;
 use Illuminate\Support\Facades\Route;
@@ -124,6 +125,7 @@ Route::controller(MappingKelasController::class)->name('mappingkelas.')->middlew
 
     Route::post('/dashboard/mappingkelas/tambah-datasiswa', 'storesiswa')->name('storesiswa');
     Route::delete('/dashboard/mappingkelas/tambah-datasiswa/{id}', 'destroysiswa')->name('destroysiswa');
+    Route::delete('/dashboard/mappingkelas/tambah-datasiswa/{id}/delete', 'destroykelasid')->name('destroykelasid');
     
     Route::get('/dashboard/mappingkelas/ubah-mappingkelas/{id}/edit', 'edit')->name('edit');
     Route::put('/dashboard/mappingkelas/{id}', 'update')->name('update');
@@ -131,6 +133,7 @@ Route::controller(MappingKelasController::class)->name('mappingkelas.')->middlew
     Route::get('/dashboard/mappingkelas/ubah-datasiswa/{id}/edit', 'editsiswa')->name('editsiswa');
     Route::put('/dashboard/mappingkelas/ubah-datasiswa/{id}', 'updatesiswa')->name('updatesiswa');
     Route::delete('/dashboard/mappingkelas/ubah-datasiswa/{id}/edit', 'destroyubahsiswa')->name('destroyubahsiswa');
+    Route::delete('/dashboard/mappingkelas/ubah-datasiswa/{id}/delete', 'destroykelasid')->name('destroykelasid');
 });
 
 Route::controller(MappingJadwalController::class)->name('mappingjadwal.')->middleware('auth')->group(function () {
@@ -143,4 +146,16 @@ Route::controller(MappingJadwalController::class)->name('mappingjadwal.')->middl
 
     Route::get('/dashboard/mappingjadwal/ubah-mappingjadwal/{id}/edit', 'edit')->name('edit');
     Route::put('/dashboard/mappingjadwal/{id}', 'update')->name('update');
+});
+
+Route::controller(PresensiController::class)->name('presensi.')->middleware('auth')->group(function () {
+    Route::get('/dashboard/presensi', 'index')->name('index');
+    Route::get('/dashboard/presensi/tambah-presensi', 'create')->name('create');
+    Route::get('/dashboard/presensi/view-presensi/{id}', 'show')->name('show');
+
+    Route::post('/dashboard/presensi/tambah-presensi', 'store')->name('store');
+    Route::delete('/dashboard/presensi/{id}', 'destroy')->name('destroy');
+
+    Route::get('/dashboard/presensi/ubah-presensi/{id}/edit', 'edit')->name('edit');
+    Route::put('/dashboard/presensi/{id}', 'update')->name('update');
 });
