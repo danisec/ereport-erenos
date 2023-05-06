@@ -30,10 +30,18 @@ class headerDashboard extends Component
          'kelas' => 'kelas',
          'Tahun Ajaran' => 'tahunajaran',
          'Mata Pelajaran' => 'pelajaran',
-         'Mapping Kelas' => 'mappingkelas',
-         'Mapping Jadwal' => 'mappingjadwal',
         ];
 
-        return view('components.organisms.header-dashboard', compact('navbar'));
+        $mapping = [
+         'Kelas' => 'mappingkelas',
+         'Jadwal' => 'mappingjadwal',
+        ];
+
+        $navbarLast = [
+            'Presensi' => 'presensi',
+            'Cetak Rapot' => 'cetakrapot',
+        ];
+
+        return view('components.organisms.header-dashboard', compact('navbar', 'mapping', 'navbarLast'));
     }
 }
