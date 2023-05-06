@@ -83,12 +83,18 @@ class MappingKelasController extends Controller
         // Get data mappingkelas_d sort by idMapping latest
         $mappingkelasd = MappingKelasSiswa::orderBy('NIS', 'asc')->where('idMapping', $idMapping->idMapping)->paginate(10)->withQueryString();
 
+        $mappingkelas = MappingKelas::where('idMapping', $idMapping->idMapping)->first();
+
         return view('pages.dashboard.mappingkelas.createsiswa', [
             'title' => 'Tambah Map Data Siswa',
             'nis' => Siswa::orderBy('NIS', 'asc')->get(),
             'namasiswa' => Siswa::orderBy('nmSiswa', 'asc')->get(),
             'idMapping' => $idMapping,
             'mappingkelasd' => $mappingkelasd,
+            'mappingkelas' => $mappingkelas,
+            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get(),
+            'kelas' => Kelas::orderBy('kelas', 'asc')->get(),
+            'guru' => Guru::orderBy('namaGuru', 'asc')->get(),
         ]);
     }
 
@@ -201,12 +207,18 @@ class MappingKelasController extends Controller
         // Get data mappingkelas_d sort by idMapping latest
         $mappingkelasd = MappingKelasSiswa::with(['siswa'])->orderBy('NIS', 'asc')->where('idMapping', $idMapping->idMapping)->paginate(10)->withQueryString();
 
+        $mappingkelas = MappingKelas::where('idMapping', $id)->first();
+
         return view('pages.dashboard.mappingkelas.editsiswa', [
             'title' => 'Ubah Map Data Siswa',
             'nis' => Siswa::orderBy('NIS', 'asc')->get(),
             'namasiswa' => Siswa::orderBy('nmSiswa', 'asc')->get(),
             'idMapping' => $idMapping,
             'mappingkelasd' => $mappingkelasd,
+            'mappingkelas' => $mappingkelas,
+            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get(),
+            'kelas' => Kelas::orderBy('kelas', 'asc')->get(),
+            'guru' => Guru::orderBy('namaGuru', 'asc')->get(),
         ]);
     }
 
@@ -280,6 +292,20 @@ class MappingKelasController extends Controller
         session()->flash('notif', $notif);
         
         return back();
+    }
+
+    /**
+     * Destroy mappingkelas if data NIS NULL.
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\MappingKelas  $mappingKelas
+     * @return \Illuminate\Http\Response
+     */
+    public function destroykelasid($id)
+    {
+        MappingKelas::where('idMapping', $id)->delete();
+        
+        return redirect('/dashboard/mappingkelas');
     }
 
     /**
