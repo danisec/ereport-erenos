@@ -2,7 +2,7 @@
 
     <x-organisms.header-dashboard />
 
-    <section class="layout min-h-screen bg-hero py-14 font-rubik">
+    <section class="layout min-h-screen bg-hero py-6 font-rubik">
         <div class="w-full rounded-2xl bg-white py-5 shadow-sm">
 
             <div class="w-6/12 rounded-r-2xl bg-hero py-2">
@@ -15,7 +15,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center">
                         <label class="mb-2 w-64 text-xl font-medium leading-9">Nama Kelas</label>
-                        <input class="field-input-blue w-8/12" value="{{ $kelas->kelas }}" @disabled(true)
+                        <input class="field-input-gray w-8/12" value="{{ $kelas->kelas }}" @disabled(true)
                             @readonly(true)>
                     </div>
                 </div>

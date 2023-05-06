@@ -2,7 +2,7 @@
 
     <x-organisms.header-dashboard />
 
-    <section class="layout min-h-screen bg-hero py-14 font-rubik">
+    <section class="layout min-h-screen bg-hero py-6 font-rubik">
         <div class="w-full rounded-2xl bg-white py-5 shadow-sm">
 
             <div class="w-6/12 rounded-r-2xl bg-hero py-2">
@@ -18,7 +18,7 @@
                             <label class="mb-2 w-36 text-xl font-medium leading-9">Tahun Ajaran</label>
                             <p class="mb-2 w-8 text-xl font-medium leading-9">:</p>
 
-                            <input class="field-input-indigo w-52" name="idThnAjaran"
+                            <input class="field-input-gray w-52" name="idThnAjaran"
                                 value="{{ $mappingkelas->tahunajaran->thnAjaran }}" @disabled(true)
                                 @readonly(true)>
                         </div>
@@ -27,7 +27,7 @@
                             <label class="mb-2 w-36 text-xl font-medium leading-9">Kelas</label>
                             <p class="mb-2 w-8 text-xl font-medium leading-9">:</p>
 
-                            <input class="field-input-indigo w-52" name="idKelas"
+                            <input class="field-input-gray w-52" name="idKelas"
                                 value="{{ $mappingkelas->kelas->kelas }}" @disabled(true)
                                 @readonly(true)>
                         </div>
@@ -38,7 +38,7 @@
                             <label class="mb-2 w-28 text-xl font-medium leading-9">Wali Kelas</label>
                             <p class="mb-2 w-8 text-xl font-medium leading-9">:</p>
 
-                            <input class="field-input-indigo w-64" name="NIP"
+                            <input class="field-input-gray w-64" name="NIP"
                                 value="{{ $mappingkelas->guru->namaGuru }}" @disabled(true)
                                 @readonly(true)>
                         </div>
@@ -81,13 +81,13 @@
                         @foreach ($mappingkelasd as $item)
                             <tbody>
                                 <tr class="bg-white text-base font-medium leading-5 hover:bg-gray-50">
-                                    <th class="py-4 px-9" scope="row">
+                                    <th class="py-2 px-9" scope="row">
                                         {{ ($mappingkelasd->currentPage() - 1) * $mappingkelasd->perPage() + $loop->iteration }}
                                     </th>
-                                    <td class="py-4 pl-6">
+                                    <td class="py-2 pl-6">
                                         {{ $item->siswa->NIS }}
                                     </td>
-                                    <td class="py-4 pl-6">
+                                    <td class="py-2 pl-6">
                                         {{ $item->siswa->nmSiswa }}
                                     </td>
                                 </tr>
