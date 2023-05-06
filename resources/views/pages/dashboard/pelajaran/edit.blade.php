@@ -2,7 +2,7 @@
 
     <x-organisms.header-dashboard />
 
-    <section class="layout min-h-screen bg-hero py-14 font-rubik">
+    <section class="layout min-h-screen bg-hero py-6 font-rubik">
         <div class="w-full rounded-2xl bg-white py-5 shadow-sm">
 
             <div class="w-6/12 rounded-r-2xl bg-hero py-2">
