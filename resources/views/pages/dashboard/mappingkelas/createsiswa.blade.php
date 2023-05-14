@@ -11,7 +11,7 @@
 
             <div class="mx-10 my-4 flex flex-row items-start gap-12">
 
-                <div class="flex flex-col gap-4">
+                <div class="flex flex-col gap-3">
                     <div class="flex flex-col gap-1">
                         <div class="flex flex-row items-center">
                             <label class="mb-2 w-36 text-xl font-medium leading-9">Tahun Ajaran</label>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
 
-                <div class="mt-[4.3rem] flex flex-col gap-4">
+                <div class="mt-[3.5rem] flex flex-col gap-4">
                     <div class="flex flex-col gap-1">
                         <div class="flex flex-row items-center">
                             <label class="mb-2 w-28 text-xl font-medium leading-9">Wali Kelas</label>
@@ -50,7 +50,7 @@
 
             </div>
 
-            <form class="mt-4 mb-2 ml-32 flex flex-col gap-6 px-11" action="{{ route('mappingkelas.storesiswa') }}"
+            <form class="mt-8 mb-2 ml-32 flex flex-col gap-6 px-11" action="{{ route('mappingkelas.storesiswa') }}"
                 method="post">
                 @csrf
 
@@ -96,7 +96,7 @@
 
                     <div class="ml-28 flex flex-col">
                         <button
-                            class="flex flex-row items-center gap-2 rounded-md bg-cyan-300 px-2 py-0 shadow-lg shadow-gray-300"
+                            class="flex flex-row items-center gap-2 rounded-md bg-cyan-300 px-2 py-1 shadow-lg shadow-gray-300"
                             type="submit">
                             <p class="text-center text-xl font-normal">Tambah</p>
                             <x-atoms.plus :alt="'tambah-datasiswa'" />
