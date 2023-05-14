@@ -34,11 +34,11 @@
     }
 
     .field-input-indigo {
-        @apply rounded-md border-indigo-200 bg-indigo-700 px-3 py-1 text-lg text-white placeholder:text-white focus:outline-none;
+        @apply rounded-md border-indigo-200 bg-indigo-700 px-3 py-2 text-lg text-white placeholder:text-white focus:outline-none;
     }
 
     .field-input-gray {
-        @apply rounded-md border-gray-200 bg-gray-400/60 p-3 text-lg text-white placeholder:text-white focus:outline-none;
+        @apply rounded-md border-gray-200 bg-gray-400/60 px-3 py-2 text-lg text-white placeholder:text-white focus:outline-none;
     }
 
     .invalid-feedback {
