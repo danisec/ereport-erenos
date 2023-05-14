@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\TahunAjaran;
+use App\Services\TahunAjaranService;
 use Illuminate\Http\Request;
 
 class TahunAjaranController extends Controller
 {
+    public function __construct(TahunAjaranService $tahunAjaranService)
+    {
+        $this->tahunAjaranService = $tahunAjaranService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -40,18 +46,7 @@ class TahunAjaranController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'thnAjaran' => 'required|max:15|unique:tahun_ajaran,thnAjaran,NULL,id,semester,' . $request->semester,
-            'semester' => 'required|in:Gasal,Genap,Pertengahan Tengah Semester 1,Pertengahan Akhir Semester 1,Pertengahan Tengah Semester 2,Pertengahan Akhir Semester 2',
-        ], [
-            'thnAjaran.required' => 'Tahun ajaran harus diisi',
-            'thnAjaran.max' => 'Tahun ajaran maksimal 15 karakter',
-            'thnAjaran.unique' => 'Tahun ajaran sudah terdaftar',
-            'semester.required' => 'Semester harus diisi',
-            'semester.in' => 'Semester harus berupa Gasal atau Genap',
-        ]);
-
-        TahunAjaran::create($validatedData);
+        $this->tahunAjaranService->storeTahunAjaran($request);
 
         $notif = notify()->success('Data Tahun Ajaran Berhasil Ditambahkan');
 
@@ -95,18 +90,7 @@ class TahunAjaranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'thnAjaran' => 'required|max:15|unique:tahun_ajaran,thnAjaran,NULL,id,semester,' . $request->semester,
-            'semester' => 'required|in:Gasal,Genap,Pertengahan Tengah Semester 1,Pertengahan Akhir Semester 1,Pertengahan Tengah Semester 2,Pertengahan Akhir Semester 2',
-        ], [
-            'thnAjaran.required' => 'Tahun ajaran harus diisi',
-            'thnAjaran.max' => 'Tahun ajaran maksimal 15 karakter',
-            'thnAjaran.unique' => 'Tahun ajaran sudah terdaftar',
-            'semester.required' => 'Semester harus diisi',
-            'semester.in' => 'Semester harus berupa Gasal atau Genap',
-        ]);
-
-        TahunAjaran::where('idThnAjaran', $id)->update($validatedData);
+        $this->tahunAjaranService->updateTahunAjaran($request, $id);
 
         $notif = notify()->success('Data Tahun Ajaran Berhasil Diubah');
 

@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
+use App\Services\GuruService;
 use Illuminate\Http\Request;
 
 class GuruController extends Controller
 {
+    public function __construct(GuruService $guruService)
+    {
+        $this->guruService = $guruService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -40,19 +46,7 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'NIP' => 'required|numeric|digits:10|unique:guru,NIP',
-            'namaGuru' => 'required|max:100',
-        ], [
-            'NIP.required' => 'Nomor guru harus diisi',
-            'NIP.numeric' => 'Nomor guru harus berupa angka',
-            'NIP.digits' => 'Nomor guru harus berjumlah 10 digit',
-            'NIP.unique' => 'Nomor guru sudah terdaftar',
-            'namaGuru.required' => 'Nama guru harus diisi',
-            'namaGuru.max' => 'Nama guru maksimal 100 karakter',
-        ]);
-
-        Guru::create($validatedData);
+        $this->guruService->storeGuru($request);
 
         $notif = notify()->success('Data Guru Berhasil Ditambahkan');
 
@@ -96,17 +90,7 @@ class GuruController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'NIP' => 'numeric|digits:10',
-            'namaGuru' => 'required|max:100',
-        ], [
-            'NIP.numeric' => 'Nomor guru harus berupa angka',
-            'NIP.digits' => 'Nomor guru harus berjumlah 10 digit',
-            'namaGuru.required' => 'Nama guru harus diisi',
-            'namaGuru.max' => 'Nama guru maksimal 100 karakter',
-        ]);
-
-        Guru::where('NIP', $id)->update($validatedData);
+        $this->guruService->updateGuru($request, $id);
 
         $notif = notify()->success('Data Guru Berhasil Diubah');
 

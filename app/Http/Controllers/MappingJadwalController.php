@@ -7,10 +7,16 @@ use App\Models\Kelas;
 use App\Models\MappingJadwal;
 use App\Models\Pelajaran;
 use App\Models\TahunAjaran;
+use App\Services\MappingJadwalService;
 use Illuminate\Http\Request;
 
 class MappingJadwalController extends Controller
 {
+    public function __construct(MappingJadwalService $mappingJadwalService)
+    {
+        $this->mappingJadwalService = $mappingJadwalService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -48,26 +54,7 @@ class MappingJadwalController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'idThnAjaran' => 'required',
-            'idKelas' => 'required',
-            'NIP' => 'required',
-            'hari' => 'required',
-            'idPelajaran' => 'required',
-            'mulai' => 'required',
-            'selesai' => 'required',
-        ], [
-            'idThnAjaran.required' => 'Tahun ajaran harus diisi',
-            'thnAjaran.required' => 'Tahun ajaran harus diisi',
-            'idKelas.required' => 'Kelas harus diisi',
-            'NIP.required' => 'Guru harus diisi',
-            'hari.required' => 'Hari harus diisi',
-            'idPelajaran.required' => 'Pelajaran harus diisi',
-            'mulai.required' => 'Jam Mulai harus diisi',
-            'selesai.required' => 'Jam Selesai harus diisi',
-        ]);
-
-        MappingJadwal::create($validatedData);
+        $this->mappingJadwalService->storeMappingJadwal($request);
 
         $notif = notify()->success('Mapping Jadwal Berhasil Ditambahkan');
 
@@ -115,26 +102,7 @@ class MappingJadwalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'idThnAjaran' => 'required',
-            'idKelas' => 'required',
-            'NIP' => 'required',
-            'hari' => 'required',
-            'idPelajaran' => 'required',
-            'mulai' => 'required',
-            'selesai' => 'required',
-        ], [
-            'idThnAjaran.required' => 'Tahun ajaran harus diisi',
-            'thnAjaran.required' => 'Tahun ajaran harus diisi',
-            'idKelas.required' => 'Kelas harus diisi',
-            'NIP.required' => 'Guru harus diisi',
-            'hari.required' => 'Hari harus diisi',
-            'idPelajaran.required' => 'Pelajaran harus diisi',
-            'mulai.required' => 'Jam Mulai harus diisi',
-            'selesai.required' => 'Jam Selesai harus diisi',
-        ]);
-
-        MappingJadwal::where('idJadwal', $id)->update($validatedData);;
+        $this->mappingJadwalService->updateMappingJadwal($request, $id);
 
         $notif = notify()->success('Data Mapping Jadwal Berhasil Diubah');
 

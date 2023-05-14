@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pelajaran;
+use App\Services\PelajaranService;
 use Illuminate\Http\Request;
 
 class PelajaranController extends Controller
 {
+    public function __construct(PelajaranService $pelajaranService)
+    {
+        $this->pelajaranService = $pelajaranService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -40,25 +46,7 @@ class PelajaranController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'kodePelajaran' => 'required|numeric|unique:pelajaran,kodePelajaran',
-            'nmPelajaran' => 'required|max:100',
-            'nmSingkatan' => 'required|max:50',
-            'KKM' => 'required:numeric|digits_between:1,3',
-        ], [
-            'kodePelajaran.required' => 'Kode pelajaran harus diisi',
-            'kodePelajaran.numeric' => 'Kode pelajaran harus berupa angka',
-            'kodePelajaran.unique' => 'Kode pelajaran sudah terdaftar',
-            'nmPelajaran.required' => 'Nama pelajaran harus diisi',
-            'nmPelajaran.max' => 'Nama pelajaran maksimal 100 karakter',
-            'nmSingkatan.required' => 'Nama singkatan harus diisi',
-            'nmSingkatan.max' => 'Nama singkatan maksimal 50 karakter',
-            'KKM.required' => 'Nilai KKM harus diisi',
-            'KKM.numeric' => 'Nilai KKM harus berupa angka',
-            'KKM.digits_between' => 'Nilai KKM harus berjumlah 1-3 digit',
-        ]);
-
-        Pelajaran::create($validatedData);
+        $this->pelajaranService->storePelajaran($request);
 
         $notif = notify()->success('Data Pelajaran Berhasil Ditambahkan');
 
@@ -102,24 +90,7 @@ class PelajaranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'kodePelajaran' => 'required|numeric',
-            'nmPelajaran' => 'required|max:100',
-            'nmSingkatan' => 'required|max:50',
-            'KKM' => 'required:numeric|digits_between:1,3',
-        ], [
-            'kodePelajaran.required' => 'Kode pelajaran harus diisi',
-            'kodePelajaran.numeric' => 'Kode pelajaran harus berupa angka',
-            'nmPelajaran.required' => 'Nama pelajaran harus diisi',
-            'nmPelajaran.max' => 'Nama pelajaran maksimal 100 karakter',
-            'nmSingkatan.required' => 'Nama singkatan harus diisi',
-            'nmSingkatan.max' => 'Nama singkatan maksimal 50 karakter',
-            'KKM.required' => 'Nilai KKM harus diisi',
-            'KKM.numeric' => 'Nilai KKM harus berupa angka',
-            'KKM.digits_between' => 'Nilai KKM harus berjumlah 1-3 digit',
-        ]);
-
-        Pelajaran::where('kodePelajaran', $id)->update($validatedData);
+        $this->pelajaranService->updatePelajaran($request, $id);
 
         $notif = notify()->success('Data Pelajaran Berhasil Diubah');
 

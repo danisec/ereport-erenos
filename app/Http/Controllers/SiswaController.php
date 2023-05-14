@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Siswa;
+use App\Services\SiswaService;
 use Illuminate\Http\Request;
 
 class SiswaController extends Controller
 {
+    public function __construct(SiswaService $siswaService)
+    {
+        $this->siswaService = $siswaService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -40,26 +46,7 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'NIS' => 'required|numeric|digits:8|unique:siswa,NIS',
-            'nmSiswa' => 'required|max:100',
-            'nmPanggil' => 'required|max:50',
-            'tinggi' => 'required',
-            'berat' => 'required',
-        ], [
-            'NIS.required' => 'NIS harus diisi',
-            'NIS.numeric' => 'NIS harus berupa angka',
-            'NIS.digits' => 'NIS harus berjumlah 8 digit',
-            'NIS.unique' => 'NIS sudah terdaftar',
-            'nmSiswa.required' => 'Nama siswa harus diisi',
-            'nmSiswa.max' => 'Nama siswa maksimal 100 karakter',
-            'nmPanggil.required' => 'Nama panggilan harus diisi',
-            'nmPanggil.max' => 'Nama panggilan maksimal 50 karakter',
-            'tinggi.required' => 'Tinggi badan harus diisi',
-            'berat.required' => 'Berat badan harus diisi',
-        ]);
-
-        Siswa::create($validatedData);
+        $this->siswaService->storeSiswa($request);
 
         $notif = notify()->success('Data Siswa Berhasil Ditambahkan');
 
@@ -103,24 +90,7 @@ class SiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'NIS' => 'numeric|digits:8',
-            'nmSiswa' => 'required|max:100',
-            'nmPanggil' => 'required|max:50',
-            'tinggi' => 'required',
-            'berat' => 'required',
-        ], [
-            'NIS.numeric' => 'NIS harus berupa angka',
-            'NIS.digits' => 'NIS harus berjumlah 8 digit',
-            'nmSiswa.required' => 'Nama Siswa harus diisi',
-            'nmSiswa.max' => 'Nama Siswa maksimal 100 karakter',
-            'nmPanggil.required' => 'Nama Panggilan harus diisi',
-            'nmPanggil.max' => 'Nama Panggilan maksimal 50 karakter',
-            'tinggi.required' => 'Tinggi Badan harus diisi',
-            'berat.required' => 'Berat Badan harus diisi',
-        ]);
-
-        Siswa::where('NIS', $id)->update($validatedData);
+        $this->siswaService->updateSiswa($request, $id);
 
         $notif = notify()->success('Data Siswa Berhasil Diubah');
 

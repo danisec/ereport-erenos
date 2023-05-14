@@ -8,10 +8,16 @@ use App\Models\MappingKelas;
 use App\Models\MappingKelasSiswa;
 use App\Models\Siswa;
 use App\Models\TahunAjaran;
+use App\Services\MappingKelasService;
 use Illuminate\Http\Request;
 
 class MappingKelasController extends Controller
 {
+    public function __construct(MappingKelasService $mappingKelasService)
+    {
+        $this->mappingKelasService = $mappingKelasService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -48,19 +54,7 @@ class MappingKelasController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedDataMapping = $request->validate([
-            'idThnAjaran' => 'required',
-            'idKelas' => 'required|unique:mapping_kelas,idKelas',
-            'NIP' => 'required',
-        ], [
-            'idThnAjaran.required' => 'Tahun ajaran harus diisi',
-            'thnAjaran.required' => 'Tahun ajaran harus diisi',
-            'idKelas.required' => 'Kelas harus diisi',
-            'idKelas.unique' => 'Kelas sudah ada di mapping kelas',
-            'NIP.required' => 'Wali Kelas harus diisi',
-        ]);
-
-        MappingKelas::create($validatedDataMapping);
+        $this->mappingKelasService->storeMappingKelas($request);
 
         $notif = notify()->success('Mapping Kelas Berhasil Ditambahkan');
 
@@ -106,15 +100,7 @@ class MappingKelasController extends Controller
      */
     public function storesiswa(Request $request)
     {
-        $validatedDataMapping = $request->validate([
-            'idMapping' => 'required',
-            'NIS' => 'required|unique:mappingkelas_d,NIS',
-        ], [
-            'NIS.required' => 'NIS harus diisi',
-            'NIS.unique' => 'Data siswa sudah ada di mapping kelas',
-        ]);
-
-        MappingKelasSiswa::create($validatedDataMapping);
+        $this->mappingKelasService->storeSiswa($request);
 
         $notif = notify()->success('Data Siswa Berhasil Ditambahkan');
         session()->flash('notif', $notif);
@@ -171,19 +157,7 @@ class MappingKelasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validatedDataMapping = $request->validate([
-            'idThnAjaran' => 'required',
-            'idKelas' => 'required',
-            'NIP' => 'required',
-        ], [
-            'idThnAjaran.required' => 'Tahun ajaran harus diisi',
-            'thnAjaran.required' => 'Tahun ajaran harus diisi',
-            'idKelas.required' => 'Kelas harus diisi',
-            'idKelas.unique' => 'Kelas sudah ada di mapping kelas',
-            'NIP.required' => 'Wali Kelas harus diisi',
-        ]);
-
-        MappingKelas::where('idMapping', $id)->update($validatedDataMapping);
+        $this->mappingKelasService->updateMappingKelas($request, $id);
 
         // return redirect to mappingkelas/ubah-datasiswa with idMapping
         return redirect('/dashboard/mappingkelas/ubah-datasiswa/' . $id . '/edit');
@@ -231,15 +205,7 @@ class MappingKelasController extends Controller
      */
     public function updatesiswa(Request $request, $id)
     {
-        $validatedDataMapping = $request->validate([
-            'idMapping' => '',
-            'NIS' => 'required|unique:mappingkelas_d,NIS',
-        ], [
-            'NIS.required' => 'NIS harus diisi',
-            'NIS.unique' => 'Data siswa sudah ada di mapping kelas',
-        ]);
-
-        MappingKelasSiswa::create($validatedDataMapping);
+        $this->mappingKelasService->updateSiswa($request);
 
         $notif = notify()->success('Mapping Kelas Berhasil Ditambahkan');
 

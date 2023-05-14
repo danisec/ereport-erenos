@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
+use App\Services\KelasService;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
 {
+    public function __construct(KelasService $kelasService)
+    {
+        $this->kelasService = $kelasService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -40,15 +46,7 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'kelas' => 'required|max:2|unique:kelas,kelas',
-        ], [
-            'kelas.required' => 'Nama kelas harus diisi',
-            'kelas.max' => 'Nama kelas maksimal 2 karakter',
-            'kelas.unique' => 'Nama kelas sudah terdaftar',
-        ]);
-
-        Kelas::create($validatedData);
+        $this->kelasService->storeKelas($request);
 
         $notif = notify()->success('Data Kelas Berhasil Ditambahkan');
 
@@ -92,15 +90,7 @@ class KelasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'kelas' => 'required|max:2|unique:kelas,kelas',
-        ], [
-            'kelas.required' => 'Nama kelas harus diisi',
-            'kelas.max' => 'Nama kelas maksimal 2 karakter',
-            'kelas.unique' => 'Nama kelas sudah terdaftar',
-        ]);
-
-        Kelas::where('idKelas', $id)->update($validatedData);
+        $this->kelasService->updateKelas($request, $id);
 
         $notif = notify()->success('Data Kelas Berhasil Diubah');
 
