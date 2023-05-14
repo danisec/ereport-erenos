@@ -9,8 +9,7 @@
                 <h4 class="text-gray-9000 px-11 text-2xl font-bold text-white">View Data Guru</h4>
             </div>
 
-            <form class="flex flex-col gap-6 px-11 pt-9">
-                @csrf
+            <div class="flex flex-col gap-3 px-11 pt-9">
 
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center">
@@ -32,7 +31,7 @@
                     <a class="rounded-sm bg-cyan-300 px-10 py-3 text-center text-sm font-normal shadow-xl shadow-gray-300"
                         href="{{ URL('dashboard/guru') }}">Back</a>
                 </div>
-            </form>
+            </div>
 
         </div>
 

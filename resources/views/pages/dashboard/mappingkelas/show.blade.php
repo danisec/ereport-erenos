@@ -13,7 +13,7 @@
 
                 <div class="flex flex-row items-start gap-12">
 
-                    <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-3">
                         <div class="flex flex-row items-center">
                             <label class="mb-2 w-36 text-xl font-medium leading-9">Tahun Ajaran</label>
                             <p class="mb-2 w-8 text-xl font-medium leading-9">:</p>
@@ -33,7 +33,7 @@
                         </div>
                     </div>
 
-                    <div class="mt-[4.3rem] flex flex-col gap-4">
+                    <div class="mt-[3.5rem] flex flex-col gap-4">
                         <div class="flex flex-row items-center">
                             <label class="mb-2 w-28 text-xl font-medium leading-9">Wali Kelas</label>
                             <p class="mb-2 w-8 text-xl font-medium leading-9">:</p>
@@ -56,7 +56,7 @@
                     </div>
                 </div>
 
-                <table class="mt-6 w-full text-left">
+                <table class="mt-2 w-full text-left">
 
                     <thead class="border-b border-gray-200 bg-hero text-base font-medium text-gray-500"
                         id="table-mapping">
