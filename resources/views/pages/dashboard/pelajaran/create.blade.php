@@ -9,13 +9,13 @@
                 <h4 class="text-gray-9000 px-11 text-2xl font-bold text-white">Menambah Data Pelajaran</h4>
             </div>
 
-            <form class="flex flex-col gap-6 px-11 pt-9" action="{{ route('pelajaran.store') }}" method="post">
+            <form class="flex flex-col gap-3 px-11 pt-9" action="{{ route('pelajaran.store') }}" method="post">
                 @csrf
 
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center">
                         <label class="mb-2 w-64 text-xl font-medium leading-9">Kode Pelajaran</label>
-                        <input class="field-input-blue w-52" name="kodePelajaran" type="number"
+                        <input class="field-input-indigo w-52" name="kodePelajaran" type="number"
                             value="{{ old('kodePelajaran') }}" maxlength="8" placeholder="Nomor" required>
                     </div>
 
@@ -29,7 +29,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Nama Pelajaran</label>
-                        <input class="field-input-blue w-8/12" name="nmPelajaran" type="text"
+                        <input class="field-input-indigo w-8/12" name="nmPelajaran" type="text"
                             value="{{ old('nmPelajaran') }}" placeholder="Nama" required>
                     </div>
 
@@ -43,7 +43,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Singkatan</label>
-                        <input class="field-input-blue w-96" name="nmSingkatan" type="text"
+                        <input class="field-input-indigo w-96" name="nmSingkatan" type="text"
                             value="{{ old('nmSingkatan') }}" placeholder="Nama Singkatan" required>
                     </div>
 
@@ -57,7 +57,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Nilai KKM</label>
-                        <input class="field-input-blue w-52" name="KKM" type="number" value="{{ old('KKM') }}"
+                        <input class="field-input-indigo w-52" name="KKM" type="number" value="{{ old('KKM') }}"
                             maxlength="3" placeholder="Nilai KKM" required>
                     </div>
 

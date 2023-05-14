@@ -9,13 +9,13 @@
                 <h4 class="text-gray-9000 px-11 text-2xl font-bold text-white">Menambah Tahun Ajaran</h4>
             </div>
 
-            <form class="flex flex-col gap-6 px-11 pt-9" action="{{ route('tahunajaran.store') }}" method="post">
+            <form class="flex flex-col gap-3 px-11 pt-9" action="{{ route('tahunajaran.store') }}" method="post">
                 @csrf
 
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center">
                         <label class="mb-2 w-64 text-xl font-medium leading-9">Tahun Ajaran</label>
-                        <input class="field-input-blue w-52" name="thnAjaran" type="text"
+                        <input class="field-input-indigo w-52" name="thnAjaran" type="text"
                             value="{{ old('thnAjaran') }}" placeholder="Tahun Ajaran" required>
                     </div>
 
@@ -29,7 +29,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Semester</label>
-                        <select class="field-input-blue w-8/12" name="semester" required>
+                        <select class="field-input-indigo w-8/12" name="semester" required>
                             <option selected disabled hidden>Semester</option>
                             <option value="Gasal">Gasal</option>
                             <option value="Genap">Genap</option>

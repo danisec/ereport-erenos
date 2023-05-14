@@ -9,14 +9,14 @@
                 <h4 class="text-gray-9000 px-11 text-2xl font-bold text-white">Menambah Data Kelas</h4>
             </div>
 
-            <form class="flex flex-col gap-6 px-11 pt-9" action="{{ route('kelas.store') }}" method="post">
+            <form class="flex flex-col gap-3 px-11 pt-9" action="{{ route('kelas.store') }}" method="post">
                 @csrf
 
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Nama Kelas</label>
-                        <input class="field-input-blue w-8/12" name="kelas" type="text" value="{{ old('kelas') }}"
-                            placeholder="Nama" required>
+                        <input class="field-input-indigo w-8/12" name="kelas" type="text"
+                            value="{{ old('kelas') }}" placeholder="Nama" required>
                     </div>
 
                     @error('kelas')
