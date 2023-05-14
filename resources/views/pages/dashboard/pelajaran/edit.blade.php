@@ -9,7 +9,7 @@
                 <h4 class="text-gray-9000 px-11 text-2xl font-bold text-white">Mengubah Data Pelajaran</h4>
             </div>
 
-            <form class="flex flex-col gap-6 px-11 pt-9" action="/dashboard/pelajaran/{{ $pelajaran->kodePelajaran }}"
+            <form class="flex flex-col gap-3 px-11 pt-9" action="/dashboard/pelajaran/{{ $pelajaran->kodePelajaran }}"
                 method="post">
                 @method('put')
                 @csrf
@@ -17,7 +17,8 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center">
                         <label class="mb-2 w-64 text-xl font-medium leading-9">Kode Pelajaran</label>
-                        <input class="@error('kodePelajaran') border-red-300 bg-red-300 @enderror field-input-blue w-52"
+                        <input
+                            class="@error('kodePelajaran') border-red-300 bg-red-300 @enderror field-input-indigo w-52"
                             name="kodePelajaran" type="number" value="{{ $pelajaran->kodePelajaran }}" maxlength="8"
                             placeholder="Nomor" required>
                     </div>
@@ -32,7 +33,8 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Nama Pelajaran</label>
-                        <input class="@error('nmPelajaran') border-red-300 bg-red-300 @enderror field-input-blue w-8/12"
+                        <input
+                            class="@error('nmPelajaran') border-red-300 bg-red-300 @enderror field-input-indigo w-8/12"
                             name="nmPelajaran" type="text" value="{{ $pelajaran->nmPelajaran }}" placeholder="Nama"
                             required>
                     </div>
@@ -47,7 +49,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Singkatan</label>
-                        <input class="@error('nmSingkatan') border-red-300 bg-red-300 @enderror field-input-blue w-96"
+                        <input class="@error('nmSingkatan') border-red-300 bg-red-300 @enderror field-input-indigo w-96"
                             name="nmSingkatan" type="text" value="{{ $pelajaran->nmSingkatan }}"
                             placeholder="Nama Singkatan" required>
                     </div>
@@ -62,7 +64,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Nilai KKM</label>
-                        <input class="@error('KKM') border-red-300 bg-red-300 @enderror field-input-blue w-52"
+                        <input class="@error('KKM') border-red-300 bg-red-300 @enderror field-input-indigo w-52"
                             name="KKM" type="number" value="{{ $pelajaran->KKM }}" maxlength="3"
                             placeholder="Nilai KKM" required>
                     </div>

@@ -9,7 +9,7 @@
                 <h4 class="text-gray-9000 px-11 text-2xl font-bold text-white">Mengubah Tahun Ajaran</h4>
             </div>
 
-            <form class="flex flex-col gap-6 px-11 pt-9" action="/dashboard/tahunajaran/{{ $tahunajaran->idThnAjaran }}"
+            <form class="flex flex-col gap-3 px-11 pt-9" action="/dashboard/tahunajaran/{{ $tahunajaran->idThnAjaran }}"
                 method="post">
                 @method('put')
                 @csrf
@@ -17,7 +17,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center">
                         <label class="mb-2 w-64 text-xl font-medium leading-9">Tahun Ajaran</label>
-                        <input class="@error('thnAjaran') border-red-300 bg-red-300 @enderror field-input-blue w-52"
+                        <input class="@error('thnAjaran') border-red-300 bg-red-300 @enderror field-input-indigo w-52"
                             name="thnAjaran" type="text" value="{{ $tahunajaran->thnAjaran }}" placeholder="Nomor"
                             required>
                     </div>
@@ -32,7 +32,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Semester</label>
-                        <select class="@error('semester') border-red-300 bg-red-300 @enderror field-input-blue w-8/12"
+                        <select class="@error('semester') border-red-300 bg-red-300 @enderror field-input-indigo w-8/12"
                             name="semester" required>
 
                             <option value="Gasal">Gasal</option>

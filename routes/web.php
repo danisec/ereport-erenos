@@ -150,7 +150,10 @@ Route::controller(MappingJadwalController::class)->name('mappingjadwal.')->middl
 
 Route::controller(PresensiController::class)->name('presensi.')->middleware('auth')->group(function () {
     Route::get('/dashboard/presensi', 'index')->name('index');
+
     Route::get('/dashboard/presensi/tambah-presensi', 'create')->name('create');
+    Route::get('/dashboard/presensi/tambah-presensi/{kelas}/getKelas', 'getKelasList')->name('getKelasList');
+
     Route::get('/dashboard/presensi/view-presensi/{id}', 'show')->name('show');
 
     Route::post('/dashboard/presensi/tambah-presensi', 'store')->name('store');

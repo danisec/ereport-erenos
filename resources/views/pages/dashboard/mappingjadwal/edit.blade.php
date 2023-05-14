@@ -16,7 +16,7 @@
 
                 <div class="flex flex-row items-start gap-20">
 
-                    <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-3">
                         <div class="flex flex-col gap-1">
                             <div class="flex flex-row items-center">
                                 <label class="mb-2 w-40 text-xl font-medium leading-9">Tahun Ajaran</label>
@@ -105,7 +105,7 @@
                         </div>
                     </div>
 
-                    <div class="mt-[4.3rem] flex flex-col gap-4">
+                    <div class="mt-[3.5rem] flex flex-col gap-3">
                         <div class="flex flex-col gap-1">
                             <div class="flex flex-row items-center">
                                 <label class="mb-2 w-32 text-xl font-medium leading-9">Pelajaran</label>
