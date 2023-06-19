@@ -78,6 +78,7 @@ class TahunAjaranController extends Controller
         return view('pages.dashboard.tahunajaran.edit', [
             'title' => 'Ubah Tahun Ajaran',
             'tahunajaran' => TahunAjaran::where('idThnAjaran', $id)->first(),
+            'semester' => TahunAjaran::get()->unique('semester')->pluck('semester')->all(),
         ]);
     }
 
