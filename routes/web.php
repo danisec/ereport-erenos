@@ -9,6 +9,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MappingJadwalController;
 use App\Http\Controllers\MappingKelasController;
+use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\PelajaranController;
 use App\Http\Controllers\PresensiController;
 use App\Http\Controllers\SiswaController;
@@ -150,9 +151,15 @@ Route::controller(MappingJadwalController::class)->name('mappingjadwal.')->middl
 
 Route::controller(PresensiController::class)->name('presensi.')->middleware('auth')->group(function () {
     Route::get('/dashboard/presensi', 'index')->name('index');
+    Route::get('/dashboard/presensi/{kelas}/filterKelas', 'filterKelasList')->name('filterKelasList');
+    Route::get('/dashboard/presensi/{kelas}/{tahun}/getPresensi', 'getPresensiList')->name('getPresensiList');
 
     Route::get('/dashboard/presensi/tambah-presensi', 'create')->name('create');
+
+    Route::get('/dashboard/presensi/tambah-presensi/{tahunAjaran}/getTahunAjaran', 'getTahunAjaranList')->name('getTahunAjaranList');
     Route::get('/dashboard/presensi/tambah-presensi/{kelas}/getKelas', 'getKelasList')->name('getKelasList');
+    Route::get('/dashboard/presensi/tambah-presensi/{pelajaran}/getPelajaran', 'getPelajaranList')->name('getPelajaranList');
+    Route::get('/dashboard/presensi/tambah-presensi/{nis}/getSiswa', 'getSiswaList')->name('getSiswaList');
 
     Route::get('/dashboard/presensi/view-presensi/{id}', 'show')->name('show');
 
