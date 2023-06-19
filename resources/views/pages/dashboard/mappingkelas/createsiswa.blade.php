@@ -55,7 +55,7 @@
                 @csrf
 
                 <div class="flex flex-row gap-12">
-                    <input name="idMapping" type="hidden" value="{{ $idMapping->idMapping }}" value="">
+                    <input name="idMapping" type="hidden" value="{{ $idMapping->idMapping }}">
                     <div class="ml-1 flex flex-col items-center gap-1">
                         <div class="flex flex-row items-center">
                             <label class="mb-2 w-14 text-xl font-medium leading-9">NIS</label>
@@ -145,7 +145,7 @@
                             <tbody>
                                 <tr class="bg-white text-base font-medium leading-5 hover:bg-gray-50">
                                     <th class="px-9" scope="row">
-                                        {{ ($mappingkelasd->currentPage() - 1) * $mappingkelasd->perPage() + $loop->iteration }}
+                                        {{ $loop->iteration }}
                                     </th>
                                     <td class="pl-6">
                                         {{ $item->siswa->NIS }}
@@ -197,7 +197,7 @@
             const scrollTopButton = document.getElementById(
                 'scroll-button');
 
-            if (window.pageYOffset < 500) {
+            if (window.pageYOffset < 150) {
                 scrollTopButton.style.display = 'none';
             } else {
                 scrollTopButton.style.display = 'block';
