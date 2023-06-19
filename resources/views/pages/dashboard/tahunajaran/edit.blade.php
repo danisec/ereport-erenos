@@ -35,12 +35,13 @@
                         <select class="@error('semester') border-red-300 bg-red-300 @enderror field-input-indigo w-8/12"
                             name="semester" required>
 
-                            <option value="Gasal">Gasal</option>
-                            <option value="Genap">Genap</option>
-                            <option value="Pertengahan Tengah Semester 1">Pertengahan Tengah Semester 1</option>
-                            <option value="Pertengahan Akhir Semester 1">Pertengahan Akhir Semester 1</option>
-                            <option value="Pertengahan Tengah Semester 2">Pertengahan Tengah Semester 2</option>
-                            <option value="Pertengahan Akhir Semester 2">Pertengahan Akhir Semester 2</option>
+                            @foreach ($semester as $smtr)
+                                <option value="{{ $smtr }}"
+                                    {{ $tahunajaran->semester == $smtr ? 'selected' : '' }}>
+                                    {{ $smtr }}
+                                </option>
+                            @endforeach
+
                         </select>
                     </div>
 
