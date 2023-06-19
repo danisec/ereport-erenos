@@ -163,7 +163,7 @@
 
                 <div class="mt-6 flex flex-row items-center justify-center gap-40">
                     <button
-                        class="rounded-sm bg-cyan-300 px-10 py-3 text-center text-sm font-normal shadow-xl shadow-gray-300">Submit</button>
+                        class="rounded-sm bg-cyan-300 px-10 py-3 text-center text-sm font-normal shadow-xl shadow-gray-300">Update</button>
 
                     <a class="rounded-sm bg-cyan-300 px-10 py-3 text-center text-sm font-normal shadow-xl shadow-gray-300"
                         href="{{ URL('dashboard/mappingjadwal') }}">Cancel</a>
