@@ -39,6 +39,8 @@ class headerDashboard extends Component
 
         $navbarLast = [
             'Presensi' => 'presensi',
+            'Nilai' => 'nilai',
+            'Pengumuman' => 'pengumuman',
             'Cetak Rapot' => 'cetakrapot',
         ];
 
