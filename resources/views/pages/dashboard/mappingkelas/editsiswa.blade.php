@@ -146,7 +146,7 @@
                             <tbody>
                                 <tr class="bg-white text-base font-medium leading-5 hover:bg-gray-50">
                                     <th class="px-9" scope="row">
-                                        {{ ($mappingkelasd->currentPage() - 1) * $mappingkelasd->perPage() + $loop->iteration }}
+                                        {{ $loop->iteration }}
                                     </th>
                                     <td class="pl-6">
                                         {{ $item->siswa->NIS }}
@@ -171,10 +171,6 @@
                     @endif
 
                 </table>
-            </div>
-
-            <div class="bg-white p-6">
-                {{ $mappingkelasd->links('vendor.pagination.tailwind') }}
             </div>
 
             <div class="mt-6 flex flex-row items-center justify-center gap-40">
@@ -202,7 +198,7 @@
             const scrollTopButton = document.getElementById(
                 'scroll-button');
 
-            if (window.pageYOffset < 500) {
+            if (window.pageYOffset < 150) {
                 scrollTopButton.style.display = 'none';
             } else {
                 scrollTopButton.style.display = 'block';
