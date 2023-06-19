@@ -27,7 +27,7 @@ class MappingKelasController extends Controller
     {
         return view('pages.dashboard.mappingkelas.index', [
             'title' => 'Mapping Kelas',
-            'mappingkelas' => MappingKelas::with(['tahunajaran', 'kelas', 'guru'])->sortable(['idKelas' => 'desc'])->filter(request(['search']))->paginate(10)->withQueryString(),
+            'mappingkelas' => MappingKelas::with(['tahunajaran', 'kelas', 'guru'])->sortable(['idThnAjaran' => 'desc'])->filter(request(['search']))->paginate(10)->withQueryString(),
         ]);
     }
 
@@ -40,7 +40,7 @@ class MappingKelasController extends Controller
     {
         return view('pages.dashboard.mappingkelas.create', [
             'title' => 'Tambah Mapping Kelas',
-            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get(),
+            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get()->unique('thnAjaran'),
             'kelas' => Kelas::orderBy('kelas', 'asc')->get(),
             'guru' => Guru::orderBy('namaGuru', 'asc')->get(),
         ]);
@@ -75,7 +75,7 @@ class MappingKelasController extends Controller
         $request->request->add(['idMapping' => $idMapping->idMapping]);
 
         // Get data mappingkelas_d sort by idMapping latest
-        $mappingkelasd = MappingKelasSiswa::orderBy('NIS', 'asc')->where('idMapping', $idMapping->idMapping)->paginate(10)->withQueryString();
+        $mappingkelasd = MappingKelasSiswa::orderBy('NIS', 'asc')->where('idMapping', $idMapping->idMapping)->get();
 
         $mappingkelas = MappingKelas::where('idMapping', $idMapping->idMapping)->first();
 
@@ -118,7 +118,7 @@ class MappingKelasController extends Controller
     {
         $mappingkelas = MappingKelas::where('idMapping', $id)->first();
 
-        $mappingkelasd = MappingKelasSiswa::with(['siswa'])->orderBy('NIS', 'asc')->where('idMapping', $mappingkelas->idMapping)->paginate(10)->withQueryString();
+        $mappingkelasd = MappingKelasSiswa::with(['siswa'])->orderBy('NIS', 'asc')->where('idMapping', $mappingkelas->idMapping)->get();
 
         return view('pages.dashboard.mappingkelas.show', [
             'title' => 'View Mapping Kelas',
@@ -142,7 +142,7 @@ class MappingKelasController extends Controller
             'title' => 'Ubah Mapping Kelas',
             'mappingkelas' => $mappingkelas,
             'mappingkelasd' => $mappingkelasd,
-            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get(),
+            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get()->unique('thnAjaran'),
             'kelas' => Kelas::orderBy('kelas', 'asc')->get(),
             'guru' => Guru::orderBy('namaGuru', 'asc')->get(),
         ]);
@@ -179,7 +179,7 @@ class MappingKelasController extends Controller
         $request->request->add(['idMapping' => $idMapping->idMapping]);
 
         // Get data mappingkelas_d sort by idMapping latest
-        $mappingkelasd = MappingKelasSiswa::with(['siswa'])->orderBy('NIS', 'asc')->where('idMapping', $idMapping->idMapping)->paginate(10)->withQueryString();
+        $mappingkelasd = MappingKelasSiswa::with(['siswa'])->orderBy('NIS', 'asc')->where('idMapping', $idMapping->idMapping)->get();
 
         $mappingkelas = MappingKelas::where('idMapping', $id)->first();
 
