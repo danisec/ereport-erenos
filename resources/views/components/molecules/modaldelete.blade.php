@@ -5,12 +5,12 @@
     x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100"
     x-cloak>
 
-    <div class="flex flex-col gap-4 text-center">
-        <h4 class="text-2xl font-normal uppercase text-white">HAPUS
+    <div class="flex flex-col gap-4">
+        <h4 class="text-center text-2xl font-normal uppercase text-white">HAPUS
             DATA
         </h4>
 
-        <p class="text-xl font-normal text-white">{{ $title }}</p>
+        <p class="px-10 text-left text-xl font-normal text-white">{{ $title }}</p>
         </p>
 
 
