@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('idKehadiran_D');
             $table->bigInteger('idKehadiran')->unsigned();
             $table->char('NIS', 8);
-            $table->enum('status', ['Hadir', 'Sakit', 'Izin', 'Alpa']);
+            $table->enum('status', ['Hadir', 'Sakit', 'Izin', 'Alpha']);
             $table->timestamps();
         });
     }

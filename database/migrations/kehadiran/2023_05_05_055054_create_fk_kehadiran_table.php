@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreign('idJadwal', 'fk_kehadiran_jadwal')
                 ->references('idJadwal')
                 ->on('jadwal')
-                ->restrictOnUpdate()
-                ->restrictOnUpdate();
+                ->cascadeOnUpdate()
+                ->cascadeOnUpdate();
         });
     }
 
