@@ -15,10 +15,14 @@ return new class extends Migration
     {
         Schema::create('pelajaran', function (Blueprint $table) {
             $table->id('idPelajaran');
-            $table->integer('kodePelajaran', 8);
+            $table->integer('kodePelajaran')->type('integer')->length(8);
             $table->string('nmPelajaran', 100);
             $table->string('nmSingkatan', 50);
-            $table->tinyInteger('KKM', 4);
+            $table->tinyInteger('KKM')->type('tinyinteger')->length(4);
+            $table->text('deskripsiA');
+            $table->text('deskripsiB');
+            $table->text('deskripsiC');
+            $table->text('deskripsiD');
             $table->timestamps();
         });
     }
@@ -30,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pelajarans');
+        Schema::dropIfExists('pelajaran');
     }
 };
