@@ -12,12 +12,7 @@ class Pelajaran extends Model
 
     protected $table = 'pelajaran';
 
-    protected $fillable = [
-        'kodePelajaran',
-        'nmPelajaran',
-        'nmSingkatan',
-        'KKM',
-    ];
+    protected $guarded = ['idPelajaran'];
 
     public $sortable = [
         'kodePelajaran',
