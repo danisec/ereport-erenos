@@ -14,6 +14,10 @@ class PelajaranService
             'nmPelajaran' => 'required|max:100',
             'nmSingkatan' => 'required|max:50',
             'KKM' => 'required:numeric|digits_between:1,3',
+            'deskripsiA' => 'required|max:2000',
+            'deskripsiB' => 'required|max:2000',
+            'deskripsiC' => 'required|max:2000',
+            'deskripsiD' => 'required|max:2000',
         ], [
             'kodePelajaran.required' => 'Kode pelajaran harus diisi',
             'kodePelajaran.numeric' => 'Kode pelajaran harus berupa angka',
@@ -25,6 +29,14 @@ class PelajaranService
             'KKM.required' => 'Nilai KKM harus diisi',
             'KKM.numeric' => 'Nilai KKM harus berupa angka',
             'KKM.digits_between' => 'Nilai KKM harus berjumlah 1-3 digit',
+            'deskripsiA.required' => 'Deskripsi A harus diisi',
+            'deskripsiA.max' => 'Deskripsi A maksimal 2000 karakter',
+            'deskripsiB.required' => 'Deskripsi B harus diisi',
+            'deskripsiB.max' => 'Deskripsi B maksimal 2000 karakter',
+            'deskripsiC.required' => 'Deskripsi C harus diisi',
+            'deskripsiC.max' => 'Deskripsi C maksimal 2000 karakter',
+            'deskripsiD.required' => 'Deskripsi D harus diisi',
+            'deskripsiD.max' => 'Deskripsi D maksimal 2000 karakter',
         ]);
 
         $pelajaran = Pelajaran::create($validatedData);
@@ -39,6 +51,10 @@ class PelajaranService
             'nmPelajaran' => 'required|max:100',
             'nmSingkatan' => 'required|max:50',
             'KKM' => 'required:numeric|digits_between:1,3',
+            'deskripsiA' => 'required|max:2000',
+            'deskripsiB' => 'required|max:2000',
+            'deskripsiC' => 'required|max:2000',
+            'deskripsiD' => 'required|max:2000',
         ], [
             'kodePelajaran.required' => 'Kode pelajaran harus diisi',
             'kodePelajaran.numeric' => 'Kode pelajaran harus berupa angka',
@@ -49,6 +65,14 @@ class PelajaranService
             'KKM.required' => 'Nilai KKM harus diisi',
             'KKM.numeric' => 'Nilai KKM harus berupa angka',
             'KKM.digits_between' => 'Nilai KKM harus berjumlah 1-3 digit',
+            'deskripsiA.required' => 'Deskripsi A harus diisi',
+            'deskripsiA.max' => 'Deskripsi A maksimal 2000 karakter',
+            'deskripsiB.required' => 'Deskripsi B harus diisi',
+            'deskripsiB.max' => 'Deskripsi B maksimal 2000 karakter',
+            'deskripsiC.required' => 'Deskripsi C harus diisi',
+            'deskripsiC.max' => 'Deskripsi C maksimal 2000 karakter',
+            'deskripsiD.required' => 'Deskripsi D harus diisi',
+            'deskripsiD.max' => 'Deskripsi D maksimal 2000 karakter',
         ]);
 
         $pelajaran = Pelajaran::where('kodePelajaran', $id)->update($validatedData);
