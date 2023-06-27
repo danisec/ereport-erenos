@@ -24,26 +24,39 @@ class headerDashboard extends Component
     public function render()
     {
         $navbar = [
-         'Dashboard' => '',
-         'Siswa' => 'siswa',
-         'Guru' => 'guru',
-         'kelas' => 'kelas',
-         'Tahun Ajaran' => 'tahunajaran',
-         'Mata Pelajaran' => 'pelajaran',
+            'Dashboard' => '',
+            'Pengumuman' => 'pengumuman',
         ];
 
-        $mapping = [
-         'Kelas' => 'mappingkelas',
-         'Jadwal' => 'mappingjadwal',
+        $dataSekolah = [
+            'Siswa' => 'siswa',
+            'Guru' => 'guru',
+            'Kelas' => 'kelas',
+        ];
+
+        $pemetaan = [
+            'Kelas' => 'mappingkelas',
+            'Jadwal' => 'mappingjadwal',
+        ];
+
+        $pelajaran = [
+            'Mata Pelajaran' => 'pelajaran',
+            'Materi' => 'materi',
         ];
 
         $navbarLast = [
+            'Tahun Ajaran' => 'tahunajaran',
             'Presensi' => 'presensi',
             'Nilai' => 'nilai',
-            'Pengumuman' => 'pengumuman',
-            'Cetak Rapot' => 'cetakrapot',
+            'Rapor' => 'rapor',
         ];
 
-        return view('components.organisms.header-dashboard', compact('navbar', 'mapping', 'navbarLast'));
+        return view('components.organisms.header-dashboard', compact(
+            'navbar', 
+        'dataSekolah',
+        'pemetaan', 
+        'pelajaran',
+        'navbarLast',
+        ));
     }
 }
