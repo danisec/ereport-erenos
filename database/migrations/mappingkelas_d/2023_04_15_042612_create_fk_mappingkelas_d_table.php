@@ -25,8 +25,8 @@ return new class extends Migration
             $table->foreign('NIS', 'fk_mappingkelas_d_siswa')
                 ->references('NIS')
                 ->on('siswa')
-                ->restrictOnUpdate()
-                ->restrictOnDelete();
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
         });
     }
 

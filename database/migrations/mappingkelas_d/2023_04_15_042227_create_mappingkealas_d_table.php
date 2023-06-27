@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('mappingkelas_d', function (Blueprint $table) {
             $table->id('idMappingKelas_D');
-            $table->bigInteger('idMapping');
+            $table->bigInteger('idMapping')->unsigned();
             $table->char('NIS', 8);
             $table->timestamps();
         });
