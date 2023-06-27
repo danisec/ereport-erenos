@@ -17,24 +17,24 @@ return new class extends Migration
             $table->foreign('idKelas', 'fk_mappingkelas_kelas')
                 ->references('idKelas')
                 ->on('kelas')
-                ->restrictOnUpdate()
-                ->restrictOnDelete();
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
         });
 
         Schema::table('mapping_kelas', function (Blueprint $table) {
             $table->foreign('idThnAjaran', 'fk_mappingkelas_tahunajaran')
                 ->references('idThnAjaran')
                 ->on('tahun_ajaran')
-                ->restrictOnUpdate()
-                ->restrictOnDelete();
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
         });
 
         Schema::table('mapping_kelas', function (Blueprint $table) {
             $table->foreign('NIP', 'fk_mappingkelas_guru')
                 ->references('NIP')
                 ->on('guru')
-                ->restrictOnUpdate()
-                ->restrictOnDelete();
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
         });
     }
 
