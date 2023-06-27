@@ -9,6 +9,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MappingJadwalController;
 use App\Http\Controllers\MappingKelasController;
+use App\Http\Controllers\MateriController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\PelajaranController;
 use App\Http\Controllers\PresensiController;
@@ -168,4 +169,35 @@ Route::controller(PresensiController::class)->name('presensi.')->middleware('aut
 
     Route::get('/dashboard/presensi/ubah-presensi/{id}/edit', 'edit')->name('edit');
     Route::put('/dashboard/presensi/{id}', 'update')->name('update');
+});
+
+Route::controller(MateriController::class)->name('materi.')->middleware('auth')->group(function () {
+    Route::get('/dashboard/materi', 'index')->name('index');
+    Route::get('/dashboard/materi/tambah-materi', 'create')->name('create');
+    Route::get('/dashboard/materi/view-materi/{id}', 'show')->name('show');
+
+    Route::post('/dashboard/materi/tambah-materi', 'store')->name('store');
+    Route::delete('/dashboard/materi/{id}', 'destroy')->name('destroy');
+
+    Route::get('/dashboard/materi/ubah-materi/{id}/edit', 'edit')->name('edit');
+    Route::put('/dashboard/materi/{id}', 'update')->name('update');
+});
+
+Route::controller(NilaiController::class)->name('nilai.')->middleware('auth')->group(function () {
+    Route::get('/dashboard/nilai', 'index')->name('index');
+    Route::get('/dashboard/nilai/tambah-nilai', 'create')->name('create');
+    Route::get('/dashboard/nilai/view-nilai/{id}', 'show')->name('show');
+
+    Route::post('/dashboard/nilai/tambah-nilai', 'store')->name('store');
+
+    Route::get('/dashboard/nilai/tambah-nilai/{pelajaran}/getPelajaran', 'getPelajaranList')->name('getPelajaranList');
+
+    Route::get('/dashboard/nilai/tambah-nilai/{nis}/getNis', 'getSiswaList')->name('getSiswaList');
+    Route::get('/dashboard/nilai/tambah-nilai/{nmSiswa}/getNmSiswa', 'getNmSiswaList')->name('getNmSiswaList');
+
+    Route::delete('/dashboard/nilai/{id}', 'destroy')->name('destroy');
+    Route::delete('/dashboard/nilai/ubah-nilai/{id}', 'destroyUbahSiswa')->name('destroyUbahSiswa');
+
+    Route::get('/dashboard/nilai/ubah-nilai/{id}/edit', 'edit')->name('edit');
+    Route::put('/dashboard/nilai/{id}', 'update')->name('update');
 });
