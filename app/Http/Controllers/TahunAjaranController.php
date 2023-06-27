@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TahunAjaran;
 use App\Services\TahunAjaranService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TahunAjaranController extends Controller
 {
@@ -75,10 +76,12 @@ class TahunAjaranController extends Controller
      */
     public function edit($id)
     {
+        $enumSemester = DB::select(DB::raw('SHOW COLUMNS FROM tahun_ajaran WHERE Field = "semester"'))[0]->Type;
+
         return view('pages.dashboard.tahunajaran.edit', [
             'title' => 'Ubah Tahun Ajaran',
             'tahunajaran' => TahunAjaran::where('idThnAjaran', $id)->first(),
-            'semester' => TahunAjaran::get()->unique('semester')->pluck('semester')->all(),
+            'semester' => explode("','", substr($enumSemester, 6, (strlen($enumSemester)-8))),
         ]);
     }
 
