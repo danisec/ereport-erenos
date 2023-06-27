@@ -1,4 +1,4 @@
-<div class="mt-2.5" x-data="{ show: false }">
+<div class="mt-2.5 hidden" x-data="{ show: false }">
     <button class="focus:outline-none" type="button" @click="show = !show">
         <img class="w-h-16 h-16 rounded-2xl" src="{{ URL('assets/icons/notification.svg') }}" alt="notification">
     </button>
