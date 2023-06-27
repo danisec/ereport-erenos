@@ -37,10 +37,10 @@ module.exports = {
         },
         extend: {
             colors: {
-                header: "#2F2CE4",
-                "nav-active": "#7B7A79",
-                hero: "#35A7FF",
                 "button-yellow": "#EDF200",
+                header: "#2F2CE4",
+                hero: "#35A7FF",
+                "nav-active": "#000",
             },
             backgroundImage: {
                 "hero-pattern": "url('/public/images/pngwing.svg')",
