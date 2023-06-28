@@ -77,6 +77,16 @@ You can start the development server using the following command:
 php artisan serve
 ```
 
+```
+npm run dev
+```
+
+or
+
+```
+yarn dev
+```
+
 The application should now be running on http://localhost:8000 or http://127.0.0.1:8000. You can access this URL in your web browser to start using E-Report Erenos.
 
 ## Bugs and Issues
