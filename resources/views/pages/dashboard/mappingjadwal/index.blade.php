@@ -77,9 +77,10 @@
                 </thead>
 
                 @if ($jadwal->count())
-                    @foreach ($jadwal as $item)
+                    @foreach ($jadwal as $index => $item)
                         <tbody>
-                            <tr class="bg-white text-base font-medium leading-5 hover:bg-gray-50">
+                            <tr
+                                class="{{ $index % 2 === 0 ? 'bg-white' : 'bg-blue-100' }} text-base font-medium leading-5">
                                 <th class="px-9" scope="row">
                                     {{ ($jadwal->currentPage() - 1) * $jadwal->perPage() + $loop->iteration }}
                                 </th>

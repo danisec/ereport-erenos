@@ -70,9 +70,10 @@
                 </thead>
 
                 @if ($pelajaran->count())
-                    @foreach ($pelajaran as $item)
+                    @foreach ($pelajaran as $index => $item)
                         <tbody>
-                            <tr class="bg-white text-base font-medium leading-5 hover:bg-gray-50">
+                            <tr
+                                class="{{ $index % 2 === 0 ? 'bg-white' : 'bg-blue-100' }} text-base font-medium leading-5">
                                 <th class="px-9" scope="row">
                                     {{ ($pelajaran->currentPage() - 1) * $pelajaran->perPage() + $loop->iteration }}
                                 </th>

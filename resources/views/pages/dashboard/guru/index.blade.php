@@ -56,9 +56,10 @@
                 </thead>
 
                 @if ($guru->count())
-                    @foreach ($guru as $item)
+                    @foreach ($guru as $index => $item)
                         <tbody>
-                            <tr class="bg-white text-base font-medium leading-5 hover:bg-gray-50">
+                            <tr
+                                class="{{ $index % 2 === 0 ? 'bg-white' : 'bg-blue-100' }} text-base font-medium leading-5">
                                 <th class="px-9" scope="row">
                                     {{ ($guru->currentPage() - 1) * $guru->perPage() + $loop->iteration }}
                                 </th>

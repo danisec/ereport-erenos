@@ -56,9 +56,10 @@
                 </thead>
 
                 @if ($tahunajaran->count())
-                    @foreach ($tahunajaran as $item)
+                    @foreach ($tahunajaran as $index => $item)
                         <tbody>
-                            <tr class="bg-white text-base font-medium leading-5 hover:bg-gray-50">
+                            <tr
+                                class="{{ $index % 2 === 0 ? 'bg-white' : 'bg-blue-100' }} text-base font-medium leading-5">
                                 <th class="px-9" scope="row">
                                     {{ ($tahunajaran->currentPage() - 1) * $tahunajaran->perPage() + $loop->iteration }}
                                 </th>
