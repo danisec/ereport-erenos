@@ -91,4 +91,4 @@ The application should now be running on http://localhost:8000 or http://127.0.0
 
 ## Bugs and Issues
 
-Have a bug or an issue with this bukapedia? [Open a new issue](https://github.com/danisec/ereport-erenos/issues/new) here on Github.
+Have a bug or an issue with this E-Report Erenos? [Open a new issue](https://github.com/danisec/ereport-erenos/issues/new) here on Github.
