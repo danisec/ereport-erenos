@@ -2,11 +2,11 @@
 
 ## About E-Report Erenos
 
-Erenos E-Report is a web application built using the Laravel 9 framework. This application provides features for managing student data, teachers, subjects, attendance, grades, and final student report results.
+E-Report Erenos is a web application built using the Laravel 9 framework. This application provides features for managing student data, teachers, subjects, attendance, grades, and final student report results.
 
 ## Installation
 
-To install and set up E-Report Laravel 9, follow the steps below:
+To install and set up E-Report Erenos Laravel 9, follow the steps below:
 
 ### Prerequisites
 
