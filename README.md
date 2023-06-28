@@ -1,64 +1,84 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/danisec/ereport-erenos/b1dfa7b84a460863b9de7dc814816f15dc69014b/public/images/logo/logo.svg" width="200"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## About E-Report Erenos
 
-## About Laravel
+Erenos E-Report is a web application built using the Laravel 9 framework. This application provides features for managing student data, teachers, subjects, attendance, grades, and final student report results.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Installation
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+To install and set up E-Report Laravel 9, follow the steps below:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Prerequisites
 
-## Learning Laravel
+-   PHP 8.0 or higher
+-   Node.js 16.xx or higher
+-   NPM or YARN
+-   Composer
+-   MySQL
+-   Web server (e.g., Apache or Nginx)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Step 1: Clone the repository
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Clone the E-Report Erenos repository from GitHub by running the following command:
 
-## Laravel Sponsors
+```
+https://github.com/danisec/ereport-erenos.git
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Step 2: Install dependencies
 
-### Premium Partners
+Navigate to the project directory and install the required dependencies:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Using Composer
 
-## Contributing
+```
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Using NPM or YARN
 
-## Code of Conduct
+```
+npm install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+yarn install
+```
 
-## Security Vulnerabilities
+### Step 3: Configure the environment
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Rename the `.env.example` file to `.env` and update the necessary configuration settings such as the database connection details.
 
-## License
+```
+cp .env.example .env
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Step 4: Generate application key
+
+Generate a new application key using the following command:
+
+```
+php artisan key:generate
+```
+
+### Step 5: Run database migrations
+
+Run the database migrations to create the required tables:
+
+```
+php artisan migrate --path="database/migrations/*"
+```
+
+### Step 6: Start the development server
+
+You can start the development server using the following command:
+
+```
+php artisan serve
+```
+
+The application should now be running on http://localhost:8000 or http://127.0.0.1:8000. You can access this URL in your web browser to start using E-Report Erenos.
+
+## Bugs and Issues
+
+Have a bug or an issue with this bukapedia? [Open a new issue](https://github.com/danisec/ereport-erenos/issues/new) here on Github.
