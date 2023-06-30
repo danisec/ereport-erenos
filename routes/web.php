@@ -7,6 +7,7 @@ use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\KelolaAkunController;
 use App\Http\Controllers\MappingJadwalController;
 use App\Http\Controllers\MappingKelasController;
 use App\Http\Controllers\MateriController;
@@ -39,7 +40,7 @@ Route::controller(LoginController::class)->group(function () {
     Route::post('/logout', 'logout')->name('login.logout')->middleware('auth');
 });
 
-Route::controller(RegisterController::class)->name('register.')->middleware('guest')->group(function () {
+Route::controller(RegisterController::class)->name('register.')->middleware('auth', 'user-role:superadmin')->group(function () {
     Route::get('/register', 'index')->name('index');
     Route::post('/register', 'store')->name('store');
 });
@@ -47,6 +48,18 @@ Route::controller(RegisterController::class)->name('register.')->middleware('gue
 Route::controller(ChangePasswordController::class)->name('changePassword.')->middleware('auth')->group(function () {
     Route::get('/change-password', 'index')->name('index');
     Route::post('/change-password', 'update')->name('update');
+});
+
+Route::controller(KelolaAkunController::class)->name('kelolaAkun.')->middleware('auth', 'user-role:superadmin')->group(function () {
+    Route::get('/dashboard/kelola-akun', 'index')->name('index');
+    Route::get('/dashboard/kelola-akun/tambah-akun', 'create')->name('create');
+    Route::get('/dashboard/kelola-akun/view-akun/{id}', 'show')->name('show');
+
+    Route::post('/dashboard/kelola-akun/tambah-akun', 'store')->name('store');
+    Route::delete('/dashboard/kelola-akun/{id}', 'destroy')->name('destroy');
+
+    Route::get('/dashboard/kelola-akun/ubah-akun/{id}/edit', 'edit')->name('edit');
+        Route::put('/dashboard/kelola-akun/{id}', 'update')->name('update');
 });
 
 Route::controller(DashboardController::class)->name('dashboard.')->middleware('auth')->group(function () {
