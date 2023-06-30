@@ -53,7 +53,7 @@ Route::controller(DashboardController::class)->name('dashboard.')->middleware('a
     Route::get('/dashboard', 'index')->name('index');
 });
 
-Route::controller(SiswaController::class)->name('siswa.')->middleware('auth')->group(function () {
+Route::controller(SiswaController::class)->name('siswa.')->middleware('auth', 'user-role:superadmin')->group(function () {
     Route::get('/dashboard/siswa', 'index')->name('index');
     Route::get('/dashboard/siswa/tambah-siswa', 'create')->name('create');
     Route::get('/dashboard/siswa/view-siswa/{id}', 'show')->name('show');
@@ -65,7 +65,7 @@ Route::controller(SiswaController::class)->name('siswa.')->middleware('auth')->g
     Route::put('/dashboard/siswa/{id}', 'update')->name('update');
 });
 
-Route::controller(GuruController::class)->name('guru.')->middleware('auth')->group(function () {
+Route::controller(GuruController::class)->name('guru.')->middleware('auth', 'user-role:superadmin')->group(function () {
     Route::get('/dashboard/guru', 'index')->name('index');
     Route::get('/dashboard/guru/tambah-guru', 'create')->name('create');
     Route::get('/dashboard/guru/view-guru/{id}', 'show')->name('show');
@@ -77,7 +77,7 @@ Route::controller(GuruController::class)->name('guru.')->middleware('auth')->gro
     Route::put('/dashboard/guru/{id}', 'update')->name('update');
 });
 
-Route::controller(KelasController::class)->name('kelas.')->middleware('auth')->group(function () {
+Route::controller(KelasController::class)->name('kelas.')->middleware('auth', 'user-role:superadmin')->group(function () {
     Route::get('/dashboard/kelas', 'index')->name('index');
     Route::get('/dashboard/kelas/tambah-kelas', 'create')->name('create');
     Route::get('/dashboard/kelas/view-kelas/{id}', 'show')->name('show');
@@ -89,7 +89,7 @@ Route::controller(KelasController::class)->name('kelas.')->middleware('auth')->g
     Route::put('/dashboard/kelas/{id}', 'update')->name('update');
 });
 
-Route::controller(TahunAjaranController::class)->name('tahunajaran.')->middleware('auth')->group(function () {
+Route::controller(TahunAjaranController::class)->name('tahunajaran.')->middleware('auth', 'user-role:superadmin')->group(function () {
     Route::get('/dashboard/tahunajaran', 'index')->name('index');
     Route::get('/dashboard/tahunajaran/tambah-tahunajaran', 'create')->name('create');
     Route::get('/dashboard/tahunajaran/view-tahunajaran/{id}', 'show')->name('show');
@@ -101,7 +101,7 @@ Route::controller(TahunAjaranController::class)->name('tahunajaran.')->middlewar
     Route::put('/dashboard/tahunajaran/{id}', 'update')->name('update');
 });
 
-Route::controller(PelajaranController::class)->name('pelajaran.')->middleware('auth')->group(function () {
+Route::controller(PelajaranController::class)->name('pelajaran.')->middleware('auth', 'user-role:superadmin')->group(function () {
     Route::get('/dashboard/pelajaran', 'index')->name('index');
     Route::get('/dashboard/pelajaran/tambah-pelajaran', 'create')->name('create');
     Route::get('/dashboard/pelajaran/view-pelajaran/{id}', 'show')->name('show');
@@ -113,7 +113,7 @@ Route::controller(PelajaranController::class)->name('pelajaran.')->middleware('a
     Route::put('/dashboard/pelajaran/{id}', 'update')->name('update');
 });
 
-Route::controller(MappingKelasController::class)->name('mappingkelas.')->middleware('auth')->group(function () {
+Route::controller(MappingKelasController::class)->name('mappingkelas.')->middleware('auth', 'user-role:superadmin')->group(function () {
     Route::get('/dashboard/mappingkelas', 'index')->name('index');
     Route::get('/dashboard/mappingkelas/tambah-mappingkelas', 'create')->name('create');
     Route::get('/dashboard/mappingkelas/view-mappingkelas/{id}', 'show')->name('show');
@@ -138,7 +138,7 @@ Route::controller(MappingKelasController::class)->name('mappingkelas.')->middlew
     Route::delete('/dashboard/mappingkelas/ubah-datasiswa/{id}/delete', 'destroykelasid')->name('destroykelasid');
 });
 
-Route::controller(MappingJadwalController::class)->name('mappingjadwal.')->middleware('auth')->group(function () {
+Route::controller(MappingJadwalController::class)->name('mappingjadwal.')->middleware('auth', 'user-role:superadmin')->group(function () {
     Route::get('/dashboard/mappingjadwal', 'index')->name('index');
     Route::get('/dashboard/mappingjadwal/tambah-mappingjadwal', 'create')->name('create');
     Route::get('/dashboard/mappingjadwal/view-mappingjadwal/{id}', 'show')->name('show');
@@ -150,7 +150,7 @@ Route::controller(MappingJadwalController::class)->name('mappingjadwal.')->middl
     Route::put('/dashboard/mappingjadwal/{id}', 'update')->name('update');
 });
 
-Route::controller(PresensiController::class)->name('presensi.')->middleware('auth')->group(function () {
+Route::controller(PresensiController::class)->name('presensi.')->middleware('auth', 'user-role:superadmin,guru')->group(function () {
     Route::get('/dashboard/presensi', 'index')->name('index');
     Route::get('/dashboard/presensi/{kelas}/filterKelas', 'filterKelasList')->name('filterKelasList');
     Route::get('/dashboard/presensi/{kelas}/{tahun}/getPresensi', 'getPresensiList')->name('getPresensiList');
@@ -171,7 +171,7 @@ Route::controller(PresensiController::class)->name('presensi.')->middleware('aut
     Route::put('/dashboard/presensi/{id}', 'update')->name('update');
 });
 
-Route::controller(MateriController::class)->name('materi.')->middleware('auth')->group(function () {
+Route::controller(MateriController::class)->name('materi.')->middleware('auth', 'user-role:superadmin,guru')->group(function () {
     Route::get('/dashboard/materi', 'index')->name('index');
     Route::get('/dashboard/materi/tambah-materi', 'create')->name('create');
     Route::get('/dashboard/materi/view-materi/{id}', 'show')->name('show');
@@ -183,7 +183,7 @@ Route::controller(MateriController::class)->name('materi.')->middleware('auth')-
     Route::put('/dashboard/materi/{id}', 'update')->name('update');
 });
 
-Route::controller(NilaiController::class)->name('nilai.')->middleware('auth')->group(function () {
+Route::controller(NilaiController::class)->name('nilai.')->middleware('auth', 'user-role:superadmin,guru')->group(function () {
     Route::get('/dashboard/nilai', 'index')->name('index');
     Route::get('/dashboard/nilai/tambah-nilai', 'create')->name('create');
     Route::get('/dashboard/nilai/view-nilai/{id}', 'show')->name('show');
