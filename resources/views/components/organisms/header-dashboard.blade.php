@@ -8,7 +8,8 @@
                         href="{{ $url == '/' ? url('') : url('') . '/dashboard' . '/' . $url }}">{{ $name }}</a>
                 @endforeach
 
-                <div x-data="{ show: false }">
+                <div x-data="{ show: false }" x-show="'{{ Auth::user()->role }}' === 'superadmin'"
+                    {{ Auth::user()->role == 'superadmin' ? '' : 'x-cloak' }}>
                     <button class="text-base font-semibold leading-7 text-white focus:outline-none" type="button"
                         @click="show = !show">
                         Data Sekolah
@@ -32,7 +33,8 @@
                     </div>
                 </div>
 
-                <div x-data="{ show: false }">
+                <div x-data="{ show: false }" x-show="'{{ Auth::user()->role }}' === 'superadmin'"
+                    {{ Auth::user()->role == 'superadmin' ? '' : 'x-cloak' }}>
                     <button class="text-base font-semibold leading-7 text-white focus:outline-none" type="button"
                         @click="show = !show">
                         Pemetaan
@@ -56,7 +58,8 @@
                     </div>
                 </div>
 
-                <div x-data="{ show: false }">
+                <div x-data="{ show: false }" x-show="'{{ Auth::user()->role }}' === 'superadmin'"
+                    {{ Auth::user()->role == 'superadmin' ? '' : 'x-cloak' }}>
                     <button class="text-base font-semibold leading-7 text-white focus:outline-none" type="button"
                         @click="show = !show">
                         Pelajaran
