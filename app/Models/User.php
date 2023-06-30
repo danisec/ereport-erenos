@@ -8,10 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Kyslik\ColumnSortable\Sortable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Sortable;
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +21,20 @@ class User extends Authenticatable
      */
 
     protected $guarded = ['id'];
+
+    public $sortable = [
+        'name',
+        'username',
+        'NIP',
+    ];
+
+    public function scopeFilter($query, array $filters)
+    {  
+        $query->when($filters['search'] ?? false, fn($query, $search) =>
+            $query->where('name', 'like', '%'. $search . '%')
+                ->orWhere('username', 'like', '%' . $search . '%')
+        );
+    }
 
     /**
      * The attributes that should be hidden for serialization.
