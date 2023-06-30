@@ -69,7 +69,15 @@ Run the database migrations to create the required tables:
 php artisan migrate --path="database/migrations/*"
 ```
 
-### Step 6: Start the development server
+### Step 6: Run database seed user
+
+Run the database seed user:
+
+```
+php artisan db:seed --class=UserSeeder
+```
+
+### Step 7: Start the development server
 
 You can start the development server using the following command:
 
@@ -88,6 +96,22 @@ yarn dev
 ```
 
 The application should now be running on http://localhost:8000 or http://127.0.0.1:8000. You can access this URL in your web browser to start using E-Report Erenos.
+
+## Login Dashboard
+
+Role Superadmin
+
+```
+username: superadmin
+password: superadmin12345
+```
+
+Role Guru
+
+```
+username: guru
+password: guru12345
+```
 
 ## Bugs and Issues
 
