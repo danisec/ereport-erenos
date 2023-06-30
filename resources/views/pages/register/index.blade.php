@@ -16,7 +16,7 @@
                 <div class="flex flex-col justify-center gap-12">
                     <div>
                         <input class="@error('name') border-red-500 bg-red-500 @enderror field-input" name="name"
-                            type="text" value="{{ old('name') }}" autofocus placeholder="Name" required>
+                            type="text" value="{{ old('name') }}" autofocus placeholder="Nama Lengkap" required>
 
                         @error('name')
                             <p class="invalid-feedback">
