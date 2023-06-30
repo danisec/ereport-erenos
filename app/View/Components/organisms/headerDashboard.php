@@ -2,6 +2,7 @@
 
 namespace App\View\Components\organisms;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
 class headerDashboard extends Component
@@ -23,33 +24,56 @@ class headerDashboard extends Component
      */
     public function render()
     {
-        $navbar = [
-            'Dashboard' => '',
-            'Pengumuman' => 'pengumuman',
-        ];
+        $userRole = Auth::user()->role;
 
-        $dataSekolah = [
-            'Siswa' => 'siswa',
-            'Guru' => 'guru',
-            'Kelas' => 'kelas',
-        ];
+        $navbar = [];
+        $dataSekolah = [];
+        $pemetaan = [];
+        $pelajaran = [];
+        $navbarLast = [];
 
-        $pemetaan = [
-            'Kelas' => 'mappingkelas',
-            'Jadwal' => 'mappingjadwal',
-        ];
+        if($userRole === 'superadmin') {
+            $navbar = [
+                'Dashboard' => '',
+                'Pengumuman' => 'pengumuman',
+            ];
 
-        $pelajaran = [
-            'Mata Pelajaran' => 'pelajaran',
-            'Materi' => 'materi',
-        ];
+            $dataSekolah = [
+                'Siswa' => 'siswa',
+                'Guru' => 'guru',
+                'Kelas' => 'kelas',
+            ];
 
-        $navbarLast = [
-            'Tahun Ajaran' => 'tahunajaran',
-            'Presensi' => 'presensi',
-            'Nilai' => 'nilai',
-            'Rapor' => 'rapor',
-        ];
+            $pemetaan = [
+                'Kelas' => 'mappingkelas',
+                'Jadwal' => 'mappingjadwal',
+            ];
+
+            $pelajaran = [
+                'Mata Pelajaran' => 'pelajaran',
+                'Materi' => 'materi',
+            ];
+
+            $navbarLast = [
+                'Tahun Ajaran' => 'tahunajaran',
+                'Presensi' => 'presensi',
+                'Nilai' => 'nilai',
+                'Rapor' => 'rapor',
+            ];
+        } elseif ($userRole === 'admin') {
+            // Menu khusus untuk peran admin
+            // ...
+        } elseif ($userRole === 'guru') {
+            $navbar = [
+                'Dashboard' => '',
+            ];
+
+            $navbarLast = [
+                'Presensi' => 'presensi',
+                'Nilai' => 'nilai',
+                'Rapor' => 'rapor',
+            ];
+        }
 
         return view('components.organisms.header-dashboard', compact(
             'navbar', 
