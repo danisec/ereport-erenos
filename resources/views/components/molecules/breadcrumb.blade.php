@@ -3,10 +3,17 @@
 <nav class="layout flex h-32 items-center justify-start" aria-label="Breadcrumb">
     <ol class="inline-flex items-center space-x-1 md:space-x-3">
         <li class="inline-flex items-center">
-            <a class="inline-flex items-center text-xl font-light text-white/70 hover:font-medium hover:text-white"
-                href="/">
-                Home
-            </a>
+            @if (Auth::user())
+                <a class="inline-flex items-center text-lg font-light text-white/70 hover:font-medium hover:text-white"
+                    href="{{ route('kelolaAkun.index') }}">
+                    Dashboard
+                </a>
+            @else
+                <a class="inline-flex items-center text-lg font-light text-white/70 hover:font-medium hover:text-white"
+                    href="{{ route('home.index') }}">
+                    Home
+                </a>
+            @endif
         </li>
         <li aria-current="login">
             <div class="flex items-center">
@@ -16,7 +23,7 @@
                         d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                         fill-rule="evenodd"></path>
                 </svg>
-                <span class="ml-1 text-xl font-light text-white/70 md:ml-2">{{ $title }}</span>
+                <span class="ml-1 text-lg font-light text-white/70 md:ml-2">{{ $title }}</span>
             </div>
         </li>
     </ol>
