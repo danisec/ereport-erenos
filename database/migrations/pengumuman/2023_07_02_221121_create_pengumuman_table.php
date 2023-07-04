@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('kehadiran', function (Blueprint $table) {
-            $table->foreign('idJadwal', 'fk_kehadiran_jadwal')
-                ->references('idJadwal')
-                ->on('jadwal')
-                ->cascadeOnDelete()
-                ->cascadeOnUpdate();
+        Schema::create('pengumuman', function (Blueprint $table) {
+            $table->id('idPengumuman');
+            $table->dateTime('tanggal');
+            $table->string('namaPengumuman', 255);
+            $table->text('pengumuman');
+            $table->timestamps();
         });
     }
 
@@ -29,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('kehadiran', function (Blueprint $table) {
-            $table->dropForeign('fk_kehadiran_jadwal');
-        });
+        Schema::dropIfExists('pengumuman');
     }
 };

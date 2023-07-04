@@ -17,7 +17,7 @@ return new class extends Migration
                 $table->foreign('idPelajaran', 'fk_materi_pelajaran')
                 ->references('idPelajaran')
                 ->on('pelajaran')
-                ->cascadeOnUpdate()
+                ->cascadeOnDelete()
                 ->cascadeOnUpdate();
         });
     }

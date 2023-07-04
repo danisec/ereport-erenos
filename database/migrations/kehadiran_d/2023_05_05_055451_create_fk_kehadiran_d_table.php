@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('idKehadiran', 'fk_kehadiran_d_kehadiran')
                 ->references('idKehadiran')
                 ->on('kehadiran')
-                ->cascadeOnUpdate()
+                ->cascadeOnDelete()
                 ->cascadeOnUpdate();
         });
 
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreign('NIS', 'fk_kehadiran_d_siswa')
                 ->references('NIS')
                 ->on('siswa')
-                ->cascadeOnUpdate()
+                ->cascadeOnDelete()
                 ->cascadeOnUpdate();
         });
     }

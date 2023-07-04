@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('idMapping', 'fk_mappingkelas_d_mappingkelas')
                 ->references('idMapping')
                 ->on('mapping_kelas')
-                ->cascadeOnUpdate()
+                ->cascadeOnDelete()
                 ->cascadeOnUpdate();
         });
 
