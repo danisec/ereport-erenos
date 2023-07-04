@@ -3,6 +3,19 @@ import jQuery from "jquery";
 import Alpine from "alpinejs";
 import "./mappingkelas";
 
+if (window.location.pathname.includes("/dashboard/pengumuman/")) {
+    import("./dateTime")
+        .then((module) => {})
+        .catch((error) => {
+            console.error("Gagal mengimpor ./dateTime:", error);
+        });
+    import("./tinymce")
+        .then((module) => {})
+        .catch((error) => {
+            console.error("Gagal mengimpor ./tinymce:", error);
+        });
+}
+
 if (window.location.pathname.includes("/dashboard/presensi/")) {
     import("./presensi")
         .then((module) => {})
