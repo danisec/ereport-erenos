@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 04, 2023 at 12:08 AM
+-- Generation Time: Jul 04, 2023 at 12:12 AM
 -- Server version: 5.7.33
 -- PHP Version: 8.2.3
 
@@ -348,6 +348,14 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `name`, `NIP`, `email`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'superadmin', 'Superadmin', '3412491256', 'superadmin@gmail.com', '2023-07-03 17:11:30', '$2y$10$S7mVpDf3vuf/gPSrdu3h1esdFwAyi/BaECp24cr2YqKTwEKEZl5WG', 1, 'I4jIgvnP2d', '2023-07-03 17:11:30', '2023-07-03 17:11:30'),
+(2, 'guru', 'Guru', '3429494466', 'guru@gmail.com', '2023-07-03 17:11:30', '$2y$10$4R4iCegkys92Q0TTQJMc/.DGijqsHOuXgZTt4XDOygeJOdilEjqcO', 0, '0ApEqhkT16', '2023-07-03 17:11:30', '2023-07-03 17:11:30');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -586,7 +594,7 @@ ALTER TABLE `tahun_ajaran`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
