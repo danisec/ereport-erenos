@@ -66,6 +66,7 @@ php artisan key:generate
 Run the database migrations to create the required tables:
 
 ```
+php artisan migrate --path="database/migrations"
 php artisan migrate --path="database/migrations/*"
 ```
 
