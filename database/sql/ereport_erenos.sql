@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 30, 2023 at 06:36 AM
+-- Generation Time: Jul 04, 2023 at 12:08 AM
 -- Server version: 5.7.33
 -- PHP Version: 8.2.3
 
@@ -171,32 +171,33 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(5, '2023_03_05_074840_add_username', 1),
-(8, '2023_03_08_065538_create_kelas_table', 2),
-(9, '2023_03_08_070748_create_pelajaran_table', 2),
-(11, '2023_03_08_085956_create_siswa_table', 4),
-(12, '2023_04_10_124741_create_tahun_ajaran_table', 5),
-(13, '2023_04_04_104016_create_guru_table', 6),
-(14, '2023_03_08_062233_create_table_jadwal', 7),
-(15, '2023_04_24_102211_create_fk_jadwal_table', 7),
-(23, '2023_06_19_112041_create_materi_table', 10),
-(24, '2023_06_19_112607_create_fk_materi_table', 10),
-(35, '2023_06_19_113101_create_nilai_table', 15),
-(36, '2023_06_24_232036_create_fk_nilai_table', 15),
-(37, '2023_06_24_231523_create_nilai_d_table', 16),
-(38, '2023_06_24_232524_create_fk_nilai_d_table', 17),
-(39, '2023_04_15_034156_create_mappingkelas_table', 18),
-(40, '2023_04_15_035130_create_fk_mappingkelas_table', 18),
-(41, '2023_04_15_042227_create_mappingkealas_d_table', 19),
-(42, '2023_04_15_042612_create_fk_mappingkelas_d_table', 19),
-(43, '2023_05_05_054451_create_kehadiran_table', 20),
-(44, '2023_05_05_055054_create_fk_kehadiran_table', 20),
-(45, '2023_05_05_054735_create_kehadiran_d_table', 21),
-(46, '2023_05_05_055451_create_fk_kehadiran_d_table', 21);
+(1, '2023_03_08_062233_create_table_jadwal', 1),
+(2, '2023_03_08_065538_create_kelas_table', 1),
+(3, '2023_03_08_070748_create_pelajaran_table', 1),
+(4, '2023_03_08_085956_create_siswa_table', 1),
+(5, '2023_04_04_104016_create_guru_table', 1),
+(6, '2023_04_10_124741_create_tahun_ajaran_table', 1),
+(7, '2023_04_15_034156_create_mappingkelas_table', 1),
+(8, '2023_04_15_035130_create_fk_mappingkelas_table', 1),
+(9, '2023_04_15_042227_create_mappingkealas_d_table', 1),
+(10, '2023_04_15_042612_create_fk_mappingkelas_d_table', 1),
+(11, '2023_04_24_102211_create_fk_jadwal_table', 1),
+(12, '2023_05_05_054451_create_kehadiran_table', 1),
+(13, '2023_05_05_054735_create_kehadiran_d_table', 1),
+(14, '2023_05_05_055054_create_fk_kehadiran_table', 1),
+(15, '2023_05_05_055451_create_fk_kehadiran_d_table', 1),
+(16, '2023_06_19_112041_create_materi_table', 1),
+(17, '2023_06_19_112607_create_fk_materi_table', 1),
+(18, '2023_06_19_113101_create_nilai_table', 1),
+(19, '2023_06_24_231523_create_nilai_d_table', 1),
+(20, '2023_06_24_232036_create_fk_nilai_table', 1),
+(21, '2023_06_24_232524_create_fk_nilai_d_table', 1),
+(22, '2023_07_02_221121_create_pengumuman_table', 1),
+(23, '2014_10_12_000000_create_users_table', 2),
+(24, '2014_10_12_100000_create_password_resets_table', 2),
+(25, '2019_08_19_000000_create_failed_jobs_table', 2),
+(26, '2019_12_14_000001_create_personal_access_tokens_table', 2),
+(27, '2023_03_05_074840_add_username', 2);
 
 -- --------------------------------------------------------
 
@@ -259,6 +260,21 @@ CREATE TABLE `pelajaran` (
   `deskripsiB` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `deskripsiC` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `deskripsiD` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengumuman`
+--
+
+CREATE TABLE `pengumuman` (
+  `idPengumuman` bigint(20) UNSIGNED NOT NULL,
+  `tanggal` datetime NOT NULL,
+  `namaPengumuman` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pengumuman` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -330,14 +346,6 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `name`, `NIP`, `email`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'superadmin', 'Superadmin', '3412491256', 'superadmin@gmail.com', '2023-06-29 23:32:34', '$2y$10$S7mVpDf3vuf/gPSrdu3h1esdFwAyi/BaECp24cr2YqKTwEKEZl5WG', 1, '49SStmT3csdkMjuZrqlGhA3xnQwVECL76EYba3wmpMdpw8ALgcCqUCuXqeUf', '2023-06-29 23:32:34', '2023-06-29 23:32:34'),
-(2, 'guru', 'Guru', '3429494466', 'guru@gmail.com', '2023-06-29 23:32:34', '$2y$10$4R4iCegkys92Q0TTQJMc/.DGijqsHOuXgZTt4XDOygeJOdilEjqcO', 0, 'WT1yqFj4S4', '2023-06-29 23:32:34', '2023-06-29 23:32:34');
 
 --
 -- Indexes for dumped tables
@@ -447,6 +455,12 @@ ALTER TABLE `pelajaran`
   ADD PRIMARY KEY (`idPelajaran`);
 
 --
+-- Indexes for table `pengumuman`
+--
+ALTER TABLE `pengumuman`
+  ADD PRIMARY KEY (`idPengumuman`);
+
+--
 -- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
@@ -530,7 +544,7 @@ ALTER TABLE `materi`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `nilai`
@@ -551,6 +565,12 @@ ALTER TABLE `pelajaran`
   MODIFY `idPelajaran` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `pengumuman`
+--
+ALTER TABLE `pengumuman`
+  MODIFY `idPengumuman` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
@@ -566,7 +586,7 @@ ALTER TABLE `tahun_ajaran`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -585,20 +605,20 @@ ALTER TABLE `jadwal`
 -- Constraints for table `kehadiran`
 --
 ALTER TABLE `kehadiran`
-  ADD CONSTRAINT `fk_kehadiran_jadwal` FOREIGN KEY (`idJadwal`) REFERENCES `jadwal` (`idJadwal`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_kehadiran_jadwal` FOREIGN KEY (`idJadwal`) REFERENCES `jadwal` (`idJadwal`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `kehadiran_d`
 --
 ALTER TABLE `kehadiran_d`
-  ADD CONSTRAINT `fk_kehadiran_d_kehadiran` FOREIGN KEY (`idKehadiran`) REFERENCES `kehadiran` (`idKehadiran`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_kehadiran_d_siswa` FOREIGN KEY (`NIS`) REFERENCES `siswa` (`NIS`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_kehadiran_d_kehadiran` FOREIGN KEY (`idKehadiran`) REFERENCES `kehadiran` (`idKehadiran`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_kehadiran_d_siswa` FOREIGN KEY (`NIS`) REFERENCES `siswa` (`NIS`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `mappingkelas_d`
 --
 ALTER TABLE `mappingkelas_d`
-  ADD CONSTRAINT `fk_mappingkelas_d_mappingkelas` FOREIGN KEY (`idMapping`) REFERENCES `mapping_kelas` (`idMapping`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_mappingkelas_d_mappingkelas` FOREIGN KEY (`idMapping`) REFERENCES `mapping_kelas` (`idMapping`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_mappingkelas_d_siswa` FOREIGN KEY (`NIS`) REFERENCES `siswa` (`NIS`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -613,22 +633,22 @@ ALTER TABLE `mapping_kelas`
 -- Constraints for table `materi`
 --
 ALTER TABLE `materi`
-  ADD CONSTRAINT `fk_materi_pelajaran` FOREIGN KEY (`idPelajaran`) REFERENCES `pelajaran` (`idPelajaran`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_materi_pelajaran` FOREIGN KEY (`idPelajaran`) REFERENCES `pelajaran` (`idPelajaran`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `nilai`
 --
 ALTER TABLE `nilai`
-  ADD CONSTRAINT `fk_nilai_guru` FOREIGN KEY (`NIP`) REFERENCES `guru` (`NIP`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_nilai_kelas` FOREIGN KEY (`idKelas`) REFERENCES `kelas` (`idKelas`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_nilai_materi` FOREIGN KEY (`idMateri`) REFERENCES `materi` (`idMateri`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_nilai_guru` FOREIGN KEY (`NIP`) REFERENCES `guru` (`NIP`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_nilai_kelas` FOREIGN KEY (`idKelas`) REFERENCES `kelas` (`idKelas`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_nilai_materi` FOREIGN KEY (`idMateri`) REFERENCES `materi` (`idMateri`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `nilai_d`
 --
 ALTER TABLE `nilai_d`
-  ADD CONSTRAINT `fk_nilai_d_nilai` FOREIGN KEY (`idNilai`) REFERENCES `nilai` (`idNilai`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_nilai_d_siswa` FOREIGN KEY (`NIS`) REFERENCES `siswa` (`NIS`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_nilai_d_nilai` FOREIGN KEY (`idNilai`) REFERENCES `nilai` (`idNilai`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_nilai_d_siswa` FOREIGN KEY (`NIS`) REFERENCES `siswa` (`NIS`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
