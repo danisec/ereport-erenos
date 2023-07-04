@@ -13,6 +13,7 @@ use App\Http\Controllers\MappingKelasController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\PelajaranController;
+use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\PresensiController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\TahunAjaranController;
@@ -64,6 +65,18 @@ Route::controller(KelolaAkunController::class)->name('kelolaAkun.')->middleware(
 
 Route::controller(DashboardController::class)->name('dashboard.')->middleware('auth')->group(function () {
     Route::get('/dashboard', 'index')->name('index');
+});
+
+Route::controller(PengumumanController::class)->name('pengumuman.')->middleware('auth', 'user-role:superadmin')->group(function () {
+    Route::get('/dashboard/pengumuman', 'index')->name('index');
+    Route::get('/dashboard/pengumuman/tambah-pengumuman', 'create')->name('create');
+    Route::get('/dashboard/pengumuman/view-pengumuman/{id}', 'show')->name('show');
+
+    Route::post('/dashboard/pengumuman/tambah-pengumuman', 'store')->name('store');
+    Route::delete('/dashboard/pengumuman/{id}', 'destroy')->name('destroy');
+
+    Route::get('/dashboard/pengumuman/ubah-pengumuman/{id}/edit', 'edit')->name('edit');
+    Route::put('/dashboard/pengumuman/{id}', 'update')->name('update');
 });
 
 Route::controller(SiswaController::class)->name('siswa.')->middleware('auth', 'user-role:superadmin')->group(function () {
