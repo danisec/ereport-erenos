@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengumuman;
+use App\Services\PengumumanService;
 use Illuminate\Http\Request;
 
 class PengumumanController extends Controller
 {
+    public function __construct(PengumumanService $pengumumanService)
+    {
+        $this->pengumumanService = $pengumumanService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -40,18 +46,7 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'tanggal' => 'required',
-            'namaPengumuman' => 'required|max:255',
-            'pengumuman' => 'required',
-        ], [
-            'tanggal.required' => 'Tanggal harus diisi',
-            'namaPengumuman.required' => 'Nama pengumuman harus diisi',
-            'namaPengumuman.max' => 'Nama pengumuman maksimal 255 karakter',
-            'pengumuman.required' => 'Pengumuman harus diisi',
-        ]);
-
-        Pengumuman::create($validatedData);
+        $this->pengumumanService->storePengumuman($request);
 
         $notif = notify()->success('Data Pengumuman Berhasil Ditambahkan');
 
@@ -95,15 +90,7 @@ class PengumumanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'tanggal' => '',
-            'namaPengumuman' => 'max:255',
-            'pengumuman' => '',
-        ], [
-            'namaPengumuman.max' => 'Nama pengumuman maksimal 255 karakter',
-        ]);
-
-        Pengumuman::where('idPengumuman', $id)->update($validatedData);
+        $this->pengumumanService->updatePengumuman($request, $id);
 
         $notif = notify()->success('Data Pengumuman Berhasil Ditambahkan');
 
