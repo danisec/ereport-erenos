@@ -33,4 +33,9 @@ class Materi extends Model
     {
         return $this->belongsTo(Pelajaran::class, 'idPelajaran', 'idPelajaran');
     }
+
+    public function nilai()
+    {
+        return $this->hasMany(Nilai::class, 'idMateri', 'idMateri');
+    }
 }
