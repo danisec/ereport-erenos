@@ -51,4 +51,9 @@ class Nilai extends Model
     {
         return $this->belongsTo(Guru::class, 'NIP', 'NIP');
     }
+
+    public function nilai_d()
+    {
+        return $this->hasMany(Nilai_D::class, 'idNilai', 'idNilai');
+    }
 }
