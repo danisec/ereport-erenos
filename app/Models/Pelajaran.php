@@ -28,4 +28,9 @@ class Pelajaran extends Model
                         ->orWhere('nmSingkatan', 'like', '%' . $search . '%')
         );
     }
+
+    public function materi()
+    {
+        return $this->hasMany(Materi::class, 'idPelajaran', 'idPelajaran');
+    }
 }
