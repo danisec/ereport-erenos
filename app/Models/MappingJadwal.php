@@ -57,4 +57,9 @@ class MappingJadwal extends Model
     {
         return $this->belongsTo(Pelajaran::class, 'idPelajaran', 'idPelajaran');
     }
+
+    public function kehadiran()
+    {
+        return $this->hasMany(Presensi::class, 'idJadwal', 'idJadwal');
+    }
 }
