@@ -17,8 +17,10 @@ class GuruFactory extends Factory
     public function definition()
     {
         return [
-            'nig' => fake()->randomNumber(8),
-            'nama_guru' => fake()->name(),
+            'NIP' => fake()->randomNumber(8),
+            'namaGuru' => fake()->name(),
+            'created_at' => fake()->dateTimeBetween('2024-05-01', '2024-06-31'),
+            'updated_at' => fake()->dateTimeBetween('2024-05-01', '2024-06-31'),
         ];
     }
 }
