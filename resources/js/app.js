@@ -3,6 +3,27 @@ import jQuery from "jquery";
 import Alpine from "alpinejs";
 import "./mappingkelas";
 
+if (
+    window.location.pathname == "/dashboard" ||
+    window.location.pathname == "/dashboard/"
+) {
+    import("./chartGuruSiswa")
+        .then((module) => {})
+        .catch((error) => {
+            console.error("Gagal mengimpor ./chartGuruSiswa:", error);
+        });
+    import("./chartSiswa")
+        .then((module) => {})
+        .catch((error) => {
+            console.error("Gagal mengimpor ./chartSiswa:", error);
+        });
+    import("./chartGuru")
+        .then((module) => {})
+        .catch((error) => {
+            console.error("Gagal mengimpor ./chartGuru:", error);
+        });
+}
+
 if (window.location.pathname.includes("/dashboard/pengumuman/")) {
     import("./dateTime")
         .then((module) => {})
