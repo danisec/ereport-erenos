@@ -17,11 +17,13 @@ class SiswaFactory extends Factory
     public function definition()
     {
         return [
-            'nis' => fake()->randomNumber(8),
-            'nama_siswa' => fake()->name(),
-            'nama_panggilan' => fake()->firstName(),
-            'tinggi_badan' => fake()->randomNumber(3),
-            'berat_badan' => fake()->randomNumber(3),
+            'NIS' => fake()->randomNumber(8),
+            'nmSiswa' => fake()->name(),
+            'nmPanggil' => fake()->firstName(),
+            'tinggi' => fake()->randomNumber(3),
+            'berat' => fake()->randomNumber(3),
+            'created_at' => fake()->dateTimeBetween('2024-05-01', '2024-06-31'),
+            'updated_at' => fake()->dateTimeBetween('2024-05-01', '2024-06-31'),
         ];
     }
 }
