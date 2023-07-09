@@ -52,4 +52,9 @@ class Presensi extends Model
     {
         return $this->belongsTo(Guru::class, 'NIP', 'NIP');
     }
+
+    public function kehadiran_d()
+    {
+        return $this->hasMany(presensiSiswa::class, 'idKehadiran', 'idKehadiran');
+    }
 }
