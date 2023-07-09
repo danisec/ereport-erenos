@@ -40,11 +40,10 @@ class NilaiService
 
             $validatedNilaiD = $request->validate([
                 'nilai' => 'required',
-                'NIS' => 'required|unique:nilai_d,NIS',
+                'NIS' => 'required',
             ], [
                 'nilai.required' => 'Nilai Harus Diisi',
                 'NIS.required' => 'NIS Harus Diisi',
-                'NIS.unique' => 'Nama Siswa / NIS Sudah Ada',
             ]);
 
             $nilaiD_Data = [];
