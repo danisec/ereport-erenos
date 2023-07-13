@@ -6,7 +6,7 @@
         <div class="w-full rounded-2xl bg-white py-5 shadow-sm">
 
             <div class="w-6/12 rounded-r-2xl bg-hero py-2">
-                <h4 class="text-gray-9000 px-11 text-2xl font-bold text-white">Menambah Nilai</h4>
+                <h4 class="text-gray-9000 px-11 text-2xl font-bold text-white">Mengubah Nilai</h4>
             </div>
 
             <form class="flex flex-col gap-3 px-11 pt-9" action="{{ route('nilai.update', $nilai->idNilai) }}"
