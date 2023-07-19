@@ -7,7 +7,7 @@
         <div class="relative overflow-x-auto rounded-2xl shadow-sm">
             <table class="w-full text-left">
 
-                <div class="bg-white py-5 px-9">
+                <div class="bg-white px-9 py-5">
                     <div class="flex h-14 flex-row items-center justify-between rounded-3xl bg-hero px-20">
                         <h4 class="text-2xl font-bold text-white">Data Mapping Kelas - Siswa</h4>
 
@@ -71,7 +71,7 @@
                                     {{ ($mappingkelas->currentPage() - 1) * $mappingkelas->perPage() + $loop->iteration }}
                                 </th>
                                 <td class="pl-6">
-                                    {{ $item->tahunajaran->thnAjaran }}
+                                    {{ $item->tahunajaran->thnAjaran }} - {{ $item->tahunajaran->semester }}
                                 </td>
                                 <td class="pl-6">
                                     {{ $item->kelas->kelas }}
