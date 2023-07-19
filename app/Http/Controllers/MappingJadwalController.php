@@ -39,7 +39,7 @@ class MappingJadwalController extends Controller
     {
         return view('pages.dashboard.mappingjadwal.create', [
             'title' => 'Tambah Mapping Jadwal',
-            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get()->unique('thnAjaran'),
+            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get(),
             'kelas' => Kelas::orderBy('kelas', 'asc')->get(),
             'guru' => Guru::orderBy('namaGuru', 'asc')->get(),
             'pelajaran' => Pelajaran::orderBy('nmPelajaran', 'asc')->get()
