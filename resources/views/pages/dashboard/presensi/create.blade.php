@@ -25,7 +25,7 @@
                                     <option selected disabled hidden>Tahun Ajaran</option>
                                     @foreach ($tahunAjaran as $item)
                                         <option value="{{ $item->idThnAjaran }}">
-                                            {{ $item->tahunajaran->thnAjaran }}
+                                            {{ $item->tahunajaran->thnAjaran }} - {{ $item->tahunajaran->semester }}
                                         </option>
                                     @endforeach
                                 </select>
