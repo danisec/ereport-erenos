@@ -24,8 +24,8 @@
                                 <p class="mb-2 w-8 text-xl font-medium leading-9">:</p>
 
                                 <input class="field-input-gray w-64" name="idKelas"
-                                    value="{{ $presensi->jadwal->tahunajaran->thnAjaran }}" required
-                                    @disabled(true) @readonly(true) />
+                                    value="{{ $presensi->jadwal->tahunajaran->thnAjaran }} - {{ $presensi->jadwal->tahunajaran->semester }}"
+                                    required @disabled(true) @readonly(true) />
                             </div>
                         </div>
 
@@ -131,7 +131,7 @@
                             @foreach ($presensiSiswa as $item)
                                 <tbody>
                                     <tr class="bg-white text-base font-medium leading-5 hover:bg-gray-50">
-                                        <th class="py-2 px-9" scope="row">
+                                        <th class="px-9 py-2" scope="row">
                                             {{ $loop->iteration }}
                                         </th>
                                         <td class="py-2 pl-6">
