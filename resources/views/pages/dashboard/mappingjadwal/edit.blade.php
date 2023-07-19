@@ -23,10 +23,11 @@
 
                                 <select class="field-input-indigo w-72" name="idThnAjaran" required>
                                     <option value="{{ $jadwal->idThnAjaran }}" selected hidden>
-                                        {{ $jadwal->tahunajaran->thnAjaran }}
+                                        {{ $jadwal->tahunajaran->thnAjaran }} - {{ $jadwal->tahunajaran->semester }}
                                     </option>
                                     @foreach ($tahunajaran as $item)
-                                        <option value="{{ $item->idThnAjaran }}">{{ $item->thnAjaran }}</option>
+                                        <option value="{{ $item->idThnAjaran }}">{{ $item->thnAjaran }} -
+                                            {{ $item->semester }}</option>
                                     @endforeach
                                 </select>
                             </div>
