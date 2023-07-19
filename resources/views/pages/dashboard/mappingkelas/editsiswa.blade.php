@@ -18,8 +18,8 @@
                             <p class="mb-2 w-8 text-xl font-medium leading-9">:</p>
 
                             <input class="field-input-gray w-52" name="idThnAjaran"
-                                value="{{ $mappingkelas->tahunajaran->thnAjaran }}" @disabled(true)
-                                @readonly(true)>
+                                value="{{ $mappingkelas->tahunajaran->thnAjaran }} - {{ $mappingkelas->tahunajaran->semester }}"
+                                @disabled(true) @readonly(true)>
                         </div>
                     </div>
 
@@ -50,7 +50,7 @@
 
             </div>
 
-            <form class="mt-8 mb-2 ml-32 flex flex-col gap-6 px-11"
+            <form class="mb-2 ml-32 mt-8 flex flex-col gap-6 px-11"
                 action="/dashboard/mappingkelas/ubah-datasiswa/{{ $idMapping->idMapping }}" method="post">
                 @method('put')
                 @csrf
