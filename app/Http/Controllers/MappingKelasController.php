@@ -40,7 +40,7 @@ class MappingKelasController extends Controller
     {
         return view('pages.dashboard.mappingkelas.create', [
             'title' => 'Tambah Mapping Kelas',
-            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get()->unique('thnAjaran'),
+            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get(),
             'kelas' => Kelas::orderBy('kelas', 'asc')->get(),
             'guru' => Guru::orderBy('namaGuru', 'asc')->get(),
         ]);
@@ -142,7 +142,7 @@ class MappingKelasController extends Controller
             'title' => 'Ubah Mapping Kelas',
             'mappingkelas' => $mappingkelas,
             'mappingkelasd' => $mappingkelasd,
-            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get()->unique('thnAjaran'),
+            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get(),
             'kelas' => Kelas::orderBy('kelas', 'asc')->get(),
             'guru' => Guru::orderBy('namaGuru', 'asc')->get(),
         ]);
