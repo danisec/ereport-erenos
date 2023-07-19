@@ -202,6 +202,16 @@ function showSiswaTable(siswaData) {
             .addClass("field-input-indigo mt-1 w-40")
             .attr("name", "status[]") // Tambahkan tanda kurung siku ([]) untuk menandakan bahwa ini adalah array
             .prop("required", true);
+
+        // Tambahkan opsi "Status" yang dinonaktifkan sebagai pilihan pertama
+        const defaultOption = $("<option>")
+            .attr("value", "")
+            .text("Status")
+            .prop("selected", true)
+            .prop("disabled", true)
+            .prop("hidden", true);
+        selectStatus.append(defaultOption);
+
         // Tambahkan option-option ke dalam select
         ["Hadir", "Izin", "Sakit", "Alpha"].forEach(function (optionValue) {
             const option = $("<option>")
