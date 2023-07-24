@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('jadwal', function (Blueprint $table) {
             $table->id('idJadwal');
             $table->bigInteger('idKelas')->unsigned();
-            $table->bigInteger('idThnAjaran')->unsigned();
+            $table->bigInteger('idSemester')->unsigned();
             $table->char('NIP', 10);
             $table->enum('hari', [
                 'senin',
