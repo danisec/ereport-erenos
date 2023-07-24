@@ -37,6 +37,11 @@ class Nilai extends Model
         );
     }
 
+    public function semester() 
+    {
+        return $this->belongsTo(Semester::class, 'idSemester', 'idSemester');
+    }
+
     public function materi() 
     {
         return $this->belongsTo(Materi::class, 'idMateri', 'idMateri');
