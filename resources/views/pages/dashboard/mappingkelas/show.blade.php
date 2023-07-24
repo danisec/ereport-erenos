@@ -19,8 +19,8 @@
                             <p class="mb-2 w-8 text-xl font-medium leading-9">:</p>
 
                             <input class="field-input-gray w-52" name="idThnAjaran"
-                                value="{{ $mappingkelas->tahunajaran->thnAjaran }} - {{ $mappingkelas->tahunajaran->semester }}"
-                                @disabled(true) @readonly(true)>
+                                value="{{ $mappingkelas->tahunajaran->thnAjaran }}" @disabled(true)
+                                @readonly(true)>
                         </div>
 
                         <div class="flex flex-row items-center">
