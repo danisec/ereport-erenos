@@ -71,7 +71,7 @@
                                     {{ ($mappingkelas->currentPage() - 1) * $mappingkelas->perPage() + $loop->iteration }}
                                 </th>
                                 <td class="pl-6">
-                                    {{ $item->tahunajaran->thnAjaran }} - {{ $item->tahunajaran->semester }}
+                                    {{ $item->tahunajaran->thnAjaran }}
                                 </td>
                                 <td class="pl-6">
                                     {{ $item->kelas->kelas }}
