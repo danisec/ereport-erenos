@@ -22,9 +22,9 @@ return new class extends Migration
         });
 
         Schema::table('mapping_kelas', function (Blueprint $table) {
-            $table->foreign('idThnAjaran', 'fk_mappingkelas_tahunajaran')
-                ->references('idThnAjaran')
-                ->on('tahun_ajaran')
+            $table->foreign('idSemester', 'fk_mappingkelas_semester')
+                ->references('idSemester')
+                ->on('semester')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
         });
