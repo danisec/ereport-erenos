@@ -15,9 +15,10 @@
 
                     <div class="flex flex-row items-center gap-36">
                         <div class="flex flex-row items-center">
-                            <label class="mb-2 w-32 text-xl font-medium leading-9">Kelas</label>
+                            <label class="mb-2 w-36 text-xl font-medium leading-9">Tahun Ajaran</label>
 
-                            <input class="field-input-gray w-40" name="idKelas" value="{{ $nilai->kelas->kelas }}"
+                            <input class="field-input-gray w-48" name="idSemester"
+                                value="{{ $nilai->semester->tahunajaran->thnAjaran }} - {{ $nilai->semester->semester }}"
                                 required @disabled(true) @readonly(true) />
                         </div>
 
@@ -32,7 +33,14 @@
                 </div>
 
                 <div class="flex flex-row items-center">
-                    <label class="mb-2 w-32 text-xl font-medium leading-9">Pelajaran</label>
+                    <label class="mb-2 w-36 text-xl font-medium leading-9">Kelas</label>
+
+                    <input class="field-input-gray w-48" name="idKelas" value="{{ $nilai->kelas->kelas }}" required
+                        @disabled(true) @readonly(true) />
+                </div>
+
+                <div class="flex flex-row items-center">
+                    <label class="mb-2 w-36 text-xl font-medium leading-9">Pelajaran</label>
 
                     <input class="field-input-gray w-96" name="idPelajaran"
                         value="{{ $nilai->materi->pelajaran->nmPelajaran }}" required @disabled(true)
@@ -40,21 +48,21 @@
                 </div>
 
                 <div class="flex flex-row items-center">
-                    <label class="mb-2 w-32 text-xl font-medium leading-9">Materi</label>
+                    <label class="mb-2 w-36 text-xl font-medium leading-9">Materi</label>
 
                     <input class="field-input-gray w-96" name="idMateri" value="{{ $nilai->materi->materi }}" required
                         @disabled(true) @readonly(true) />
                 </div>
 
                 <div class="flex flex-row items-center">
-                    <label class="mb-2 w-32 text-xl font-medium leading-9">Aspek</label>
+                    <label class="mb-2 w-36 text-xl font-medium leading-9">Aspek</label>
 
                     <input class="field-input-gray w-48" name="aspek" value="{{ $nilai->aspek }}" required
                         @disabled(true) @readonly(true) />
                 </div>
 
                 <div class="flex flex-row items-center">
-                    <label class="mb-2 w-32 text-xl font-medium leading-9">Jenis</label>
+                    <label class="mb-2 w-36 text-xl font-medium leading-9">Jenis</label>
 
                     <input class="field-input-gray w-48" name="jenis" value="{{ $nilai->jenis }}" required
                         @disabled(true) @readonly(true) />
@@ -69,10 +77,10 @@
                                     No.
                                 </th>
                                 <th class="py-3 pl-3 text-white" scope="col">
-                                    Siswa
+                                    NIS
                                 </th>
                                 <th class="py-3 pl-3 text-white" scope="col">
-                                    NIS
+                                    Siswa
                                 </th>
                                 <th class="py-3 pl-3 text-white" scope="col">
                                     Nilai
@@ -86,14 +94,14 @@
                                     <tr class="bg-white text-base font-medium leading-5 hover:bg-gray-50">
                                         <th class="px-9" scope="row"> {{ $loop->iteration }}</th>
                                         <td class="pl-3">
-                                            <input class="field-input-gray text-md nilai-input w-72 font-normal"
-                                                name="nmSiswa[]" value="{{ $item->siswa->nmSiswa }}" required
-                                                @disabled(true) @readonly(true) />
-                                        </td>
-                                        <td class="pl-3">
                                             <input
                                                 class="field-input-gray nis-dropdown text-md nilai-input w-40 font-normal"
                                                 name="NIS[]" value="{{ $item->siswa->NIS }}" required
+                                                @disabled(true) @readonly(true) />
+                                        </td>
+                                        <td class="pl-3">
+                                            <input class="field-input-gray text-md nilai-input w-72 font-normal"
+                                                name="nmSiswa[]" value="{{ $item->siswa->nmSiswa }}" required
                                                 @disabled(true) @readonly(true) />
                                         </td>
                                         <td class="pl-3">
