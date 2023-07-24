@@ -12,6 +12,7 @@ class NilaiService
     public function storeNilai(Request $request)
     {
         $validatedData = $request->validate([
+            'idSemester' => 'required',
             'tanggal' => 'required|date',
             'aspek' => 'required|in:Pengetahuan,Keterampilan',
             'jenis' => 'required|in:Harian,Pertengahan Tengah Semester,Pertengahan Akhir Semester',
@@ -19,6 +20,7 @@ class NilaiService
             'idKelas' => 'required',
             'NIP' => 'required',
         ], [
+            'idSemester.required' => 'Tahun Ajaran Harus Diisi',
             'tanggal.required' => 'Tanggal Harus Diisi',
             'tanggal.date' => 'Tanggal Harus Berupa Tanggal',
             'aspek.required' => 'Aspek Harus Diisi',
