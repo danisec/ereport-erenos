@@ -7,7 +7,7 @@
         <div class="relative overflow-x-auto rounded-2xl shadow-sm">
             <table class="w-full text-left">
 
-                <div class="bg-white py-5 px-9">
+                <div class="bg-white px-9 py-5">
                     <div class="flex h-14 flex-row items-center justify-between rounded-3xl bg-hero px-20">
                         <h4 class="text-2xl font-bold text-white">Tahun Ajaran</h4>
 
@@ -37,7 +37,7 @@
                         </th>
                         <th class="px-6 py-3" scope="col">
                             <div class="flex flex-row items-center gap-1">
-                                @sortablelink('thnAjaran', 'Tahun Ajaran')
+                                @sortablelink('idThnAjaran', 'Tahun Ajaran')
 
                                 <x-atoms.sorting />
                             </div>
@@ -55,26 +55,26 @@
                     </tr>
                 </thead>
 
-                @if ($tahunajaran->count())
-                    @foreach ($tahunajaran as $index => $item)
+                @if ($semester->count())
+                    @foreach ($semester as $index => $item)
                         <tbody>
                             <tr
                                 class="{{ $index % 2 === 0 ? 'bg-white' : 'bg-blue-100' }} text-base font-medium leading-5">
                                 <th class="px-9" scope="row">
-                                    {{ ($tahunajaran->currentPage() - 1) * $tahunajaran->perPage() + $loop->iteration }}
+                                    {{ ($semester->currentPage() - 1) * $semester->perPage() + $loop->iteration }}
                                 </th>
                                 <td class="pl-6">
-                                    {{ $item->thnAjaran }}
+                                    {{ $item->tahunajaran->thnAjaran }}
                                 </td>
                                 <td class="pl-6">
                                     {{ $item->semester }}
                                 </td>
                                 <td class="mr-3 flex flex-row items-center gap-5 2xl:m-0">
-                                    <a href="{{ route('tahunajaran.show', $item->idThnAjaran) }}">
+                                    <a href="{{ route('tahunajaran.show', $item->idSemester) }}">
                                         <x-atoms.eye :alt="'detail-tahunajaran'" />
                                     </a>
 
-                                    <a href="{{ route('tahunajaran.edit', $item->idThnAjaran) }}">
+                                    <a href="{{ route('tahunajaran.edit', $item->idSemester) }}">
                                         <x-atoms.pencil :alt="'edit-tahunajaran'" />
                                     </a>
 
@@ -84,8 +84,8 @@
                                         </button>
 
                                         <x-molecules.modaldelete :title="'Apakah Anda akan menghapus tahun ajaran : ' .
-                                            $item->thnAjaran .
-                                            ' ?'" :action="route('tahunajaran.destroy', $item->idThnAjaran)" />
+                                            $item->tahunajaran->thnAjaran .
+                                            ' ?'" :action="route('tahunajaran.destroy', $item->idSemester)" />
                                     </div>
 
                                 </td>
@@ -96,7 +96,7 @@
             </table>
 
             <div class="bg-white p-6">
-                {{ $tahunajaran->links('vendor.pagination.tailwind') }}
+                {{ $semester->links('vendor.pagination.tailwind') }}
             </div>
 
         </div>
