@@ -20,7 +20,7 @@
                                 <p class="mb-2 w-8 text-xl font-medium leading-9">:</p>
 
                                 <input class="field-input-gray w-64"
-                                    value="{{ $presensi->jadwal->tahunajaran->thnAjaran }} - {{ $presensi->jadwal->tahunajaran->semester }}"
+                                    value="{{ $presensi->jadwal->semester->tahunajaran->thnAjaran }} - {{ $presensi->jadwal->semester->semester }}"
                                     @disabled(true) @readonly(true) />
                             </div>
                         </div>
