@@ -42,14 +42,14 @@ class PresensiController extends Controller
     public function create()
     {
         // Get data from MappingJadwal model, get kelas using idKelas foreignkey
-        $tahunAjaran = MappingJadwal::with('tahunajaran')->orderBy('idThnAjaran', 'desc')->get()->unique('idThnAjaran');
+        $semester = MappingJadwal::with('semester')->orderBy('idSemester', 'desc')->get()->unique('idSemester');
         $kelas = MappingJadwal::with('kelas')->get()->unique('idKelas');
         $pelajaran = MappingJadwal::with('pelajaran')->get();
         $guru = MappingJadwal::with('guru')->get();
 
         return view('pages.dashboard.presensi.create', [
             'title' => 'Tambah Presensi',
-            'tahunAjaran' => $tahunAjaran,
+            'semester' => $semester,
             'kelas' => $kelas,
             'pelajaran' => $pelajaran,
             'guru' => $guru,
@@ -241,7 +241,7 @@ class PresensiController extends Controller
      */
     public function getTahunAjaranList($tahunAjaran)
     {
-        $tahunAjaran = MappingJadwal::with('tahunajaran','kelas')->where('idThnAjaran', $tahunAjaran)->get();
+        $tahunAjaran = MappingJadwal::with('semester','kelas')->where('idSemester', $tahunAjaran)->get()->unique('idKelas');
 
         return response()->json($tahunAjaran);
     }
@@ -304,7 +304,7 @@ class PresensiController extends Controller
      */
     public function filterKelasList($kelas)
     {
-        $kelas = MappingJadwal::with('kelas','tahunajaran')->where('idKelas', $kelas)->get();
+        $kelas = MappingJadwal::with('kelas','semester.tahunajaran')->where('idKelas', $kelas)->get()->unique('idSemester');
 
         return response()->json($kelas);
     }
@@ -320,7 +320,7 @@ class PresensiController extends Controller
         $presensi = Presensi::with(['jadwal.kelas', 'jadwal.guru', 'jadwal.pelajaran'])
         ->whereHas('jadwal', function ($query) use ($kelas, $tahun) {
             $query->where('idKelas', $kelas)
-                  ->where('idThnAjaran', $tahun);
+                  ->where('idSemester', $tahun);
         })
         ->get()
         ->unique('idKehadiran');
