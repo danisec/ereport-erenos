@@ -6,7 +6,7 @@ use App\Models\Guru;
 use App\Models\Kelas;
 use App\Models\MappingJadwal;
 use App\Models\Pelajaran;
-use App\Models\TahunAjaran;
+use App\Models\Semester;
 use App\Services\MappingJadwalService;
 use Illuminate\Http\Request;
 
@@ -26,7 +26,7 @@ class MappingJadwalController extends Controller
     {
         return view('pages.dashboard.mappingjadwal.index', [
             'title' => 'Mapping Jadwal',
-            'jadwal' => MappingJadwal::with('tahunajaran', 'kelas', 'guru', 'pelajaran')->sortable(['idThnAjaran' => 'desc'])->filter(request(['search']))->paginate(10)->withQueryString(),
+            'jadwal' => MappingJadwal::with('semester', 'kelas', 'guru', 'pelajaran')->sortable(['idThnAjaran' => 'desc'])->filter(request(['search']))->paginate(10)->withQueryString(),
         ]);
     }
 
@@ -39,7 +39,7 @@ class MappingJadwalController extends Controller
     {
         return view('pages.dashboard.mappingjadwal.create', [
             'title' => 'Tambah Mapping Jadwal',
-            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get(),
+            'semester' => Semester::orderBy('idThnAjaran', 'desc')->get(),
             'kelas' => Kelas::orderBy('kelas', 'asc')->get(),
             'guru' => Guru::orderBy('namaGuru', 'asc')->get(),
             'pelajaran' => Pelajaran::orderBy('nmPelajaran', 'asc')->get()
@@ -85,7 +85,7 @@ class MappingJadwalController extends Controller
     {
         return view('pages.dashboard.mappingjadwal.edit', [
             'title' => 'Ubah Mapping Jadwal',
-            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get(),
+            'semester' => Semester::orderBy('idThnAjaran', 'desc')->get(),
             'kelas' => Kelas::orderBy('kelas', 'asc')->get(),
             'guru' => Guru::orderBy('namaGuru', 'asc')->get(),
             'pelajaran' => Pelajaran::orderBy('nmPelajaran', 'asc')->get(),
