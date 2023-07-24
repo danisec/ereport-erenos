@@ -26,27 +26,6 @@
                     @enderror
                 </div>
 
-                <div class="flex flex-col gap-1">
-                    <div class="flex flex-row items-center gap-16">
-                        <label class="mb-2 w-48 text-xl font-medium leading-9">Semester</label>
-                        <select class="field-input-indigo w-8/12" name="semester" required>
-                            <option selected disabled hidden>Semester</option>
-                            <option value="Gasal">Gasal</option>
-                            <option value="Genap">Genap</option>
-                            <option value="Pertengahan Tengah Semester 1">Pertengahan Tengah Semester 1</option>
-                            <option value="Pertengahan Akhir Semester 1">Pertengahan Akhir Semester 1</option>
-                            <option value="Pertengahan Tengah Semester 2">Pertengahan Tengah Semester 2</option>
-                            <option value="Pertengahan Akhir Semester 2">Pertengahan Akhir Semester 2</option>
-                        </select>
-                    </div>
-
-                    @error('semester')
-                        <p class="invalid-feedback ml-64">
-                            {{ $message }}
-                        </p>
-                    @enderror
-                </div>
-
                 <div class="mt-32 flex flex-row items-center gap-14">
                     <button
                         class="ml-64 rounded-sm bg-cyan-300 px-10 py-3 text-center text-sm font-normal shadow-xl shadow-gray-300">Submit</button>
