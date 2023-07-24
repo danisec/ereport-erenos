@@ -6,6 +6,7 @@ use App\Models\Guru;
 use App\Models\Kelas;
 use App\Models\MappingKelas;
 use App\Models\MappingKelasSiswa;
+use App\Models\Semester;
 use App\Models\Siswa;
 use App\Models\TahunAjaran;
 use App\Services\MappingKelasService;
@@ -27,7 +28,7 @@ class MappingKelasController extends Controller
     {
         return view('pages.dashboard.mappingkelas.index', [
             'title' => 'Mapping Kelas',
-            'mappingkelas' => MappingKelas::with(['tahunajaran', 'kelas', 'guru'])->sortable(['idThnAjaran' => 'desc'])->filter(request(['search']))->paginate(10)->withQueryString(),
+            'mappingkelas' => MappingKelas::with(['semester', 'kelas', 'guru'])->sortable(['idThnAjaran' => 'desc'])->filter(request(['search']))->paginate(10)->withQueryString(),
         ]);
     }
 
@@ -40,7 +41,7 @@ class MappingKelasController extends Controller
     {
         return view('pages.dashboard.mappingkelas.create', [
             'title' => 'Tambah Mapping Kelas',
-            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get(),
+            'semester' => Semester::orderBy('semester', 'desc')->get()->unique('idThnAjaran'),
             'kelas' => Kelas::orderBy('kelas', 'asc')->get(),
             'guru' => Guru::orderBy('namaGuru', 'asc')->get(),
         ]);
@@ -86,7 +87,7 @@ class MappingKelasController extends Controller
             'idMapping' => $idMapping,
             'mappingkelasd' => $mappingkelasd,
             'mappingkelas' => $mappingkelas,
-            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get(),
+            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get()->unique('thnAjaran'),
             'kelas' => Kelas::orderBy('kelas', 'asc')->get(),
             'guru' => Guru::orderBy('namaGuru', 'asc')->get(),
         ]);
@@ -142,7 +143,7 @@ class MappingKelasController extends Controller
             'title' => 'Ubah Mapping Kelas',
             'mappingkelas' => $mappingkelas,
             'mappingkelasd' => $mappingkelasd,
-            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get(),
+            'semester' => Semester::orderBy('idSemester', 'desc')->get()->unique('idThnAjaran'),
             'kelas' => Kelas::orderBy('kelas', 'asc')->get(),
             'guru' => Guru::orderBy('namaGuru', 'asc')->get(),
         ]);
@@ -190,7 +191,7 @@ class MappingKelasController extends Controller
             'idMapping' => $idMapping,
             'mappingkelasd' => $mappingkelasd,
             'mappingkelas' => $mappingkelas,
-            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get(),
+            'tahunajaran' => TahunAjaran::orderBy('thnAjaran', 'desc')->get()->unique('thnAjaran'),
             'kelas' => Kelas::orderBy('kelas', 'asc')->get(),
             'guru' => Guru::orderBy('namaGuru', 'asc')->get(),
         ]);
