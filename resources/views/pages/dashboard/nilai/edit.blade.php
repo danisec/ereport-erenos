@@ -19,18 +19,11 @@
 
                     <div class="flex flex-row items-center gap-36">
                         <div class="flex flex-row items-center">
-                            <label class="mb-2 w-32 text-xl font-medium leading-9">Kelas</label>
+                            <label class="mb-2 w-36 text-xl font-medium leading-9">Tahun Ajaran</label>
 
-                            <select class="field-input-indigo w-40" name="idKelas" required>
-                                <option selected disabled hidden>Kelas</option>
-
-                                @foreach ($kelas as $item)
-                                    <option value="{{ $item->idKelas }}"
-                                        {{ $nilai->kelas->idKelas == $item->idKelas ? 'selected' : '' }}>
-                                        {{ $item->kelas }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <input class="field-input-gray w-48" name="idSemester"
+                                value="{{ $nilai->semester->tahunajaran->thnAjaran }} - {{ $nilai->semester->semester }}"
+                                required @disabled(true) @readonly(true) />
                         </div>
 
                         <div class="flex flex-row items-center">
@@ -49,7 +42,20 @@
                 </div>
 
                 <div class="flex flex-row items-center">
-                    <label class="mb-2 w-32 text-xl font-medium leading-9">Pelajaran</label>
+                    <label class="mb-2 w-36 text-xl font-medium leading-9">Kelas</label>
+
+                    <input class="field-input-gray w-48" name="idKelas" value="{{ $nilai->kelas->kelas }}" required
+                        @disabled(true) @readonly(true) />
+
+                    @error('idKelas')
+                        <p class="invalid-feedback ml-44">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <div class="flex flex-row items-center">
+                    <label class="mb-2 w-36 text-xl font-medium leading-9">Pelajaran</label>
 
                     <select class="field-input-indigo w-96" id="pelajaran" name="idPelajaran" required>
                         <option selected disabled hidden>Pelajaran</option>
@@ -70,7 +76,7 @@
                 </div>
 
                 <div class="flex flex-row items-center">
-                    <label class="mb-2 w-32 text-xl font-medium leading-9">Materi</label>
+                    <label class="mb-2 w-36 text-xl font-medium leading-9">Materi</label>
 
                     <select class="field-input-indigo w-96" id="materi" name="idMateri" required>
                         <option selected disabled hidden>Materi</option>
@@ -91,7 +97,7 @@
                 </div>
 
                 <div class="flex flex-row items-center">
-                    <label class="mb-2 w-32 text-xl font-medium leading-9">Aspek</label>
+                    <label class="mb-2 w-36 text-xl font-medium leading-9">Aspek</label>
 
                     <select class="field-input-indigo w-48" name="aspek" required>
                         <option selected disabled hidden>Aspek</option>
@@ -111,7 +117,7 @@
                 </div>
 
                 <div class="flex flex-row items-center">
-                    <label class="mb-2 w-32 text-xl font-medium leading-9">Jenis</label>
+                    <label class="mb-2 w-36 text-xl font-medium leading-9">Jenis</label>
 
                     <select class="field-input-indigo w-48" name="jenis" required>
                         <option selected disabled hidden>Jenis</option>
