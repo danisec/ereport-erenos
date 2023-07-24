@@ -2,12 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\Guru;
-use App\Models\Kelas;
 use App\Models\MappingKelas;
 use App\Models\MappingKelasSiswa;
-use App\Models\Siswa;
-use App\Models\TahunAjaran;
 use Illuminate\Http\Request;
 
 class MappingKelasService
