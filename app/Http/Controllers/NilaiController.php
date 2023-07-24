@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
+use App\Models\MappingKelas;
+use App\Models\MappingKelasSiswa;
 use App\Models\Materi;
 use App\Models\Nilai;
 use App\Models\Nilai_D;
 use App\Models\Pelajaran;
+use App\Models\Semester;
 use App\Models\Siswa;
 use App\Services\NilaiService;
 use Illuminate\Http\Request;
@@ -44,6 +47,7 @@ class NilaiController extends Controller
 
         return view('pages.dashboard.nilai.create', [
             'title' => 'Tambah Nilai',
+            'semester' => Semester::orderBy('semester', 'desc')->get(),
             'kelas' => Kelas::orderBy('kelas', 'asc')->get(),
             'pelajaran' => Pelajaran::orderBy('nmPelajaran', 'asc')->get(),
             'materi' => Materi::orderBy('materi', 'asc')->get(),
@@ -156,6 +160,24 @@ class NilaiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param  \App\Models\MappingJadwal  $MappingJadwal
+     * @return \Illuminate\Http\Response
+     */
+    public function getTahunAjaranList($tahunAjaran)
+    {
+        $tahunAjaran = Semester::with('tahunajaran')->where('idSemester', $tahunAjaran)->first();
+
+        // Cari kelas berdasarkan idThnAjaran
+        $kelas = MappingKelas::with('kelas')->where('idThnAjaran', $tahunAjaran->tahunajaran->idThnAjaran)->get();
+
+        // $tahunAjaran = MappingKelas::with('tahunajaran', 'kelas')->where('idThnAjaran', $tahunAjaran)->get();
+
+        return response()->json($kelas);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
      * @param  \App\Models\Materi  $Materi
      * @return \Illuminate\Http\Response
      */
@@ -168,24 +190,24 @@ class NilaiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Siswa  $Siswa
+     * @param  \App\Models\MappingKelas  $MappingKelas
      * @return \Illuminate\Http\Response
      */
     public function getSiswaList($nis)
     {
-        $siswa = Siswa::where('NIS', $nis)->get();
+        // Get input idKelas from ajax
+        $kelas = MappingKelas::with('kelas')->where('idKelas', $nis)->get();
+        
+        // Get idMapping from $kelas
+        $idMapping = $kelas->pluck('idMapping');
+
+        // Cari NIS berdasarkan idMapping yang didapat dari $idMapping pada table mappingkelas_d
+        $siswa = MappingKelasSiswa::with('siswa')
+                ->whereIn('idMapping', $idMapping)
+                ->join('siswa', 'mappingkelas_d.NIS', '=', 'siswa.NIS')
+                ->orderBy('siswa.nmSiswa')
+                ->get();
+
         return response()->json($siswa);
-    }
-    
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Siswa  $Siswa
-     * @return \Illuminate\Http\Response
-     */
-    public function getNmSiswaList($nmSiswa)
-    {
-        $nmSiswa = Siswa::where('nmSiswa', $nmSiswa)->get();
-        return response()->json($nmSiswa);
     }
 }
