@@ -7,7 +7,7 @@
         <div class="relative overflow-x-auto rounded-2xl shadow-sm">
             <table class="w-full text-left" id="tabelData">
 
-                <div class="bg-white py-5 px-9">
+                <div class="bg-white px-9 py-5">
                     <div class="flex h-14 w-80 flex-row items-center justify-between rounded-3xl bg-hero px-12">
                         <h4 class="text-2xl font-bold text-white">Presensi Siswa</h4>
                     </div>
@@ -28,7 +28,7 @@
                         <div class="flex flex-row items-center py-6">
                             <label class="mb-2 w-36 text-xl font-medium leading-9">Tahun Ajaran</label>
 
-                            <select class="field-input-indigo w-52" id="idThnAjaran" name="idThnAjaran" required>
+                            <select class="field-input-indigo w-52" id="idThnAjaran" name="idSemester" required>
                                 <option selected disabled hidden>Tahun</option>
                             </select>
                         </div>
