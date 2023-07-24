@@ -33,6 +33,11 @@ class MappingKelas extends Model
         );
     }
 
+    public function semester() 
+    {
+        return $this->belongsTo(Semester::class, 'idSemester', 'idSemester');
+    }
+
     public function tahunajaran() 
     {
         return $this->belongsTo(TahunAjaran::class, 'idThnAjaran', 'idThnAjaran');
@@ -46,5 +51,10 @@ class MappingKelas extends Model
     public function guru() 
     {
         return $this->belongsTo(Guru::class, 'NIP', 'NIP');
+    }
+
+    public function mappingkelas_d()
+    {
+        return $this->hasMany(MappingKelasSiswa::class, 'idMapping', 'idMapping');
     }
 }
