@@ -19,7 +19,7 @@
                                 <label class="mb-2 w-40 text-xl font-medium leading-9">Tahun Ajaran</label>
 
                                 <input class="field-input-gray w-72"
-                                    value="{{ $jadwal->tahunajaran->thnAjaran }} - {{ $jadwal->tahunajaran->semester }}"
+                                    value="{{ $jadwal->semester->tahunajaran->thnAjaran }} - {{ $jadwal->semester->semester }}"
                                     @disabled(true) @readonly(true)>
                             </div>
                         </div>
