@@ -15,7 +15,7 @@ class MappingJadwal extends Model
     protected $guarded = ['idJadwal'];
 
     public $sortable = [
-        'idThnAjaran',
+        'idSemester',
         'idKelas',
         'NIP',
         'hari',
@@ -41,6 +41,11 @@ class MappingJadwal extends Model
     public function kelas() 
     {
         return $this->belongsTo(Kelas::class, 'idKelas', 'idKelas');
+    }
+
+    public function semester() 
+    {
+        return $this->belongsTo(Semester::class, 'idSemester', 'idSemester');
     }
 
     public function tahunajaran() 
