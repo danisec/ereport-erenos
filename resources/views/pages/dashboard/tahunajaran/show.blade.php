@@ -14,7 +14,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center">
                         <label class="mb-2 w-64 text-xl font-medium leading-9">Tahun Ajaran</label>
-                        <input class="field-input-gray w-52" value="{{ $tahunajaran->thnAjaran }}"
+                        <input class="field-input-gray w-52" value="{{ $semester->tahunajaran->thnAjaran }}"
                             @disabled(true) @readonly(true)>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Semester</label>
-                        <input class="field-input-gray w-8/12" value="{{ $tahunajaran->semester }}"
+                        <input class="field-input-gray w-8/12" value="{{ $semester->semester }}"
                             @disabled(true) @readonly(true)>
                     </div>
                 </div>
