@@ -15,6 +15,7 @@ use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\PelajaranController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\PresensiController;
+use App\Http\Controllers\RaporController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\TahunAjaranController;
 use Illuminate\Support\Facades\Route;
@@ -117,10 +118,15 @@ Route::controller(KelasController::class)->name('kelas.')->middleware('auth', 'u
 
 Route::controller(TahunAjaranController::class)->name('tahunajaran.')->middleware('auth', 'user-role:superadmin')->group(function () {
     Route::get('/dashboard/tahunajaran', 'index')->name('index');
+
     Route::get('/dashboard/tahunajaran/tambah-tahunajaran', 'create')->name('create');
+    Route::get('/dashboard/tahunajaran/tambah-tahunajaran/semester', 'createSemester')->name('createSemester');
+
     Route::get('/dashboard/tahunajaran/view-tahunajaran/{id}', 'show')->name('show');
 
     Route::post('/dashboard/tahunajaran/tambah-tahunajaran', 'store')->name('store');
+    Route::post('/dashboard/tahunajaran/tambah-tahunajaran/semester', 'storeSemester')->name('storeSemester');
+
     Route::delete('/dashboard/tahunajaran/{id}', 'destroy')->name('destroy');
 
     Route::get('/dashboard/tahunajaran/ubah-tahunajaran/{id}/edit', 'edit')->name('edit');
@@ -216,14 +222,29 @@ Route::controller(NilaiController::class)->name('nilai.')->middleware('auth', 'u
 
     Route::post('/dashboard/nilai/tambah-nilai', 'store')->name('store');
 
+    Route::get('/dashboard/nilai/tambah-nilai/{tahunAjaran}/getTahunAjaran', 'getTahunAjaranList')->name('getTahunAjaranList');
     Route::get('/dashboard/nilai/tambah-nilai/{pelajaran}/getPelajaran', 'getPelajaranList')->name('getPelajaranList');
 
     Route::get('/dashboard/nilai/tambah-nilai/{nis}/getNis', 'getSiswaList')->name('getSiswaList');
     Route::get('/dashboard/nilai/tambah-nilai/{nmSiswa}/getNmSiswa', 'getNmSiswaList')->name('getNmSiswaList');
+    Route::get('/dashboard/nilai/tambah-nilai/{nis}/getSiswa', 'getSiswaList')->name('getSiswaList');
 
     Route::delete('/dashboard/nilai/{id}', 'destroy')->name('destroy');
     Route::delete('/dashboard/nilai/ubah-nilai/{id}', 'destroyUbahSiswa')->name('destroyUbahSiswa');
 
     Route::get('/dashboard/nilai/ubah-nilai/{id}/edit', 'edit')->name('edit');
     Route::put('/dashboard/nilai/{id}', 'update')->name('update');
+});
+
+Route::controller(RaporController::class)->name('rapor.')->middleware('auth', 'user-role:superadmin,guru')->group(function () {
+    Route::get('/dashboard/rapor', 'index')->name('index');
+
+    Route::get('/dashboard/rapor/ubah-rapor/{tahunAjaran}/{nis}/edit', 'edit')->name('edit');
+    Route::post('/dashboard/rapor/ubah-rapor', 'store')->name('store');
+    Route::put('/dashboard/rapor/{nis}', 'update')->name('update');
+
+    Route::get('/dashboard/rapor/cetak-rapor/pdf', 'pdfShow')->name('pdfShow');
+
+    Route::get('/dashboard/rapor/{tahunAjaran}/getThnAjaran', 'getThnAjaranList')->name('getThnAjaranList');
+    Route::get('/dashboard/rapor/{kelas}/getSiswa', 'getSiswaList')->name('getSiswaList');
 });
