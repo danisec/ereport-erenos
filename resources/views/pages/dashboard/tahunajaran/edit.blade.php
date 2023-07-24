@@ -9,7 +9,7 @@
                 <h4 class="text-gray-9000 px-11 text-2xl font-bold text-white">Mengubah Tahun Ajaran</h4>
             </div>
 
-            <form class="flex flex-col gap-3 px-11 pt-9" action="/dashboard/tahunajaran/{{ $tahunajaran->idThnAjaran }}"
+            <form class="flex flex-col gap-3 px-11 pt-9" action="/dashboard/tahunajaran/{{ $semester->idSemester }}"
                 method="post">
                 @method('put')
                 @csrf
@@ -17,16 +17,10 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center">
                         <label class="mb-2 w-64 text-xl font-medium leading-9">Tahun Ajaran</label>
-                        <input class="@error('thnAjaran') border-red-300 bg-red-300 @enderror field-input-indigo w-52"
-                            name="thnAjaran" type="text" value="{{ $tahunajaran->thnAjaran }}" placeholder="Nomor"
-                            required>
+                        <input class="@error('thnAjaran') border-red-300 bg-red-300 @enderror field-input-gray w-52"
+                            name="thnAjaran" type="text" value="{{ $semester->tahunajaran->thnAjaran }}"
+                            placeholder="Nomor" required @disabled(true) @readonly(true)>
                     </div>
-
-                    @error('thnAjaran')
-                        <p class="invalid-feedback ml-64">
-                            {{ $message }}
-                        </p>
-                    @enderror
                 </div>
 
                 <div class="flex flex-col gap-1">
@@ -35,10 +29,10 @@
                         <select class="@error('semester') border-red-300 bg-red-300 @enderror field-input-indigo w-8/12"
                             name="semester" required>
 
-                            @foreach ($semester as $smtr)
-                                <option value="{{ $smtr }}"
-                                    {{ $tahunajaran->semester == $smtr ? 'selected' : '' }}>
-                                    {{ $smtr }}
+                            @foreach ($enumSemester as $item)
+                                <option value="{{ $item }}"
+                                    {{ $semester->semester == $item ? 'selected' : '' }}>
+                                    {{ $item }}
                                 </option>
                             @endforeach
 
