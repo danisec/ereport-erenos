@@ -13,6 +13,11 @@ class Nilai_D extends Model
 
     protected $guarded = ['idNilai_D'];
 
+    public function nilai()
+    {
+        return $this->belongsTo(Nilai::class, 'idNilai', 'idNilai');
+    }
+
     public function siswa() 
     {
         return $this->belongsTo(Siswa::class, 'NIS', 'NIS');
