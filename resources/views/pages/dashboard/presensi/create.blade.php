@@ -21,11 +21,13 @@
                                 <label class="mb-2 w-36 text-xl font-medium leading-9">Tahun Ajaran</label>
                                 <p class="mb-2 w-8 text-xl font-medium leading-9">:</p>
 
-                                <select class="field-input-indigo w-64" id="idThnAjaran" name="idThnAjaran" required>
+                                <select class="field-input-indigo w-64" id="idThnAjaran" name="idSemester" required>
                                     <option selected disabled hidden>Tahun Ajaran</option>
-                                    @foreach ($tahunAjaran as $item)
-                                        <option value="{{ $item->idThnAjaran }}">
-                                            {{ $item->tahunajaran->thnAjaran }} - {{ $item->tahunajaran->semester }}
+
+                                    @foreach ($semester as $item)
+                                        <option value="{{ $item->idSemester }}">
+                                            {{ $item->semester->tahunajaran->thnAjaran }} -
+                                            {{ $item->semester->semester }}
                                         </option>
                                     @endforeach
                                 </select>
