@@ -17,4 +17,9 @@ class MappingKelasSiswa extends Model
     {
         return $this->belongsTo(Siswa::class, 'NIS', 'NIS');
     }
+
+    public function mappingkelas()
+    {
+        return $this->belongsTo(MappingKelas::class, 'idMapping', 'idMapping');
+    }
 }
