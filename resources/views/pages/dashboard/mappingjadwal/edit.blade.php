@@ -21,18 +21,21 @@
                             <div class="flex flex-row items-center">
                                 <label class="mb-2 w-40 text-xl font-medium leading-9">Tahun Ajaran</label>
 
-                                <select class="field-input-indigo w-72" name="idThnAjaran" required>
-                                    <option value="{{ $jadwal->idThnAjaran }}" selected hidden>
-                                        {{ $jadwal->tahunajaran->thnAjaran }} - {{ $jadwal->tahunajaran->semester }}
+                                <select class="field-input-indigo w-72" name="idSemester" required>
+                                    <option value="{{ $jadwal->idSemester }}" selected hidden>
+                                        {{ $jadwal->semester->tahunajaran->thnAjaran }} -
+                                        {{ $jadwal->semester->semester }}
                                     </option>
-                                    @foreach ($tahunajaran as $item)
-                                        <option value="{{ $item->idThnAjaran }}">{{ $item->thnAjaran }} -
+
+                                    @foreach ($semester as $item)
+                                        <option value="{{ $item->idSemester }}">
+                                            {{ $item->tahunajaran->thnAjaran }} -
                                             {{ $item->semester }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
-                            @error('idThnAjaran')
+                            @error('idSemester')
                                 <p class="invalid-feedback ml-52">
                                     {{ $message }}
                                 </p>
