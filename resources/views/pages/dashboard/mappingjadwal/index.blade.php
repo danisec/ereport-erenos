@@ -37,7 +37,7 @@
                         </th>
                         <th class="px-6 py-3" scope="col">
                             <div class="flex flex-row items-center gap-1">
-                                @sortablelink('idThnAjaran', 'Tahun Ajaran')
+                                @sortablelink('idSemester', 'Tahun Ajaran')
 
                                 <x-atoms.sorting />
                             </div>
@@ -85,7 +85,7 @@
                                     {{ ($jadwal->currentPage() - 1) * $jadwal->perPage() + $loop->iteration }}
                                 </th>
                                 <td class="pl-6">
-                                    {{ $item->tahunajaran->thnAjaran }} - {{ $item->tahunajaran->semester }}
+                                    {{ $item->semester->tahunajaran->thnAjaran }} - {{ $item->semester->semester }}
                                 </td>
                                 <td class="pl-6">
                                     {{ $item->kelas->kelas }}
