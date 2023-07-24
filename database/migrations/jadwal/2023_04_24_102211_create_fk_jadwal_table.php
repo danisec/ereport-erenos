@@ -22,9 +22,9 @@ return new class extends Migration
         });
 
        Schema::table('jadwal', function (Blueprint $table) {
-            $table->foreign('idThnAjaran', 'fk_jadwal_tahunajaran')
-                ->references('idThnAjaran')
-                ->on('tahun_ajaran')
+            $table->foreign('idSemester', 'fk_jadwal_semester')
+                ->references('idSemester')
+                ->on('semester')
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
         });
