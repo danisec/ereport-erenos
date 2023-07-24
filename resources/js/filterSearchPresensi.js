@@ -35,9 +35,9 @@ $(document).ready(function () {
                 $.each(data, function (key, value) {
                     $("#idThnAjaran").append(
                         '<option value="' +
-                            value.tahunajaran.idThnAjaran +
+                            value.semester.idSemester +
                             '">' +
-                            value.tahunajaran.thnAjaran +
+                            value.semester.tahunajaran.thnAjaran +
                             "</option>"
                     );
                 });
