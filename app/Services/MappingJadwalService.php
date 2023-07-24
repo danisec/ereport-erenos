@@ -10,7 +10,7 @@ class MappingJadwalService
     public function storeMappingJadwal(Request $request)
     {
         $validatedData = $request->validate([
-            'idThnAjaran' => 'required',
+            'idSemester' => 'required',
             'idKelas' => 'required',
             'NIP' => 'required',
             'hari' => 'required',
@@ -18,7 +18,7 @@ class MappingJadwalService
             'mulai' => 'required',
             'selesai' => 'required',
         ], [
-            'idThnAjaran.required' => 'Tahun ajaran harus diisi',
+            'idSemester.required' => 'Tahun ajaran harus diisi',
             'thnAjaran.required' => 'Tahun ajaran harus diisi',
             'idKelas.required' => 'Kelas harus diisi',
             'NIP.required' => 'Guru harus diisi',
@@ -36,7 +36,7 @@ class MappingJadwalService
     public function updateMappingJadwal(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'idThnAjaran' => 'required',
+            'idSemester' => 'required',
             'idKelas' => 'required',
             'NIP' => 'required',
             'hari' => 'required',
@@ -44,7 +44,7 @@ class MappingJadwalService
             'mulai' => 'required',
             'selesai' => 'required',
         ], [
-            'idThnAjaran.required' => 'Tahun ajaran harus diisi',
+            'idSemester.required' => 'Tahun ajaran harus diisi',
             'thnAjaran.required' => 'Tahun ajaran harus diisi',
             'idKelas.required' => 'Kelas harus diisi',
             'NIP.required' => 'Guru harus diisi',
