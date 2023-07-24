@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Semester;
 use App\Models\TahunAjaran;
 use App\Services\TahunAjaranService;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class TahunAjaranController extends Controller
     {
         return view('pages.dashboard.tahunajaran.index', [
             'title' => 'Tahun Ajaran',
-            'tahunajaran' => TahunAjaran::sortable(['thnAjaran' => 'desc'])->filter(request(['search']))->paginate(10)->withQueryString(),
+            'semester' => Semester::with('tahunajaran')->sortable(['thnAjaran' => 'desc'])->filter(request(['search']))->paginate(10)->withQueryString(),
         ]);
     }
 
@@ -36,6 +37,7 @@ class TahunAjaranController extends Controller
     {
         return view('pages.dashboard.tahunajaran.create', [
             'title' => 'Tambah Tahun Ajaran',
+            'semester' => Semester::get(),
         ]);
     }
 
@@ -47,41 +49,67 @@ class TahunAjaranController extends Controller
      */
     public function store(Request $request)
     {
-        $this->tahunAjaranService->storeTahunAjaran($request);
+        return $this->tahunAjaranService->storeTahunAjaran($request);
+    }
 
-        $notif = notify()->success('Data Tahun Ajaran Berhasil Ditambahkan');
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createSemester()
+    {
+        // Dapatkan enum semester dari database semester
+        $enumSemester = DB::select(DB::raw('SHOW COLUMNS FROM semester WHERE Field = "semester"'))[0]->Type;
 
-        return redirect('/dashboard/tahunajaran')->with('notif', $notif);
+        return view('pages.dashboard.tahunajaran.createSemester', [
+            'title' => 'Tambah Tahun Ajaran',
+            'tahunAjaran' => TahunAjaran::get(),
+            'semester' => explode("','", substr($enumSemester, 6, (strlen($enumSemester) - 8))),
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeSemester(Request $request)
+    {
+        return $this->tahunAjaranService->storeTahunAjaran($request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TahunAjaran  $tahunAjaran
+     * @param  \App\Models\Semester  $semester
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         return view('pages.dashboard.tahunajaran.show', [
             'title' => 'View Pelajaran',
-            'tahunajaran' => TahunAjaran::where('idThnAjaran', $id)->first(),
+            'semester' => Semester::where('idSemester', $id)->first(),
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TahunAjaran  $tahunAjaran
+     * @param  \App\Models\Semester  $semester
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $enumSemester = DB::select(DB::raw('SHOW COLUMNS FROM tahun_ajaran WHERE Field = "semester"'))[0]->Type;
+        // Dapatkan enum semester dari database semester
+        $enumSemester = DB::select(DB::raw('SHOW COLUMNS FROM semester WHERE Field = "semester"'))[0]->Type;
+        // dd(explode("','", substr($enumSemester, 6, (strlen($enumSemester) - 8))));
 
         return view('pages.dashboard.tahunajaran.edit', [
             'title' => 'Ubah Tahun Ajaran',
-            'tahunajaran' => TahunAjaran::where('idThnAjaran', $id)->first(),
-            'semester' => explode("','", substr($enumSemester, 6, (strlen($enumSemester)-8))),
+            'semester' => Semester::where('idSemester', $id)->first(),
+            'enumSemester' => explode("','", substr($enumSemester, 6, (strlen($enumSemester) - 8))),
         ]);
     }
 
@@ -94,22 +122,18 @@ class TahunAjaranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->tahunAjaranService->updateTahunAjaran($request, $id);
-
-        $notif = notify()->success('Data Tahun Ajaran Berhasil Diubah');
-
-        return redirect('/dashboard/tahunajaran')->with('notif', $notif);
+        return $this->tahunAjaranService->updateTahunAjaran($request, $id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TahunAjaran  $tahunAjaran
+     * @param  \App\Models\Semester  $semester
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        TahunAjaran::where('idThnAjaran', $id)->delete();
+        Semester::where('idSemester', $id)->delete();
         
         $notif = notify()->success('Data Tahun Ajaran Berhasil Dihapus');
         session()->flash('notif', $notif);
