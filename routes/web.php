@@ -239,12 +239,15 @@ Route::controller(NilaiController::class)->name('nilai.')->middleware('auth', 'u
 Route::controller(RaporController::class)->name('rapor.')->middleware('auth', 'user-role:superadmin,guru')->group(function () {
     Route::get('/dashboard/rapor', 'index')->name('index');
 
-    Route::get('/dashboard/rapor/ubah-rapor/{tahunAjaran}/{nis}/edit', 'edit')->name('edit');
-    Route::post('/dashboard/rapor/ubah-rapor', 'store')->name('store');
-    Route::put('/dashboard/rapor/{nis}', 'update')->name('update');
+    Route::get('/dashboard/rapor/tambah-rapor/{tahunAjaran}/{nis}', 'create')->name('create');
+    Route::post('/dashboard/rapor/tambah-rapor', 'store')->name('store');
 
-    Route::get('/dashboard/rapor/cetak-rapor/pdf', 'pdfShow')->name('pdfShow');
+    Route::get('/dashboard/rapor/ubah-rapor/{idRapor}/edit', 'edit')->name('edit');
+    Route::put('/dashboard/rapor/{idRapor}', 'update')->name('update');
+
+    Route::get('/dashboard/rapor/cetak-rapor/{idRapor}/pdf', 'pdfShow')->name('pdfShow');
 
     Route::get('/dashboard/rapor/{tahunAjaran}/getThnAjaran', 'getThnAjaranList')->name('getThnAjaranList');
     Route::get('/dashboard/rapor/{kelas}/getSiswa', 'getSiswaList')->name('getSiswaList');
+    Route::get('/dashboard/rapor/{tahunAjaran}/{nis}/cekRapor', 'cekRapor')->name('cekRapor');
 });
