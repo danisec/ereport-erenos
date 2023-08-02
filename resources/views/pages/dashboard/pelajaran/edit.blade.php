@@ -78,13 +78,13 @@
 
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-start">
-                        <label class="mb-2 w-52 text-xl font-medium leading-9">Deskripsi A</label>
+                        <label class="mb-2 w-52 text-xl font-medium leading-9">Pengetahuan A</label>
 
-                        <textarea class="@error('deskripsiA') border-red-300 bg-red-300 @enderror materiTextarea field-input-indigo w-[50rem]"
-                            name="deskripsiA" placeholder="Deskripsi A">{{ $pelajaran->deskripsiA }}</textarea>
+                        <textarea class="@error('pengetahuanA') border-red-300 bg-red-300 @enderror materiTextarea field-input-indigo w-[50rem]"
+                            name="pengetahuanA" placeholder="Deskripsi A">{{ $pelajaran->pengetahuanA }}</textarea>
                     </div>
 
-                    @error('deskripsiA')
+                    @error('pengetahuanA')
                         <p class="invalid-feedback ml-32">
                             {{ $message }}
                         </p>
@@ -93,13 +93,13 @@
 
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-start">
-                        <label class="mb-2 w-52 text-xl font-medium leading-9">Deskripsi B</label>
+                        <label class="mb-2 w-52 text-xl font-medium leading-9">Pengetahuan B</label>
 
-                        <textarea class="@error('deskripsiB') border-red-300 bg-red-300 @enderror materiTextarea field-input-indigo w-[50rem]"
-                            name="deskripsiB" placeholder="Deskripsi A">{{ $pelajaran->deskripsiB }}</textarea>
+                        <textarea class="@error('pengetahuanB') border-red-300 bg-red-300 @enderror materiTextarea field-input-indigo w-[50rem]"
+                            name="pengetahuanB" placeholder="Deskripsi A">{{ $pelajaran->pengetahuanB }}</textarea>
                     </div>
 
-                    @error('deskripsiB')
+                    @error('pengetahuanB')
                         <p class="invalid-feedback ml-32">
                             {{ $message }}
                         </p>
@@ -108,13 +108,13 @@
 
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-start">
-                        <label class="mb-2 w-52 text-xl font-medium leading-9">Deskripsi C</label>
+                        <label class="mb-2 w-52 text-xl font-medium leading-9">Pengetahuan C</label>
 
-                        <textarea class="@error('deskripsiC') border-red-300 bg-red-300 @enderror materiTextarea field-input-indigo w-[50rem]"
-                            name="deskripsiC" placeholder="Deskripsi A">{{ $pelajaran->deskripsiC }}</textarea>
+                        <textarea class="@error('pengetahuanC') border-red-300 bg-red-300 @enderror materiTextarea field-input-indigo w-[50rem]"
+                            name="pengetahuanC" placeholder="Deskripsi A">{{ $pelajaran->pengetahuanC }}</textarea>
                     </div>
 
-                    @error('deskripsiC')
+                    @error('pengetahuanC')
                         <p class="invalid-feedback ml-32">
                             {{ $message }}
                         </p>
@@ -123,13 +123,77 @@
 
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-start">
-                        <label class="mb-2 w-52 text-xl font-medium leading-9">Deskripsi D</label>
+                        <label class="mb-2 w-52 text-xl font-medium leading-9">Pengetahuan D</label>
 
-                        <textarea class="@error('deskripsiD') border-red-300 bg-red-300 @enderror materiTextarea field-input-indigo w-[50rem]"
-                            name="deskripsiD" placeholder="Deskripsi D">{{ $pelajaran->deskripsiD }}</textarea>
+                        <textarea class="@error('pengetahuanD') border-red-300 bg-red-300 @enderror materiTextarea field-input-indigo w-[50rem]"
+                            name="pengetahuanD" placeholder="Deskripsi D">{{ $pelajaran->pengetahuanD }}</textarea>
                     </div>
 
-                    @error('deskripsiD')
+                    @error('pengetahuanD')
+                        <p class="invalid-feedback ml-32">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <div class="flex flex-row items-start">
+                        <label class="mb-2 w-52 text-xl font-medium leading-9">Keterampilan A</label>
+
+                        <textarea
+                            class="@error('keterampilanA') border-red-300 bg-red-300 @enderror materiTextarea field-input-indigo w-[50rem]"
+                            name="keterampilanA" placeholder="Deskripsi D">{{ $pelajaran->keterampilanA }}</textarea>
+                    </div>
+
+                    @error('keterampilanA')
+                        <p class="invalid-feedback ml-32">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <div class="flex flex-row items-start">
+                        <label class="mb-2 w-52 text-xl font-medium leading-9">Keterampilan B</label>
+
+                        <textarea
+                            class="@error('keterampilanB') border-red-300 bg-red-300 @enderror materiTextarea field-input-indigo w-[50rem]"
+                            name="keterampilanB" placeholder="Deskripsi D">{{ $pelajaran->keterampilanB }}</textarea>
+                    </div>
+
+                    @error('keterampilanB')
+                        <p class="invalid-feedback ml-32">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <div class="flex flex-row items-start">
+                        <label class="mb-2 w-52 text-xl font-medium leading-9">Keterampilan C</label>
+
+                        <textarea
+                            class="@error('keterampilanC') border-red-300 bg-red-300 @enderror materiTextarea field-input-indigo w-[50rem]"
+                            name="keterampilanC" placeholder="Deskripsi D">{{ $pelajaran->keterampilanC }}</textarea>
+                    </div>
+
+                    @error('keterampilanC')
+                        <p class="invalid-feedback ml-32">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <div class="flex flex-row items-start">
+                        <label class="mb-2 w-52 text-xl font-medium leading-9">Keterampilan D</label>
+
+                        <textarea
+                            class="@error('keterampilanD') border-red-300 bg-red-300 @enderror materiTextarea field-input-indigo w-[50rem]"
+                            name="keterampilanD" placeholder="Deskripsi D">{{ $pelajaran->keterampilanD }}</textarea>
+                    </div>
+
+                    @error('keterampilanD')
                         <p class="invalid-feedback ml-32">
                             {{ $message }}
                         </p>
