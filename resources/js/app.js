@@ -72,6 +72,17 @@ if (
         });
 }
 
+if (
+    window.location.pathname.includes("/dashboard/rapor/tambah-rapor/") ||
+    window.location.pathname.includes("/dashboard/rapor/ubah-rapor/")
+) {
+    import("./textareaDeskripsi")
+        .then((module) => {})
+        .catch((error) => {
+            console.error("Gagal mengimpor ./textareaDeskripsi:", error);
+        });
+}
+
 if (window.location.pathname === "/dashboard/nilai/tambah-nilai") {
     import("./date")
         .then((module) => {})
@@ -85,6 +96,14 @@ if (window.location.pathname.includes("/dashboard/nilai/")) {
         .then((module) => {})
         .catch((error) => {
             console.error("Gagal mengimpor ./nilai:", error);
+        });
+}
+
+if (window.location.pathname.includes("/dashboard/rapor")) {
+    import("./rapor")
+        .then((module) => {})
+        .catch((error) => {
+            console.error("Gagal mengimpor ./rapor:", error);
         });
 }
 
