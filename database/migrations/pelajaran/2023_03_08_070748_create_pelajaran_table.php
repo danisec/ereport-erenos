@@ -19,10 +19,14 @@ return new class extends Migration
             $table->string('nmPelajaran', 100);
             $table->string('nmSingkatan', 50);
             $table->tinyInteger('KKM')->type('tinyinteger')->length(4);
-            $table->text('deskripsiA');
-            $table->text('deskripsiB');
-            $table->text('deskripsiC');
-            $table->text('deskripsiD');
+            $table->text('pengetahuanA');
+            $table->text('pengetahuanB');
+            $table->text('pengetahuanC');
+            $table->text('pengetahuanD');
+            $table->text('keterampilanA');
+            $table->text('keterampilanB');
+            $table->text('keterampilanC');
+            $table->text('keterampilanD');
             $table->timestamps();
         });
     }
