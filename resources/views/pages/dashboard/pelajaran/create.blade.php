@@ -70,12 +70,13 @@
 
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-start">
-                        <label class="mb-2 w-52 text-xl font-medium leading-9">Deskripsi A</label>
+                        <label class="mb-2 w-52 text-xl font-medium leading-9">Pengetahuan A</label>
 
-                        <textarea class="field-input-indigo w-[50rem]" name="deskripsiA" rows="4" placeholder="Deskripsi A" required></textarea>
+                        <textarea class="field-input-indigo w-[50rem]" name="pengetahuanA" rows="4" placeholder="Deskripsi Pengetahuan A"
+                            required></textarea>
                     </div>
 
-                    @error('deskripsiA')
+                    @error('pengetahuanA')
                         <p class="invalid-feedback ml-52">
                             {{ $message }}
                         </p>
@@ -84,12 +85,13 @@
 
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-start">
-                        <label class="mb-2 w-52 text-xl font-medium leading-9">Deskripsi B</label>
+                        <label class="mb-2 w-52 text-xl font-medium leading-9">Pengetahuan B</label>
 
-                        <textarea class="field-input-indigo w-[50rem]" name="deskripsiB" rows="4" placeholder="Deskripsi B" required></textarea>
+                        <textarea class="field-input-indigo w-[50rem]" name="pengetahuanB" rows="4" placeholder="Deskripsi Pengetahuan B"
+                            required></textarea>
                     </div>
 
-                    @error('deskripsiB')
+                    @error('pengetahuanB')
                         <p class="invalid-feedback ml-52">
                             {{ $message }}
                         </p>
@@ -98,12 +100,13 @@
 
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-start">
-                        <label class="mb-2 w-52 text-xl font-medium leading-9">Deskripsi C</label>
+                        <label class="mb-2 w-52 text-xl font-medium leading-9">Pengetahuan C</label>
 
-                        <textarea class="field-input-indigo w-[50rem]" name="deskripsiC" rows="4" placeholder="Deskripsi C" required></textarea>
+                        <textarea class="field-input-indigo w-[50rem]" name="pengetahuanC" rows="4" placeholder="Deskripsi Pengetahuan C"
+                            required></textarea>
                     </div>
 
-                    @error('deskripsiC')
+                    @error('pengetahuanC')
                         <p class="invalid-feedback ml-52">
                             {{ $message }}
                         </p>
@@ -112,12 +115,73 @@
 
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-start">
-                        <label class="mb-2 w-52 text-xl font-medium leading-9">Deskripsi D</label>
+                        <label class="mb-2 w-52 text-xl font-medium leading-9">Pengetahuan D</label>
 
-                        <textarea class="field-input-indigo w-[50rem]" name="deskripsiD" rows="4" placeholder="Deskripsi D" required></textarea>
+                        <textarea class="field-input-indigo w-[50rem]" name="pengetahuanD" rows="4" placeholder="Deskripsi Pengetahuan D"
+                            required></textarea>
                     </div>
 
-                    @error('deskripsiD')
+                    @error('pengetahuanD')
+                        <p class="invalid-feedback ml-52">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <div class="flex flex-row items-start">
+                        <label class="mb-2 w-52 text-xl font-medium leading-9">Keterampilan A</label>
+
+                        <textarea class="field-input-indigo w-[50rem]" name="keterampilanA" rows="4"
+                            placeholder="Deskripsi Keterampilan A" required></textarea>
+                    </div>
+
+                    @error('keterampilanD')
+                        <p class="invalid-feedback ml-52">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <div class="flex flex-row items-start">
+                        <label class="mb-2 w-52 text-xl font-medium leading-9">Keterampilan B</label>
+
+                        <textarea class="field-input-indigo w-[50rem]" name="keterampilanB" rows="4"
+                            placeholder="Deskripsi Keterampilan B" required></textarea>
+                    </div>
+
+                    @error('keterampilanB')
+                        <p class="invalid-feedback ml-52">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <div class="flex flex-row items-start">
+                        <label class="mb-2 w-52 text-xl font-medium leading-9">Keterampilan C</label>
+
+                        <textarea class="field-input-indigo w-[50rem]" name="keterampilanC" rows="4"
+                            placeholder="Deskripsi Keterampilan C" required></textarea>
+                    </div>
+
+                    @error('keterampilanC')
+                        <p class="invalid-feedback ml-52">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <div class="flex flex-row items-start">
+                        <label class="mb-2 w-52 text-xl font-medium leading-9">Keterampilan D</label>
+
+                        <textarea class="field-input-indigo w-[50rem]" name="keterampilanD" rows="4"
+                            placeholder="Deskripsi Keterampilan D" required></textarea>
+                    </div>
+
+                    @error('keterampilanD')
                         <p class="invalid-feedback ml-52">
                             {{ $message }}
                         </p>
