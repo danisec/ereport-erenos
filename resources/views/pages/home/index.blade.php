@@ -4,10 +4,10 @@
         <section class="layout grid grid-cols-2 gap-12">
             <div class="flex flex-col gap-4" id="pengumumanLatest">
                 <h2 class="font-josefin text-4xl font-normal text-red-500 drop-shadow-lg" id="pengumumanTitle">
-                    {{ $pengumumanLatest->namaPengumuman }}
+                    {{ $pengumumanLatest->namaPengumuman ?? '' }}
                 </h2>
                 <p class="font-crimson text-2xl font-normal text-white" id="pengumumanContent">
-                    {!! $pengumumanLatest->pengumuman !!}
+                    {!! $pengumumanLatest->pengumuman ?? '' !!}
                 </p>
             </div>
 
