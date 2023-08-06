@@ -59,7 +59,7 @@ return new class extends Migration
         });
         
         Schema::table('jadwal', function (Blueprint $table) {
-            $table->dropForeign('fk_jadwal_tahunajaran');
+            $table->dropForeign('fk_jadwal_semester');
         });
 
         Schema::table('jadwal', function (Blueprint $table) {
