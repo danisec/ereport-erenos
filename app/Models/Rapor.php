@@ -33,4 +33,9 @@ class Rapor extends Model
     {
         return $this->hasMany(Rapor_D::class, 'idRapor', 'idRapor');
     }
+
+    public function rapor_nilai()
+    {
+        return $this->hasMany(RaporNilai::class, 'idRapor', 'idRapor');
+    }
 }
