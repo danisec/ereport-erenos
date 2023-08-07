@@ -82,6 +82,20 @@
                     @enderror
                 </div>
 
+                <div class="flex flex-col gap-1">
+                    <div class="flex flex-row items-center gap-16">
+                        <label class="mb-2 w-48 text-xl font-medium leading-9">Nama Orang Tua</label>
+                        <input class="field-input-indigo w-8/12" name="nmOrangTua" type="text"
+                            value="{{ old('nmOrangTua') }}" placeholder="Nama Orang Tua / Wali Murid" required>
+                    </div>
+
+                    @error('nmOrangTua')
+                        <p class="invalid-feedback ml-64">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
                 <div class="flex flex-row items-center gap-14 py-3">
                     <button
                         class="ml-64 rounded-sm bg-cyan-300 px-10 py-3 text-center text-sm font-normal shadow-xl shadow-gray-300">Submit</button>
