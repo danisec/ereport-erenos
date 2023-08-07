@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nmPanggil', 50);
             $table->decimal('tinggi', 4,1);
             $table->decimal('berat', 4,1);
+            $table->string('nmOrangTua', 100);
             $table->timestamps();
         });
     }
