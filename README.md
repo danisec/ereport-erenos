@@ -12,7 +12,7 @@ To install and set up E-Report Erenos Laravel 9, follow the steps below:
 
 -   PHP 8.0 or higher
 -   Node.js 16.xx or higher
--   NPM or YARN
+-   NPM
 -   Composer
 -   MySQL
 -   Web server (e.g., Apache or Nginx)
@@ -35,14 +35,10 @@ Using Composer
 composer install
 ```
 
-Using NPM or YARN
+Using NPM
 
 ```
 npm install
-```
-
-```
-yarn install
 ```
 
 ### Step 3: Configure the environment
@@ -67,6 +63,9 @@ Run the database migrations to create the required tables:
 
 ```
 php artisan migrate --path="database/migrations"
+```
+
+```
 php artisan migrate --path="database/migrations/*"
 ```
 
@@ -76,6 +75,10 @@ Run the database seed user:
 
 ```
 php artisan db:seed --class=UserSeeder
+```
+
+```
+php artisan db:seed --class=SettingSeeder
 ```
 
 ### Step 7: Start the development server
@@ -88,12 +91,6 @@ php artisan serve
 
 ```
 npm run dev
-```
-
-or
-
-```
-yarn dev
 ```
 
 The application should now be running on http://localhost:8000 or http://127.0.0.1:8000. You can access this URL in your web browser to start using E-Report Erenos.
