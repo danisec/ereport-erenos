@@ -61,7 +61,8 @@
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Berat Badan</label>
                         <input class="@error('berat') border-red-300 bg-red-300 @enderror field-input-indigo w-32"
-                            name="berat" type="text" value="{{ $siswa->berat }}" placeholder="Berat" required>
+                            name="berat" type="text" value="{{ number_format($siswa->berat) }}" placeholder="Berat"
+                            required>
                     </div>
 
                     @error('berat')
@@ -75,10 +76,27 @@
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Tinggi Badan</label>
                         <input class="@error('tinggi') border-red-300 bg-red-300 @enderror field-input-indigo w-32"
-                            name="tinggi" type="text" value="{{ $siswa->tinggi }}" placeholder="Tinggi" required>
+                            name="tinggi" type="text" value="{{ number_format($siswa->tinggi) }}"
+                            placeholder="Tinggi" required>
                     </div>
 
                     @error('tinggi')
+                        <p class="invalid-feedback ml-64">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <div class="flex flex-row items-center gap-16">
+                        <label class="mb-2 w-48 text-xl font-medium leading-9">Nama Orang Tua</label>
+                        <input
+                            class="@error('nmOrangTua') border-red-300 bg-red-300 @enderror field-input-indigo w-8/12"
+                            name="nmOrangTua" type="text" value="{{ $siswa->nmOrangTua }}"
+                            placeholder="Nama Orang Tua / Wali Murid" required>
+                    </div>
+
+                    @error('nmOrangTua')
                         <p class="invalid-feedback ml-64">
                             {{ $message }}
                         </p>
