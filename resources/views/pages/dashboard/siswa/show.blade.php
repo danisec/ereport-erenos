@@ -38,16 +38,24 @@
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Berat Badan</label>
-                        <input class="field-input-gray w-32" value="{{ $siswa->berat }}" @disabled(true)
-                            @readonly(true)>
+                        <input class="field-input-gray w-32" value="{{ number_format($siswa->berat) }}"
+                            @disabled(true) @readonly(true)>
                     </div>
                 </div>
 
                 <div class="flex flex-col gap-1">
                     <div class="flex flex-row items-center gap-16">
                         <label class="mb-2 w-48 text-xl font-medium leading-9">Tinggi Badan</label>
-                        <input class="field-input-gray w-32" value="{{ $siswa->tinggi }}" @disabled(true)
-                            @readonly(true)>
+                        <input class="field-input-gray w-32" value="{{ number_format($siswa->tinggi) }}"
+                            @disabled(true) @readonly(true)>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <div class="flex flex-row items-center gap-16">
+                        <label class="mb-2 w-48 text-xl font-medium leading-9">Nama Orang Tua</label>
+                        <input class="field-input-gray w-8/12" value="{{ $siswa->nmOrangTua }}"
+                            @disabled(true) @readonly(true)>
                     </div>
                 </div>
 
