@@ -15,7 +15,6 @@ class SiswaService
             'nmPanggil' => 'required|max:50',
             'tinggi' => 'required|decimal:0',
             'berat' => 'required|decimal:0',
-            'nmOrangTua' => 'required|max:100',
         ], [
             'NIS.required' => 'NIS harus diisi',
             'NIS.numeric' => 'NIS harus berupa angka',
@@ -29,8 +28,6 @@ class SiswaService
             'tinggi.decimal' => 'Tinggi Badan harus berupa angka desimal',
             'berat.required' => 'Berat badan harus diisi',
             'berat.decimal' => 'Berat Badan harus berupa angka desimal',
-            'nmOrangTua.required' => 'Nama orang tua / wali murid harus diisi',
-            'nmOrangTua.max' => 'Nama orang tua / wali murid maksimal 100 karakter',
         ]);
 
         $siswa = Siswa::create($validatedData);
@@ -46,7 +43,6 @@ class SiswaService
             'nmPanggil' => 'required|max:50',
             'tinggi' => 'required|decimal:0',
             'berat' => 'required|decimal:0',
-            'nmOrangTua' => 'required|max:100',
         ], [
             'NIS.numeric' => 'NIS harus berupa angka',
             'NIS.digits' => 'NIS harus berjumlah 8 digit',
@@ -58,8 +54,6 @@ class SiswaService
             'tinggi.decimal' => 'Tinggi Badan harus berupa angka desimal',
             'berat.required' => 'Berat Badan harus diisi',
             'berat.decimal' => 'Berat Badan harus berupa angka desimal',
-            'nmOrangTua.required' => 'Nama orang tua / wali murid harus diisi',
-            'nmOrangTua.max' => 'Nama orang tua / wali murid maksimal 100 karakter',
         ]);
 
         $siswa = Siswa::where('NIS', $id)->update($validatedData);
