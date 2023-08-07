@@ -7,6 +7,7 @@ use App\Models\MappingKelasSiswa;
 use App\Models\Rapor;
 use App\Models\Rapor_D;
 use App\Models\Semester;
+use App\Models\Setting;
 use App\Services\RaporService;
 use DateTime;
 use Illuminate\Http\Request;
@@ -91,18 +92,19 @@ class RaporController extends Controller
     public function edit($idRapor)
     {
         // Dapatkan data rapor berdasarkan idRapor sebelumnya dari fungsi store di atas
-        $rapor = Rapor::with('siswa', 'kelas', 'semester', 'rapor_d')->find($idRapor);
+        $rapor = Rapor::with('siswa', 'kelas', 'semester', 'rapor_d', 'rapor_nilai')->find($idRapor);
         $raporSiswa = Rapor_D::where('idRapor', $idRapor)->get();
 
         // Pastikan data rapor ditemukan
         if (!$rapor) {
-            abort(404); // Atau tampilkan pesan kesalahan sesuai kebutuhan
+            abort(404);
         }
 
         // Data Nilai
         $nis = $rapor->NIS;
         $idSemester = $rapor->idSemester;
-        $nilaiAkhir = $this->raporService->getNilaiRapor($nis, $idSemester);
+        $getRaporNilai = $rapor->rapor_nilai()->where('idRapor', $idRapor)->with('pelajaran')->get();
+        // $nilaiAkhir = $this->raporService->getNilaiRapor($nis, $idSemester);
 
         // Data Presensi
         $idSemester = $rapor->idSemester;
@@ -112,7 +114,7 @@ class RaporController extends Controller
             'title' => 'Ubah Rapor',
             'rapor' => $rapor,
             'raporSiswa' => $raporSiswa,
-            'nilai' => $nilaiAkhir,
+            'nilai' => $getRaporNilai,
             'kehadiran' => $statusCounts,
             'namaSekolah' => $this->namaSekolah,
             'alamatSekolah' => $this->alamatSekolah,
@@ -142,17 +144,24 @@ class RaporController extends Controller
         $rapor = Rapor::with('siswa', 'kelas', 'semester', 'rapor_d')->find($idRapor);
         $raporSiswa = Rapor_D::where('idRapor', $idRapor)->get();
 
+        // Cari nama wali kelas berdasarkan idSemester, relasi idThnAjaran di model MappingKelas
+        $getThnAjaran = Rapor::with('semester')->where('idSemester', $rapor->idSemester)->first();
+        $thnAjaran = $getThnAjaran->semester->idThnAjaran;
+        $getWaliKelas = MappingKelas::with('guru')->where('idThnAjaran', $thnAjaran)->first();
+
+        // Cari nama kepala sekolah
+        $namaKepSek = Setting::get()->first();
+
         // Pastikan data rapor ditemukan
         if (!$rapor) {
             abort(404); // Atau tampilkan pesan kesalahan sesuai kebutuhan
         }
 
         // Data Nilai
-        $nis = $rapor->NIS;
-        $idSemester = $rapor->idSemester;
-        $nilaiAkhir = $this->raporService->getNilaiRapor($nis, $idSemester);
-
+        $getRaporNilai = $rapor->rapor_nilai()->where('idRapor', $idRapor)->with('pelajaran')->get();
+        
         // Data Presensi
+        $nis = $rapor->NIS;
         $idSemester = $rapor->idSemester;
         $statusCounts = $this->raporService->getPresensiRapor($nis, $idSemester);
         
@@ -185,7 +194,9 @@ class RaporController extends Controller
             'title' => 'RAPOR PESERTA DIDIK DAN PROFIL PESERTA DIDIK - ' . $rapor->siswa->nmSiswa,
             'rapor' => $rapor,
             'raporSiswa' => $raporSiswa,
-            'nilai' => $nilaiAkhir,
+            'waliKelas' => $getWaliKelas->guru->namaGuru,
+            'kepsek' => $namaKepSek->KepSek,
+            'nilai' => $getRaporNilai,
             'kehadiran' => $statusCounts,
             'tanggal' => $getDMY,
             'namaSekolah' => $this->namaSekolah,
