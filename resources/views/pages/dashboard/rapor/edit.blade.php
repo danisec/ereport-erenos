@@ -183,77 +183,46 @@
                             </thead>
 
                             <tbody>
-                                @foreach ($nilai as $pelajaran => $data)
-                                    @foreach ($data as $item)
-                                        <tr class="bg-white text-base font-medium leading-5 hover:bg-gray-50">
-                                            <th class="px-9" scope="row">{{ $loop->parent->index + 1 }}</th>
-                                            <td class="pl-3">
-                                                <textarea class="deskripsiTextarea field-input-gray text-md nilai-input w-full font-normal" required rows="1"
-                                                    placeholder="Pelajaran" @disabled(true) @readonly(true)>{{ $pelajaran }}</textarea>
-                                            </td>
-                                            <td class="pl-3">
-                                                <textarea class="field-input-gray text-md nilai-input w-20 font-normal" required rows="1" placeholder="KKM"
-                                                    @disabled(true) @readonly(true)>{{ $item['pelajaran']->KKM ?? 0 }}</textarea>
-                                            </td>
-                                            <td class="pl-3">
-                                                <textarea class="field-input-gray text-md nilai-input w-20 font-normal" required rows="1" placeholder="Nilai"
-                                                    @disabled(true) @readonly(true)>
-@if (isset($item['PAS']['nilai']))
-{{ $item['PAS']['nilai'] }}
-@else
-{{ $item['pengetahuan']['nilai'] }}
-@endif
-</textarea>
-                                            </td>
-                                            <td class="pl-3">
-                                                <textarea class="field-input-gray text-md nilai-input w-12 font-normal" required rows="1"
-                                                    @disabled(true) @readonly(true)>
-@if (isset($item['PAS']['grade']))
-{{ $item['PAS']['grade'] }}
-@else
-{{ $item['pengetahuan']['grade'] }}
-@endif
-                                                </textarea>
-                                            </td>
-                                            <td class="pl-3">
-                                                <textarea class="deskripsiTextarea field-input-gray nilai-input w-full text-base font-normal"
-                                                    name="deskripsiPengetahuan[]" required rows="1" placeholder="Deskripsi" @disabled(true)
-                                                    @readonly(true)>
-@if (isset($item['PAS']['deskripsi']))
-{{ $item['PAS']['deskripsi'] }}
-@else
-{{ $item['pengetahuan']['deskripsi'] }}
-@endif
-</textarea>
-                                            </td>
+                                @foreach ($nilai as $item)
+                                    <tr class="bg-white text-base font-medium leading-5 hover:bg-gray-50">
+                                        <th class="px-9" scope="row">{{ $loop->iteration }}</th>
+                                        <td class="pl-3">
+                                            <input name="idPelajaran[]" type="hidden"
+                                                value="{{ $item->pelajaran->idPelajaran }}">
 
-                                            <td class="pl-3">
-                                                <textarea class="field-input-gray text-md nilai-input w-20 font-normal" required rows="1" placeholder="Nilai"
-                                                    @disabled(true) @readonly(true)>
-@if (isset($item['keterampilan']['nilai']))
-{{ $item['keterampilan']['nilai'] }}
-@endif
-</textarea>
-                                            </td>
-                                            <td class="pl-3">
-                                                <textarea class="field-input-gray text-md nilai-input w-12 font-normal" required rows="1"
-                                                    @disabled(true) @readonly(true)>
-@if (isset($item['keterampilan']['grade']))
-{{ $item['keterampilan']['grade'] }}
-@endif
-                                                </textarea>
-                                            </td>
-                                            <td class="pl-3">
-                                                <textarea class="deskripsiTextarea field-input-gray nilai-input w-full text-base font-normal"
-                                                    name="deskripsiKeterampilan[]" required rows="1" placeholder="Deskripsi" @disabled(true)
-                                                    @readonly(true)>
-@if (isset($item['keterampilan']['deskripsi']))
-{{ $item['keterampilan']['deskripsi'] }}
-@endif
-                                                </textarea>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                            <textarea class="deskripsiTextarea field-input-gray text-md nilai-input w-full font-normal" required rows="1"
+                                                placeholder="Pelajaran" @readonly(true)>{{ $item->pelajaran->nmPelajaran }}</textarea>
+                                        </td>
+                                        <td class="pl-3">
+                                            <textarea class="field-input-gray text-md nilai-input w-20 font-normal" required rows="1" placeholder="KKM"
+                                                @readonly(true)>{{ $item->pelajaran->KKM }}</textarea>
+                                        </td>
+                                        <td class="pl-3">
+                                            <textarea class="field-input-gray text-md nilai-input w-20 font-normal" name="nilaiPengetahuan[]" required
+                                                rows="1" placeholder="Nilai" @readonly(true)>{{ round($item->nilaiPengetahuan) }}</textarea>
+                                        </td>
+                                        <td class="pl-3">
+                                            <textarea class="field-input-gray text-md nilai-input w-12 font-normal" name="predikatPengetahuan[]" required
+                                                rows="1" @readonly(true)>{{ $item->predikatPengetahuan }}</textarea>
+                                        </td>
+                                        <td class="pl-3">
+                                            <textarea class="deskripsiTextarea field-input-indigo nilai-input w-full text-base font-normal"
+                                                name="deskripsiPengetahuan[]" required rows="1" placeholder="Deskripsi">{{ $item->deskripsiPengetahuan }}</textarea>
+                                        </td>
+
+                                        <td class="pl-3">
+                                            <textarea class="field-input-gray text-md nilai-input w-20 font-normal" name="nilaiKeterampilan[]" required
+                                                rows="1" placeholder="Nilai" @readonly(true)>{{ round($item->nilaiKeterampilan) }}</textarea>
+                                        </td>
+                                        <td class="pl-3">
+                                            <textarea class="field-input-gray text-md nilai-input w-12 font-normal" name="predikatKeterampilan[]" required
+                                                rows="1" @readonly(true)>{{ $item->predikatKeterampilan }}</textarea>
+                                        </td>
+                                        <td class="pl-3">
+                                            <textarea class="deskripsiTextarea field-input-indigo nilai-input w-full text-base font-normal"
+                                                name="deskripsiKeterampilan[]" required rows="1" placeholder="Deskripsi">{{ $item->deskripsiKeterampilan }}</textarea>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
 
