@@ -147,50 +147,18 @@
 
             <tbody>
 
-                @foreach ($nilai as $pelajaran => $data)
-                    @foreach ($data as $item)
-                        <tr>
-                            <td style="text-align: center;">{{ $loop->parent->index + 1 }}</td>
-                            <td>{{ $pelajaran }}</td>
-                            <td style="text-align: center; font-weight: bold">{{ $item['pelajaran']->KKM ?? 0 }}</td>
-                            <td style="text-align: center; font-weight: bold">
-                                @if (isset($item['PAS']['nilai']))
-                                    {{ $item['PAS']['nilai'] }}
-                                @else
-                                    {{ $item['pengetahuan']['nilai'] }}
-                                @endif
-                            </td>
-                            <td style="text-align: center;">
-                                @if (isset($item['PAS']['grade']))
-                                    {{ $item['PAS']['grade'] }}
-                                @else
-                                    {{ $item['pengetahuan']['grade'] }}
-                                @endif
-                            </td>
-                            <td style="font-size: 12px">
-                                @if (isset($item['PAS']['deskripsi']))
-                                    {{ $item['PAS']['deskripsi'] }}
-                                @else
-                                    {{ $item['pengetahuan']['deskripsi'] }}
-                                @endif
-                            </td>
-                            <td style="text-align: center; font-weight: bold">
-                                @if (isset($item['keterampilan']['nilai']))
-                                    {{ $item['keterampilan']['nilai'] }}
-                                @endif
-                            </td>
-                            <td style="text-align: center;">
-                                @if (isset($item['keterampilan']['grade']))
-                                    {{ $item['keterampilan']['grade'] }}
-                                @endif
-                            </td>
-                            <td style="font-size: 12px">
-                                @if (isset($item['keterampilan']['deskripsi']))
-                                    {{ $item['keterampilan']['deskripsi'] }}
-                                @endif
-                            </td>
-                        </tr>
-                    @endforeach
+                @foreach ($nilai as $item)
+                    <tr>
+                        <td style="text-align: center;">{{ $loop->iteration }}</td>
+                        <td>{{ $item->pelajaran->nmPelajaran }}</td>
+                        <td style="text-align: center; font-weight: bold">{{ $item->pelajaran->KKM }}</td>
+                        <td style="text-align: center; font-weight: bold">{{ round($item->nilaiPengetahuan) }}</td>
+                        <td style="text-align: center;">{{ $item->predikatPengetahuan }}</td>
+                        <td style="font-size: 12px">{{ $item->deskripsiPengetahuan }}</td>
+                        <td style="text-align: center; font-weight: bold">{{ round($item->nilaiKeterampilan) }}</td>
+                        <td style="text-align: center;">{{ $item->predikatKeterampilan }}</td>
+                        <td style="font-size: 12px">{{ $item->deskripsiKeterampilan }}</td>
+                    </tr>
                 @endforeach
 
             </tbody>
@@ -357,17 +325,29 @@
             <thead class="no-border">
                 <tr>
                     <th style="text-align: center; font-weight: normal" colspan="1">Mengetahui:</th>
-                    <th style="text-align: center; font-weight: normal" colspan="2">Kepala Sekolah</th>
-                    <th style="text-align: center; font-weight: normal" colspan="2">Orang Tua / Wali Murid</th>
+                    <th style="text-align: center; font-weight: normal" colspan="1">Kepala Sekolah</th>
+                    <th style="text-align: center; font-weight: normal" colspan="1">Orang Tua / Wali Murid</th>
                 </tr>
                 <tr>
                     <th style="text-align: center; font-weight: normal">Guru Kelas / Wali Kelas</th>
                 </tr>
             </thead>
-            <tbody>
 
+            <tbody>
+                <tr class="no-border">
+                    <td style="text-align: center; font-weight: bold; padding-top: 5rem">
+                        {{ $waliKelas }}
+                    </td>
+                    <td style="text-align: center; font-weight: bold; padding-top: 5rem">
+                        {!! $kepsek !!}
+                    </td>
+                    <td style="text-align: center; font-weight: bold; padding-top: 5rem">
+                        {{ $rapor->siswa->nmOrangTua }}
+                    </td>
+                </tr>
             </tbody>
         </table>
+
     </section>
 
 </body>
