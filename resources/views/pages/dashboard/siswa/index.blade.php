@@ -7,7 +7,7 @@
         <div class="relative overflow-x-auto rounded-2xl shadow-sm">
             <table class="w-full text-left">
 
-                <div class="bg-white py-5 px-9">
+                <div class="bg-white px-9 py-5">
                     <div class="flex h-14 flex-row items-center justify-between rounded-3xl bg-hero px-20">
                         <h4 class="text-2xl font-bold text-white">Data Siswa</h4>
 
@@ -84,10 +84,10 @@
                                     {{ $item->nmSiswa }}
                                 </td>
                                 <td class="pl-32">
-                                    {{ $item->tinggi }}
+                                    {{ number_format($item->tinggi) }}
                                 </td>
                                 <td class="pl-32">
-                                    {{ $item->berat }}
+                                    {{ number_format($item->berat) }}
                                 </td>
                                 <td class="mr-3 flex flex-row items-center gap-5 2xl:m-0">
                                     <a href="{{ route('siswa.show', $item->NIS) }}">
