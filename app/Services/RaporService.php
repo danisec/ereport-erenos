@@ -8,6 +8,7 @@ use App\Models\Presensi;
 use App\Models\presensiSiswa;
 use App\Models\Rapor;
 use App\Models\Rapor_D;
+use App\Models\RaporNilai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -52,6 +53,25 @@ class RaporService
                 'deskripsiPrestasi.required' => 'Keterangan Prestasi Harus Diisi',
             ]);
 
+            // Validasi input rapor_nilai untu memastikan data berupa array
+            $validatedDataNilai = $request->validate([
+                'idPelajaran' => 'required|array',
+                'nilaiPengetahuan' => 'required|array',
+                'predikatPengetahuan' => 'required|array',
+                'deskripsiPengetahuan' => 'required|array',
+                'nilaiKeterampilan' => 'required|array',
+                'predikatKeterampilan' => 'required|array',
+                'deskripsiKeterampilan' => 'required|array',
+            ], [
+                'idPelajaran.required' => 'Pelajaran Harus Diisi',
+                'nilaiPengetahuan.required' => 'Nilai Pengetahuan Harus Diisi',
+                'predikatPengetahuan.required' => 'Predikat Pengetahuan Harus Diisi',
+                'deskripsiPengetahuan.required' => 'Deskripsi Pengetahuan Harus Diisi',
+                'nilaiKeterampilan.required' => 'Nilai Keterampilan Harus Diisi',
+                'predikatKeterampilan.required' => 'Predikat Keterampilan Harus Diisi',
+                'deskripsiKeterampilan.required' => 'Deskripsi Keterampilan Harus Diisi',
+            ]);
+
             $nmSikap = $validatedRaporD['nmSikap'];
             $deskripsiSikap = $validatedRaporD['deskripsiSikap'];
             $nmEkstrakurikuler = $validatedRaporD['nmEkstrakurikuler'];
@@ -77,8 +97,26 @@ class RaporService
                 ];
             }
 
+            $raporNilai_Data = [];
+            for ($index = 0; $index < count($validatedDataNilai['idPelajaran']); $index++) {
+                $raporNilai_Data[] = [
+                    'idRapor' => $idRapor,
+                    'idPelajaran' => $validatedDataNilai['idPelajaran'][$index] ?? '',
+                    'nilaiPengetahuan' => $validatedDataNilai['nilaiPengetahuan'][$index] ?? '',
+                    'predikatPengetahuan' => $validatedDataNilai['predikatPengetahuan'][$index] ?? '',
+                    'deskripsiPengetahuan' => $validatedDataNilai['deskripsiPengetahuan'][$index] ?? '',
+                    'nilaiKeterampilan' => $validatedDataNilai['nilaiKeterampilan'][$index] ?? '',
+                    'predikatKeterampilan' => $validatedDataNilai['predikatKeterampilan'][$index] ?? '',
+                    'deskripsiKeterampilan' => $validatedDataNilai['deskripsiKeterampilan'][$index] ?? '',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+            }
+
             // Simpan data rapor_d ke dalam tabel rapor_d secara banyak
             Rapor_D::insert($raporD_Data);
+            // Simpan data rapor_nilai ke dalam tabel rapor_d secara banyak
+            RaporNilai::insert($raporNilai_Data);
 
             // Commit transaksi jika semua operasi berhasil
             DB::commit();
@@ -130,6 +168,24 @@ class RaporService
                 'deskripsiPrestasi.required' => 'Keterangan Prestasi Harus Diisi',
             ]);
 
+            // Validasi input rapor_nilai untu memastikan data berupa array
+            $validatedDataNilai = $request->validate([
+                'idPelajaran' => '|array',
+                'nilaiPengetahuan' => 'required|array',
+                'predikatPengetahuan' => 'required|array',
+                'deskripsiPengetahuan' => 'required|array',
+                'nilaiKeterampilan' => 'required|array',
+                'predikatKeterampilan' => 'required|array',
+                'deskripsiKeterampilan' => 'required|array',
+            ], [
+                'nilaiPengetahuan.required' => 'Nilai Pengetahuan Harus Diisi',
+                'predikatPengetahuan.required' => 'Predikat Pengetahuan Harus Diisi',
+                'deskripsiPengetahuan.required' => 'Deskripsi Pengetahuan Harus Diisi',
+                'nilaiKeterampilan.required' => 'Nilai Keterampilan Harus Diisi',
+                'predikatKeterampilan.required' => 'Predikat Keterampilan Harus Diisi',
+                'deskripsiKeterampilan.required' => 'Deskripsi Keterampilan Harus Diisi',
+            ]);
+
             $nmSikap = $validatedRaporD['nmSikap'];
             $deskripsiSikap = $validatedRaporD['deskripsiSikap'];
             $nmEkstrakurikuler = $validatedRaporD['nmEkstrakurikuler'];
@@ -155,11 +211,33 @@ class RaporService
                 ];
             }
 
-            // Hapus data nilai_d yang terkait dengan nilai sebelumnya
+            $raporNilai_Data = [];
+            for ($index = 0; $index < count($validatedDataNilai['idPelajaran']); $index++) {
+                $raporNilai_Data[] = [
+                    'idRapor' => $idRapor,
+                    'idPelajaran' => $validatedDataNilai['idPelajaran'][$index] ?? '',
+                    'nilaiPengetahuan' => $validatedDataNilai['nilaiPengetahuan'][$index] ?? '',
+                    'predikatPengetahuan' => $validatedDataNilai['predikatPengetahuan'][$index] ?? '',
+                    'deskripsiPengetahuan' => $validatedDataNilai['deskripsiPengetahuan'][$index] ?? '',
+                    'nilaiKeterampilan' => $validatedDataNilai['nilaiKeterampilan'][$index] ?? '',
+                    'predikatKeterampilan' => $validatedDataNilai['predikatKeterampilan'][$index] ?? '',
+                    'deskripsiKeterampilan' => $validatedDataNilai['deskripsiKeterampilan'][$index] ?? '',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+            }
+
+            // Hapus data rapor_d yang terkait dengan nilai sebelumnya
             Rapor_D::where('idRapor', $idRapor)->delete();
 
             // Simpan data rapor_d ke dalam tabel rapor_d secara banyak
             Rapor_D::insert($raporD_Data);
+
+            // Hapus data rapor_nilai yang terkait dengan nilai sebelumnya
+            RaporNilai::where('idRapor', $idRapor)->delete();
+
+            // Simpan data rapor_nilai ke dalam tabel rapor_nilai secara banyak
+            RaporNilai::insert($raporNilai_Data);
 
             // Commit transaksi jika semua operasi berhasil
             DB::commit();
@@ -204,7 +282,7 @@ class RaporService
             }
         }
 
-        if (isset($nilaiHarianByPelajaran['Pengetahuan'])) {
+       if (isset($nilaiHarianByPelajaran['Pengetahuan'])) {
             foreach ($nilaiHarianByPelajaran['Pengetahuan'] as $pelajaran => $nilaiHarian) {
                 $idNilaiArray = [];
 
