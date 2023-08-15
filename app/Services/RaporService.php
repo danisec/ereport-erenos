@@ -128,8 +128,7 @@ class RaporService
             // Rollback transaksi jika terjadi kesalahan
             DB::rollback();
 
-            $error = $e->getMessage();
-            $notif = notify()->error('Terjadi kesalahan saat menyimpan data: ' . $error);
+            $notif = notify()->error('Terjadi kesalahan saat menyimpan data');
 
             return back();
         }
@@ -249,8 +248,7 @@ class RaporService
             // Rollback transaksi jika terjadi kesalahan
             DB::rollback();
 
-            $error = $e->getMessage();
-            $notif = notify()->error('Terjadi kesalahan saat menyimpan data: ' . $error);
+            $notif = notify()->error('Terjadi kesalahan saat menyimpan data');
 
             return back();
         }

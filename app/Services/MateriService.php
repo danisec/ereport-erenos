@@ -64,8 +64,7 @@ class MateriService
         } catch (\Throwable $e) {
             DB::rollback();
             
-            $error = $e->getMessage();
-            $notif = notify()->error('Terjadi kesalahan saat memperbarui data: ' . $error);
+            $notif = notify()->error('Terjadi kesalahan saat memperbarui data');
 
             return redirect('/dashboard/materi/ubah-materi/' . $id . '/edit')->with('notif', $notif);
         } 

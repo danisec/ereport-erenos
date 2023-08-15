@@ -107,7 +107,7 @@ class PresensiController extends Controller
 
         } catch (\Exception $e) {
             DB::rollback();
-            $notif = notify()->error('Terjadi kesalahan: ' . $e->getMessage());
+            $notif = notify()->error('Terjadi kesalahan saat menyimpan data');
             return back()->with('notif', $notif);
         }
     }
@@ -212,7 +212,7 @@ class PresensiController extends Controller
 
         } catch (\Exception $e) {
             DB::rollback();
-            $notif = notify()->error('Terjadi kesalahan: ' . $e->getMessage());
+            $notif = notify()->error('Terjadi kesalahan saat memperbarui data');
             return back()->with('notif', $notif);
         }
     }
