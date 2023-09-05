@@ -19,6 +19,8 @@
       "resources/js/chartGuru.js",
       "resources/js/dateTime.js",
       "resources/js/tinymce.js",
+      "resources/js/historySiswa.js",
+      "resources/js/tabelHistorySiswa.js",
       "resources/js/presensi.js",
       "resources/js/filterSearchPresensi.js",
       "resources/js/tabelMateri.js",
@@ -28,7 +30,7 @@
       "resources/js/nilai.js",
       "resources/js/rapor.js"
     ],
-    "file": "assets/app-a1e55f4a.js",
+    "file": "assets/app-52c19074.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
@@ -58,15 +60,23 @@
     "src": "resources/js/dateTime.js"
   },
   "resources/js/filterSearchPresensi.js": {
-    "file": "assets/filterSearchPresensi-8cab92a9.js",
+    "file": "assets/filterSearchPresensi-afb78e3b.js",
     "imports": [
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/filterSearchPresensi.js"
   },
+  "resources/js/historySiswa.js": {
+    "file": "assets/historySiswa-cadbcbac.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/historySiswa.js"
+  },
   "resources/js/nilai.js": {
-    "file": "assets/nilai-94eddbc0.js",
+    "file": "assets/nilai-9ebc6b40.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -74,7 +84,7 @@
     "src": "resources/js/nilai.js"
   },
   "resources/js/presensi.js": {
-    "file": "assets/presensi-3f1325f5.js",
+    "file": "assets/presensi-f49e0504.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -82,15 +92,23 @@
     "src": "resources/js/presensi.js"
   },
   "resources/js/rapor.js": {
-    "file": "assets/rapor-1b49273c.js",
+    "file": "assets/rapor-974b0d9f.js",
     "imports": [
       "resources/js/app.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/rapor.js"
   },
+  "resources/js/tabelHistorySiswa.js": {
+    "file": "assets/tabelHistorySiswa-5719daa1.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/tabelHistorySiswa.js"
+  },
   "resources/js/tabelMateri.js": {
-    "file": "assets/tabelMateri-248185d0.js",
+    "file": "assets/tabelMateri-ef371518.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -98,7 +116,7 @@
     "src": "resources/js/tabelMateri.js"
   },
   "resources/js/textareaDeskripsi.js": {
-    "file": "assets/textareaDeskripsi-4aad4b47.js",
+    "file": "assets/textareaDeskripsi-debc85ea.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -106,7 +124,7 @@
     "src": "resources/js/textareaDeskripsi.js"
   },
   "resources/js/textareaMateri.js": {
-    "file": "assets/textareaMateri-27bee013.js",
+    "file": "assets/textareaMateri-03bfefc8.js",
     "imports": [
       "resources/js/app.js"
     ],
