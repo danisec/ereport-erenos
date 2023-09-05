@@ -37,6 +37,26 @@ if (window.location.pathname.includes("/dashboard/pengumuman/")) {
         });
 }
 
+if (
+    window.location.pathname === "/dashboard/history-siswa/tambah-historysiswa"
+) {
+    import("./historySiswa")
+        .then((module) => {})
+        .catch((error) => {
+            console.error("Gagal mengimpor ./historySiswa:", error);
+        });
+}
+
+if (
+    window.location.pathname === "/dashboard/history-siswa/tambah-historysiswa"
+) {
+    import("./tabelHistorySiswa")
+        .then((module) => {})
+        .catch((error) => {
+            console.error("Gagal mengimpor ./tabelHistorySiswa:", error);
+        });
+}
+
 if (window.location.pathname.includes("/dashboard/presensi/")) {
     import("./presensi")
         .then((module) => {})
@@ -73,6 +93,7 @@ if (
 }
 
 if (
+    window.location.pathname.includes("/dashboard/history-siswa/") ||
     window.location.pathname.includes("/dashboard/rapor/tambah-rapor/") ||
     window.location.pathname.includes("/dashboard/rapor/ubah-rapor/")
 ) {
