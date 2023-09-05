@@ -58,7 +58,6 @@ class RaporController extends Controller
         $nilaiAkhir = $this->raporService->getNilaiRapor($nis, $idSemester);
  
         // Data Presensi
-        $idSemester = $semester->idSemester;
         $statusCounts = $this->raporService->getPresensiRapor($nis, $idSemester);
         
         return view('pages.dashboard.rapor.create', [
@@ -94,6 +93,7 @@ class RaporController extends Controller
         // Dapatkan data rapor berdasarkan idRapor sebelumnya dari fungsi store di atas
         $rapor = Rapor::with('siswa', 'kelas', 'semester', 'rapor_d', 'rapor_nilai')->find($idRapor);
         $raporSiswa = Rapor_D::where('idRapor', $idRapor)->get();
+        $idSemester = $rapor->idSemester;
 
         // Pastikan data rapor ditemukan
         if (!$rapor) {
@@ -102,12 +102,9 @@ class RaporController extends Controller
 
         // Data Nilai
         $nis = $rapor->NIS;
-        $idSemester = $rapor->idSemester;
         $getRaporNilai = $rapor->rapor_nilai()->where('idRapor', $idRapor)->with('pelajaran')->get();
-        // $nilaiAkhir = $this->raporService->getNilaiRapor($nis, $idSemester);
 
         // Data Presensi
-        $idSemester = $rapor->idSemester;
         $statusCounts = $this->raporService->getPresensiRapor($nis, $idSemester);
 
         return view('pages.dashboard.rapor.edit', [
