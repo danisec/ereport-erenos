@@ -40,6 +40,7 @@ class headerDashboard extends Component
 
             $dataSekolah = [
                 'Siswa' => 'siswa',
+                'History Siswa' => 'history-siswa',
                 'Guru' => 'guru',
                 'Kelas' => 'kelas',
             ];
