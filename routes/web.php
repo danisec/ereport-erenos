@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\HistorySiswaController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KelolaAkunController;
 use App\Http\Controllers\MappingJadwalController;
@@ -90,6 +91,21 @@ Route::controller(SiswaController::class)->name('siswa.')->middleware('auth', 'u
 
     Route::get('/dashboard/siswa/ubah-siswa/{id}/edit', 'edit')->name('edit');
     Route::put('/dashboard/siswa/{id}', 'update')->name('update');
+});
+
+Route::controller(HistorySiswaController::class)->name('historysiswa.')->middleware('auth', 'user-role:superadmin')->group(function () {
+    Route::get('/dashboard/history-siswa', 'index')->name('index');
+    Route::get('/dashboard/history-siswa/tambah-historysiswa', 'create')->name('create');
+    Route::get('/dashboard/history-siswa/view-historysiswa/{id}', 'show')->name('show');
+
+    Route::post('/dashboard/history-siswa/tambah-historysiswa', 'store')->name('store');
+    Route::delete('/dashboard/history-siswa/{id}', 'destroy')->name('destroy');
+
+    Route::get('/dashboard/history-siswa/ubah-historysiswa/{id}/edit', 'edit')->name('edit');
+    Route::put('/dashboard/history-siswa/{id}', 'update')->name('update');
+
+    Route::get('/dashboard/history-siswa/tambah-historysiswa/{tahunAjaran}/getThnAjaran', 'getThnAjaranList')->name('getThnAjaranList');
+    Route::get('/dashboard/history-siswa/tambah-historysiswa/{kelas}/getSiswa', 'getSiswaList')->name('getSiswaList');
 });
 
 Route::controller(GuruController::class)->name('guru.')->middleware('auth', 'user-role:superadmin')->group(function () {
