@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 15, 2023 at 09:49 AM
+-- Generation Time: Sep 05, 2023 at 01:31 PM
 -- Server version: 8.0.33
 -- PHP Version: 8.2.3
 
@@ -46,6 +46,35 @@ CREATE TABLE `failed_jobs` (
 CREATE TABLE `guru` (
   `NIP` char(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `namaGuru` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `history_siswa`
+--
+
+CREATE TABLE `history_siswa` (
+  `idHistory` bigint UNSIGNED NOT NULL,
+  `idSemester` bigint UNSIGNED NOT NULL,
+  `idKelas` bigint UNSIGNED NOT NULL,
+  `NIS` char(8) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `history_siswa_d`
+--
+
+CREATE TABLE `history_siswa_d` (
+  `idHistory_d` bigint UNSIGNED NOT NULL,
+  `idHistory` bigint UNSIGNED NOT NULL,
+  `keterangan` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -206,7 +235,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (34, '2023_07_20_121818_create_fk_rapor_d_table', 4),
 (35, '2023_08_03_172107_create_rapor_nilai_table', 4),
 (36, '2023_08_03_172623_create_fk_rapor_nilai_table', 4),
-(37, '2023_08_07_101334_create_setting_table', 5);
+(37, '2023_08_07_101334_create_setting_table', 5),
+(38, '2023_08_30_115706_create_table_history_siswa', 6),
+(39, '2023_08_30_120448_create_fk_history_siswa', 6),
+(40, '2023_08_30_121139_create_table_history_siswa_d', 7),
+(41, '2023_08_31_065947_create_fk_history_siswa_d', 7);
 
 -- --------------------------------------------------------
 
@@ -475,6 +508,22 @@ ALTER TABLE `guru`
   ADD PRIMARY KEY (`NIP`);
 
 --
+-- Indexes for table `history_siswa`
+--
+ALTER TABLE `history_siswa`
+  ADD PRIMARY KEY (`idHistory`),
+  ADD KEY `fk_history_siswa_semester` (`idSemester`),
+  ADD KEY `fk_history_siswa_kelas` (`idKelas`),
+  ADD KEY `fk_history_siswa_siswa` (`NIS`);
+
+--
+-- Indexes for table `history_siswa_d`
+--
+ALTER TABLE `history_siswa_d`
+  ADD PRIMARY KEY (`idHistory_d`),
+  ADD KEY `fk_history_siswa_d_history_siswa` (`idHistory`);
+
+--
 -- Indexes for table `jadwal`
 --
 ALTER TABLE `jadwal`
@@ -646,6 +695,18 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `history_siswa`
+--
+ALTER TABLE `history_siswa`
+  MODIFY `idHistory` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `history_siswa_d`
+--
+ALTER TABLE `history_siswa_d`
+  MODIFY `idHistory_d` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `jadwal`
 --
 ALTER TABLE `jadwal`
@@ -691,7 +752,7 @@ ALTER TABLE `materi`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `nilai`
@@ -768,6 +829,20 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `history_siswa`
+--
+ALTER TABLE `history_siswa`
+  ADD CONSTRAINT `fk_history_siswa_kelas` FOREIGN KEY (`idKelas`) REFERENCES `kelas` (`idKelas`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_history_siswa_semester` FOREIGN KEY (`idSemester`) REFERENCES `semester` (`idSemester`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_history_siswa_siswa` FOREIGN KEY (`NIS`) REFERENCES `siswa` (`NIS`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `history_siswa_d`
+--
+ALTER TABLE `history_siswa_d`
+  ADD CONSTRAINT `fk_history_siswa_d_history_siswa` FOREIGN KEY (`idHistory`) REFERENCES `history_siswa` (`idHistory`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `jadwal`
