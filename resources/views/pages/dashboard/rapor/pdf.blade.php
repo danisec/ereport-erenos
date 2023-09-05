@@ -207,9 +207,9 @@
         </div>
     </section>
 
-    <section style="margin-top: 11rem">
+    <section style="margin-top: 9rem">
         <div style="float: left; width: 50%">
-            <h1 class="text-header-left">E. TInggi dan Berat Badan</h1>
+            <h1 class="text-header-left">E. Tinggi dan Berat Badan</h1>
 
             <table>
                 <thead>
