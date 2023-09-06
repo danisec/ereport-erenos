@@ -70,6 +70,7 @@ class headerDashboard extends Component
             ];
 
             $navbarLast = [
+                'History Siswa' => 'history-siswa',
                 'Presensi' => 'presensi',
                 'Nilai' => 'nilai',
                 'Rapor' => 'rapor',
