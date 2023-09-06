@@ -93,7 +93,7 @@ Route::controller(SiswaController::class)->name('siswa.')->middleware('auth', 'u
     Route::put('/dashboard/siswa/{id}', 'update')->name('update');
 });
 
-Route::controller(HistorySiswaController::class)->name('historysiswa.')->middleware('auth', 'user-role:superadmin')->group(function () {
+Route::controller(HistorySiswaController::class)->name('historysiswa.')->middleware('auth', 'user-role:superadmin,guru')->group(function () {
     Route::get('/dashboard/history-siswa', 'index')->name('index');
     Route::get('/dashboard/history-siswa/tambah-historysiswa', 'create')->name('create');
     Route::get('/dashboard/history-siswa/view-historysiswa/{id}', 'show')->name('show');
