@@ -1,4 +1,4 @@
-<x-layouts.app-layout title="{{ $title }}">
+<x-app-layout title="{{ $title }}">
 
     <div class="min-h-screen overflow-x-hidden bg-hero py-8">
         <section class="layout grid grid-cols-2 gap-12">
@@ -100,4 +100,4 @@
         });
     </script>
 
-</x-layouts.app-layout>
+</x-app-layout>

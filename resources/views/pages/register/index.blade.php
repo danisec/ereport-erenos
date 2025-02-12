@@ -1,4 +1,4 @@
-<x-layouts.app-layout title="{{ $title }}">
+<x-app-layout title="{{ $title }}">
 
     <div class="h-32 w-full bg-login-pattern bg-cover bg-no-repeat">
         <x-molecules.breadcrumb :title="$title . ' ' . 'to the site'" />
@@ -65,4 +65,4 @@
         </div>
     </div>
 
-</x-layouts.app-layout>
+</x-app-layout>
