@@ -1,6 +1,6 @@
-<x-layouts.app-layout title="{{ $title }}">
+<x-app-layout title="{{ $title }}">
 
-    <x-organisms.header-dashboard />
+    <x-header-dashboard />
 
     <section class="layout min-h-screen bg-hero py-6 font-rubik">
         <div class="w-full rounded-2xl bg-white py-5 shadow-sm">
@@ -71,14 +71,17 @@
 
     <script type="module">
         tinymce.init({
-        selector: 'textarea',  // change this value according to your HTML
-        height : "300",
-        width  : "800px",
-        menu: {
-            edit: { title: 'Edit', items: 'undo, redo, selectall' }
-        }
+            selector: 'textarea', // change this value according to your HTML
+            height: "300",
+            width: "800px",
+            menu: {
+                edit: {
+                    title: 'Edit',
+                    items: 'undo, redo, selectall'
+                }
+            }
         });
         tinymce.activeEditor.mode.set("readonly");
     </script>
 
-</x-layouts.app-layout>
+    </x-layouts.app-layout>

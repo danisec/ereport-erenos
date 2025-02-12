@@ -1,6 +1,6 @@
-<x-layouts.app-layout title="{{ $title }}">
+<x-app-layout title="{{ $title }}">
 
-    <x-organisms.header-dashboard />
+    <x-header-dashboard />
 
     <section class="layout min-h-screen bg-hero py-6 font-rubik">
         <div class="w-full rounded-2xl bg-white py-5 shadow-sm">
@@ -208,4 +208,4 @@
         window.addEventListener('scroll', hideScrollTopButton);
     </script>
 
-</x-layouts.app-layout>
+    </x-layouts.app-layout>
