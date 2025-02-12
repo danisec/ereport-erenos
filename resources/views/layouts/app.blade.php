@@ -27,7 +27,6 @@
     <div class="flex min-h-screen flex-col">
         <x-organisms.header />
 
-
         <div class="flex-1">
             {{ $slot }}
         </div>
