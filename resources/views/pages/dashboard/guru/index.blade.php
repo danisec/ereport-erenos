@@ -1,13 +1,13 @@
-<x-layouts.app-layout title="{{ $title }}">
+<x-app-layout title="{{ $title }}">
 
-    <x-organisms.header-dashboard />
+    <x-header-dashboard />
 
     <section class="layout min-h-screen bg-hero py-6 font-rubik">
 
         <div class="relative overflow-x-auto rounded-2xl shadow-sm">
             <table class="w-full text-left">
 
-                <div class="bg-white py-5 px-9">
+                <div class="bg-white px-9 py-5">
                     <div class="flex h-14 flex-row items-center justify-between rounded-3xl bg-hero px-20">
                         <h4 class="text-2xl font-bold text-white">Data guru</h4>
 
@@ -101,4 +101,4 @@
 
     </section>
 
-</x-layouts.app-layout>
+</x-app-layout>

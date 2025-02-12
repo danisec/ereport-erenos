@@ -1,6 +1,6 @@
-<x-layouts.app-layout title="{{ $title }}">
+<x-app-layout title="{{ $title }}">
 
-    <x-organisms.header-dashboard />
+    <x-header-dashboard />
 
     <section class="layout min-h-screen bg-hero py-6 font-rubik">
 
@@ -197,4 +197,4 @@
         });
     </script>
 
-</x-layouts.app-layout>
+</x-app-layout>
